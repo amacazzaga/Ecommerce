@@ -13,7 +13,7 @@ app.use(`/`,(req,res,next)=>{
     console.log(req.method)
     next()
 })
-app.use(`/`, userRoutes);
+app.use(`/user`, userRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
