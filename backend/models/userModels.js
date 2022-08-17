@@ -5,7 +5,12 @@ const userSchema = new Schema({
     email :{
         type: String,
         required: true
+    },
+    password :{
+        type: String,
+        required: true
     }
 })
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Users", userSchema);
+/*name the collection with the string*/
