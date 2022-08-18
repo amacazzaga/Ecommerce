@@ -45,10 +45,23 @@ const deleteUser = async (req, res) => {
   }
   res.status(200).json(user);
 };
+//update user///
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+   return res.status(404).json(`not a valid id`);
+  }
+  const user = await User.findOneAndUpdate({id},{...req.body});
+  if (!user) {
+   return res.status(400).json(`no such user`);
+  }
+  res.status(200).json(user);
+};
 
 module.exports = {
   getUsers,
   createUser,
   getUser,
-  deleteUser
+  deleteUser,
+  updateUser
 };

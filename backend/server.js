@@ -4,7 +4,7 @@ const mongoose = require(`mongoose`);
 const userRoutes = require(`./routes/user`);
 
 // express app//
-const app = express(); //settting the app to express
+const app = express(); //setting the app to express
 //middleware//
 /*Las funciones de middleware son funciones que tienen acceso al objeto
 de solicitud (req), y al objeto de respuesta (res)*/
