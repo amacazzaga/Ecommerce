@@ -7,7 +7,7 @@ const productSchema = new Schema({
         required: true
     },
     price :{
-        type: String,
+        type: Number,
         required: true
     },
     description :{
@@ -20,5 +20,5 @@ const productSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model("products", productSchema);
+module.exports = mongoose.model("Products", productSchema);
 /*name the collection with the string*/

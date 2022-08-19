@@ -1,7 +1,9 @@
 require(`dotenv`).config();
 const express = require(`express`);
 const mongoose = require(`mongoose`);
-const userRoutes = require(`./routes/user`);
+const userRoutes = require(`./routes/users`);
+const productRoutes = require(`./routes/products`)
+
 
 // express app//
 const app = express(); //setting the app to express
@@ -13,7 +15,10 @@ app.use(`/`,(req,res,next)=>{
     console.log(req.method)
     next()
 })
+//user routes//
 app.use(`/user`, userRoutes);
+//product routes//
+app.use(`/product`, productRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
