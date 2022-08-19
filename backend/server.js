@@ -3,7 +3,7 @@ const express = require(`express`);
 const mongoose = require(`mongoose`);
 const userRoutes = require(`./routes/users`);
 const productRoutes = require(`./routes/products`)
-const saleRoutes = require(`./routes/sales`)
+const salesRoutes = require(`./routes/sales`)
 
 // express app//
 const app = express(); //setting the app to express
@@ -20,7 +20,7 @@ app.use(`/user`, userRoutes);
 //product routes//
 app.use(`/product`, productRoutes);
 //sale routes//
-app.use(`/sale`, saleRoutes);
+app.use(`/sales`, salesRoutes);
 //mongoose connect//
 mongoose
   .connect(process.env.MONGO_URI)
