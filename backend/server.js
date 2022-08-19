@@ -3,7 +3,7 @@ const express = require(`express`);
 const mongoose = require(`mongoose`);
 const userRoutes = require(`./routes/users`);
 const productRoutes = require(`./routes/products`)
-
+const saleRoutes = require(`./routes/sales`)
 
 // express app//
 const app = express(); //setting the app to express
@@ -19,10 +19,12 @@ app.use(`/`,(req,res,next)=>{
 app.use(`/user`, userRoutes);
 //product routes//
 app.use(`/product`, productRoutes);
-
+//sale routes//
+app.use(`/sale`, saleRoutes);
+//mongoose connect//
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => {
+  .then(() => { //once in mongoose//
     app.listen(process.env.PORT, () => {
       //port 4000
       console.log("connected to db & listening on", process.env.PORT);
