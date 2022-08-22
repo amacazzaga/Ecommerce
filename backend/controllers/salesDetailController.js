@@ -30,7 +30,7 @@ const getSaleDetail = async (req, res) => {
   if (!salesDetail) {
     return res.status(400).json(`no such sales`);
   }
-  res.status(200).json(sales);
+  res.status(200).json(salesDetail);
 };
 //delete a sale detail///
 const deleteSalesDetail = async (req, res) => {

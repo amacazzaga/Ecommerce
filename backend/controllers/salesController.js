@@ -12,9 +12,9 @@ const getSales = async (req, res) => {
 };
 //create new sales//
 const createSales = async (req, res) => {
-  const { idUser,finalPrice } = req.body; //destructuring
+  const { idUser, finalPrice } = req.body; //destructuring
   try {
-    const sales = await Sales.create({ idUser,finalPrice});
+    const sales = await Sales.create({ idUser, finalPrice });
     res.status(200).json(sales);
   } catch (err) {
     res.status(400).json({ mss: "error" });
@@ -24,11 +24,11 @@ const createSales = async (req, res) => {
 const getSale = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(404).json(`not a valid id`);
+    return res.status(404).json(`not a valid id`);
   }
   const sales = await Sales.findById(id);
   if (!sales) {
-   return res.status(400).json(`no such sales`);
+    return res.status(400).json(`no such sales`);
   }
   res.status(200).json(sales);
 };
@@ -36,11 +36,11 @@ const getSale = async (req, res) => {
 const deleteSales = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(404).json(`not a valid id`);
+    return res.status(404).json(`not a valid id`);
   }
   const sales = await Sales.findByIdAndDelete(id);
   if (!sales) {
-   return res.status(400).json(`no such sales`);
+    return res.status(400).json(`no such sales`);
   }
   res.status(200).json(sales);
 };
@@ -48,11 +48,11 @@ const deleteSales = async (req, res) => {
 const updateSales = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(404).json(`not a valid id`);
+    return res.status(404).json(`not a valid id`);
   }
-  const sales = await Sales.findOneAndUpdate({id},{...req.body});
+  const sales = await Sales.findOneAndUpdate({ id }, { ...req.body });
   if (!sales) {
-   return res.status(400).json(`no such sales`);
+    return res.status(400).json(`no such sales`);
   }
   res.status(200).json(sales);
 };
@@ -62,5 +62,5 @@ module.exports = {
   createSales,
   getSales,
   deleteSales,
-  updateSales
+  updateSales,
 };
