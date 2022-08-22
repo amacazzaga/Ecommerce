@@ -10,6 +10,16 @@ const getTotalSalesDetail = async (req, res) => {
     res.status(400).json({ mss: "error" });
   }
 };
+//create new user//
+const createSaleDetail = async (req, res) => {
+  const { idSale, idProduct, amount } = req.body; //destructuring
+  try {
+    const salesDetail = await SalesDetail.create({ idSale, idProduct, amount });
+    res.status(200).json(salesDetail);
+  } catch (err) {
+    res.status(400).json({ mss: "error" });
+  }
+};
 //get a single sale detale//
 const getSaleDetail = async (req, res) => {
   const { id } = req.params;
@@ -37,6 +47,7 @@ const deleteSalesDetail = async (req, res) => {
 //update sales///
 
 module.exports = {
+  createSaleDetail,
   getSaleDetail,
   getTotalSalesDetail,
   deleteSalesDetail,

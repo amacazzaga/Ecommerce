@@ -1,5 +1,6 @@
 const express = require(`express`);
 const {
+  createSaleDetail,
   getSaleDetail,
   getTotalSalesDetail,
   deleteSalesDetail,
@@ -8,6 +9,7 @@ const {
 const router = express.Router();
 
 router.get("/", getTotalSalesDetail);
+router.post(`/`,createSaleDetail)
 router.get("/:id", getSaleDetail);
 router.delete(`/:id`, deleteSalesDetail);
 
