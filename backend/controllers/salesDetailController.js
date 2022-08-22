@@ -10,7 +10,7 @@ const getTotalSalesDetail = async (req, res) => {
     res.status(400).json({ mss: "error" });
   }
 };
-//create new user//
+//create new sales detail//
 const createSaleDetail = async (req, res) => {
   const { idSale, idProduct, amount } = req.body; //destructuring
   try {
@@ -44,11 +44,23 @@ const deleteSalesDetail = async (req, res) => {
   }
   res.status(200).json(sales);
 };
-//update sales///
+//update sales detail///
+const updateSalesDetail = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+   return res.status(404).json(`not a valid id`);
+  }
+  const salesDetail = await SalesDetail.findOneAndUpdate({id},{...req.body});
+  if (!salesDetail) {
+   return res.status(400).json(`no such sale detail`);
+  }
+  res.status(200).json(salesDetail);
+};
 
 module.exports = {
   createSaleDetail,
   getSaleDetail,
   getTotalSalesDetail,
   deleteSalesDetail,
+  updateSalesDetail
 };
