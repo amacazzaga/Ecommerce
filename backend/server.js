@@ -4,8 +4,6 @@ const mongoose = require(`mongoose`);
 const userRoutes = require(`./routes/users`);
 const productRoutes = require(`./routes/products`);
 const salesRoutes = require(`./routes/sales`);
-const salesDetailRoutes = require(`./routes/salesDetail`);
-
 // express app//
 const app = express(); //setting the app to express
 //middleware//
@@ -22,8 +20,7 @@ app.use(`/user`, userRoutes);
 app.use(`/product`, productRoutes);
 //sales routes//
 app.use(`/sales`, salesRoutes);
-//sales detail routes//
-app.use(`/salesdetail`, salesDetailRoutes);
+
 //mongoose connect//
 mongoose
   .connect(process.env.MONGO_URI)

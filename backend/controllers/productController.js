@@ -12,9 +12,9 @@ const getProducts = async (req, res) => {
 };
 //create new product//
 const createProduct = async (req, res) => {
-  const { name,price,description,image } = req.body; //destructuring
+  const { name,image,price,description } = req.body; //destructuring
   try {
-    const product = await Product.create({ name,price,description,image});
+    const product = await Product.create({ name,image,price,description});
     res.status(200).json(product);
   } catch (err) {
     res.status(400).json({ mss: "error" });
@@ -24,11 +24,11 @@ const createProduct = async (req, res) => {
 const getProduct = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(404).json(`not a valid id`);
+   return res.status(400).json(`not a valid id`);
   }
   const product = await Product.findById(id);
   if (!product) {
-   return res.status(400).json(`no such product`);
+   return res.status(404).json(`no such product`);
   }
   res.status(200).json(product);
 };
@@ -36,11 +36,11 @@ const getProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(404).json(`not a valid id`);
+   return res.status(400).json(`not a valid id`);
   }
   const product = await Product.findByIdAndDelete(id);
   if (!product) {
-   return res.status(400).json(`no such product`);
+   return res.status(404).json(`no such product`);
   }
   res.status(200).json(product);
 };
@@ -48,11 +48,11 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(404).json(`not a valid id`);
+   return res.status(400).json(`not a valid id`);
   }
-  const product = await Product.findOneAndUpdate({id},{...req.body});
+  const product = await Product.findOneAndUpdate({id},req.body);
   if (!product) {
-   return res.status(400).json(`no such product`);
+   return res.status(404).json(`no such product`);
   }
   res.status(200).json(product);
 };

@@ -6,6 +6,10 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
+    image :{
+        type: String,
+        required: false /*for now*/ 
+    },
     price :{
         type: Number,
         required: true
@@ -14,10 +18,7 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
-    image :{
-        type: String,
-        required: false /*for now*/ 
-    }
+   
 })
 
 module.exports = mongoose.model("Products", productSchema);

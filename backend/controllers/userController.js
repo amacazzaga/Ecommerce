@@ -24,11 +24,11 @@ const createUser = async (req, res) => {
 const getUser = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(404).json(`not a valid id`);
+   return res.status(400).json(`not a valid id`);
   }
   const user = await User.findById(id);
   if (!user) {
-   return res.status(400).json(`no such user`);
+   return res.status(404).json(`no such user`);
   }
   res.status(200).json(user);
 };
@@ -36,11 +36,11 @@ const getUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(404).json(`not a valid id`);
+   return res.status(400).json(`not a valid id`);
   }
   const user = await User.findByIdAndDelete(id);
   if (!user) {
-   return res.status(400).json(`no such user`);
+   return res.status(404).json(`no such user`);
   }
   res.status(200).json(user);
 };
@@ -48,11 +48,11 @@ const deleteUser = async (req, res) => {
 const updateUser = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(404).json(`not a valid id`);
+   return res.status(400).json(`not a valid id`);
   }
-  const user = await User.findOneAndUpdate({id},{...req.body});
+  const user = await User.findOneAndUpdate({id},req.body);
   if (!user) {
-   return res.status(400).json(`no such user`);
+   return res.status(404).json(`no such user`);
   }
   res.status(200).json(user);
 };

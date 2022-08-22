@@ -6,6 +6,14 @@ const salesSchema = new Schema({
     type: mongoose.Types.ObjectId,
     required: true,
   },
+  idProduct: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+  },
+  amount : {
+    type:Number,
+    required:true,
+  },
   finalPrice: {
     type: Number,
     required: true,
