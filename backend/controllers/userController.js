@@ -12,9 +12,9 @@ const getUsers = async (req, res) => {
 };
 //create new user//
 const createUser = async (req, res) => {
-  const { email, password } = req.body; //destructuring
+  const { name, lastName, age, email, password } = req.body; //destructuring
   try {
-    const user = await User.create({ email, password });
+    const user = await User.create({ name, lastName, age, email, password });
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ mss: "error" });
@@ -24,11 +24,11 @@ const createUser = async (req, res) => {
 const getUser = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(400).json(`not a valid id`);
+    return res.status(400).json(`not a valid id`);
   }
   const user = await User.findById(id);
   if (!user) {
-   return res.status(404).json(`no such user`);
+    return res.status(404).json(`no such user`);
   }
   res.status(200).json(user);
 };
@@ -36,11 +36,11 @@ const getUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(400).json(`not a valid id`);
+    return res.status(400).json(`not a valid id`);
   }
   const user = await User.findByIdAndDelete(id);
   if (!user) {
-   return res.status(404).json(`no such user`);
+    return res.status(404).json(`no such user`);
   }
   res.status(200).json(user);
 };
@@ -48,11 +48,11 @@ const deleteUser = async (req, res) => {
 const updateUser = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(400).json(`not a valid id`);
+    return res.status(400).json(`not a valid id`);
   }
-  const user = await User.findOneAndUpdate({id},req.body);
+  const user = await User.findOneAndUpdate({ id }, req.body);
   if (!user) {
-   return res.status(404).json(`no such user`);
+    return res.status(404).json(`no such user`);
   }
   res.status(200).json(user);
 };
@@ -62,5 +62,5 @@ module.exports = {
   createUser,
   getUser,
   deleteUser,
-  updateUser
+  updateUser,
 };
