@@ -24,6 +24,6 @@ router.get("/", getUsers); /*user, admin*/
 router.post("/", auth, createUser); /*libre*/
 router.get("/:id", getUser); /*user,admin*/
 router.delete(`/:id`, deleteUser); /*user,admin*/
-router.patch(`/:id`, updateUser); /*user, admin*/
+router.patch(`/:id`,auth, updateUser); /*user, admin*/
 /*update user itself function missing*/
 module.exports = router;
