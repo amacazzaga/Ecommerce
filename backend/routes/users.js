@@ -13,13 +13,12 @@ const auth = async (req, res, next) => {
   try {
     await userSchema.validate(body);
     next();
-    res.status(200)
+    res.status(200).json(body)
   } catch (err) {
     res.status(400).json(err)
   }
 };
-
-//permisos y validacion de la data (yup)//
+//permisos//
 router.get("/", getUsers); /*user, admin*/
 router.post("/", auth, createUser); /*libre*/
 router.get("/:id", getUser); /*user,admin*/
