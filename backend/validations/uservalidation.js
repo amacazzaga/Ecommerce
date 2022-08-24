@@ -1,6 +1,6 @@
 const yup = require(`yup`);
 
-const userValidate = yup.object().shape({
+const userSchema = yup.object({
   name: yup.string().min(4).max(30).required(),
   lastName: yup.string().min(4).max(30).required(),
   age: yup.number().positive().integer().min(18).max(99).required(),
@@ -8,4 +8,4 @@ const userValidate = yup.object().shape({
   password: yup.string().min(4).max(18).required(),
 });
 
-module.exports = userValidate;
+module.exports = userSchema;
