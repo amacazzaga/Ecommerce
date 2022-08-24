@@ -13,6 +13,7 @@ const auth = async (req, res, next) => {
   try {
     await userSchema.validate(body);
     next();
+    res.status(200)
   } catch (err) {
     res.status(400).json(err)
   }
