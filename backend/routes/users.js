@@ -9,6 +9,7 @@ const {
 const router = express.Router();
 const userPostSchema = require(`../validations/userPostValidation`);
 const userPatchSchema = require(`../validations/userPatchValidation`)
+//userpost yup auth///
 const userPostAuth = async (req, res, next) => {
   const body = req.body;
   try {
@@ -19,6 +20,7 @@ const userPostAuth = async (req, res, next) => {
     res.status(400).json(err)
   }
 };
+//userpatch yup auth//
 const userPatchAuth = async (req, res, next) => {
   const body = req.body;
   try {
