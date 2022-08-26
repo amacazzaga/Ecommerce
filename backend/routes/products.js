@@ -7,11 +7,11 @@ const {
   updateProduct,
 } = require(`../controllers/productController`);
 const router = express.Router();
-const productSchema = require(`../validations/productValidation`);
-const productAuth = async (req, res, next) => {
+const productPostSchema = require(`../validations/productPostValidation`);
+const productPostAuth = async (req, res, next) => {
   const body = req.body;
   try {
-    await productSchema.validate(body);
+    await productPostSchema.validate(body);
     next();
    
   } catch (err) {
@@ -19,9 +19,9 @@ const productAuth = async (req, res, next) => {
   }
 };
 router.get("/", getProducts); /*libre*/
-router.post("/",productAuth, createProduct); /*user,admin*/
+router.post("/",productPostAuth, createProduct); /*user,admin*/
 router.get("/:id", getProduct); /*libre*/
 router.delete(`/:id`, deleteProduct); /*user ,admin*/
-router.patch(`/:id`,productAuth, updateProduct); /*user,admin*/
+router.patch(`/:id`, updateProduct); /*user,admin*/
 
 module.exports = router;
