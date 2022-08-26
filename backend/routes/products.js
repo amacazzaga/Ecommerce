@@ -8,6 +8,7 @@ const {
 } = require(`../controllers/productController`);
 const router = express.Router();
 const productPostSchema = require(`../validations/productPostValidation`);
+
 const productPostAuth = async (req, res, next) => {
   const body = req.body;
   try {
