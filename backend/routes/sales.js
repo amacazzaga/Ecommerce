@@ -6,9 +6,9 @@ const {
   deleteSales,
   updateSales
 } = require(`../controllers/salesController`);
-
+/////
 const router = express.Router();
-
+///
 router.get("/", getSales); /*user admin*/
 router.post("/", createSales); /*system*/
 router.get("/:id", getSale); /*user admin*/
