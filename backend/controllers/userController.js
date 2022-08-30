@@ -1,5 +1,6 @@
 const User = require(`../models/userModels`);
 const mongoose = require(`mongoose`);
+const bcrypt = require(`bcryptjs`)
 
 //get all users//
 const getUsers = async (req, res) => {
@@ -14,7 +15,8 @@ const getUsers = async (req, res) => {
 const createUser = async (req, res) => {
   const { name, lastName, age, email, password } = req.body; //destructuring
   try {
-    const user = await User.create({ name, lastName, age, email, password });
+    const hashedPassword = await bcrypt.hash(password,8)
+    const user = await User.create({ name, lastName, age, email, password:hashedPassword});
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ mss: "error" });
