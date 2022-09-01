@@ -5,6 +5,7 @@ const {
   getUser,
   deleteUser,
   updateUser,
+  logginUser,
 } = require(`../controllers/userController`);
 const {
   userPostAuth,
@@ -15,6 +16,7 @@ const userPostSchema = require(`../validations/userPostValidation`);
 const userPatchSchema = require(`../validations/userPatchValidation`);
 
 router.get("/", getUsers); /*user, admin*/
+router.post(`/loggin`, logginUser);
 router.post("/", userPostAuth(userPostSchema), createUser); /*libre*/
 router.get("/:id", getUser); /*user,admin*/
 router.delete(`/:id`, deleteUser); /*user,admin*/

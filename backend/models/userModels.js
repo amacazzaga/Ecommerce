@@ -22,6 +22,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  rol:{
+    type:Array,
+    required: true,
+    
+  }
 });
 
 module.exports = mongoose.model("Users", userSchema);
