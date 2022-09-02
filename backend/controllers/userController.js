@@ -13,7 +13,7 @@ const getUsers = async (req, res) => {
 };
 //create new user//
 const createUser = async (req, res) => {
-  const { name, lastName, age, email, password ,rol} = req.body; //destructuring
+  const { name, lastName, age, email, password, rol } = req.body; //destructuring
   try {
     const hashedPassword = await bcrypt.hash(password, 8); // hashing password
     const user = await User.create({
@@ -22,7 +22,7 @@ const createUser = async (req, res) => {
       age,
       email,
       password: hashedPassword,
-      rol
+      rol,
     });
     res.status(200).json(user);
   } catch (err) {
@@ -43,12 +43,21 @@ const getUser = async (req, res) => {
 };
 //loggin user//
 const logginUser = async (req, res) => {
-  const { email } = req.body;
-  const validEmail = await User.findOne({email});
-  if (!validEmail) {
+  const { email, password } = req.body;
+  const isValidUserEmail = await User.findOne({ email });
+  if (!isValidUserEmail) {
     return res.status(404).json(`no such email`);
   }
-  res.status(200).json(validEmail);
+  const isValidUserPassword = await bcrypt.compare(
+    password,
+    isValidUserEmail.password
+  );
+  console.log(isValidUserPassword);
+  if (!isValidUserPassword) {
+    return res.status(404).json(`invalid password`);
+  }
+
+  return res.status(200).json(isValidUserEmail);
 };
 //delete user///
 const deleteUser = async (req, res) => {
@@ -81,5 +90,5 @@ module.exports = {
   getUser,
   deleteUser,
   updateUser,
-  logginUser
+  logginUser,
 };
