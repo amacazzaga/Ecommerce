@@ -18,12 +18,11 @@ const createUser = async (req, res) => {
   try {
     const emailExist = await User.findOne({ email });
     if (emailExist) {
-      console.log(emailExist)
-      return res.status(400).json(`this e mail already exist`);
+      return res.status(400).json(`this e-mail already exist`);
     }
     const hashedPassword = await bcrypt.hash(password, 8); // hashing password
     //create an email already exist//
-   
+
     const user = await User.create({
       name,
       lastName,
