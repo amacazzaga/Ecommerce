@@ -1,6 +1,7 @@
 const User = require(`../models/userModels`);
 const mongoose = require(`mongoose`);
 const bcrypt = require(`bcryptjs`);
+const jwt = require(`jsonwebtoken`);
 
 //get all users//
 const getUsers = async (req, res) => {
@@ -15,7 +16,14 @@ const getUsers = async (req, res) => {
 const createUser = async (req, res) => {
   const { name, lastName, age, email, password, rol } = req.body; //destructuring
   try {
+    const emailExist = await User.findOne({ email });
+    if (emailExist) {
+      console.log(emailExist)
+      return res.status(400).json(`this e mail already exist`);
+    }
     const hashedPassword = await bcrypt.hash(password, 8); // hashing password
+    //create an email already exist//
+   
     const user = await User.create({
       name,
       lastName,
@@ -52,12 +60,13 @@ const logginUser = async (req, res) => {
     password,
     isValidUserEmail.password
   );
-  console.log(isValidUserPassword);
+
   if (!isValidUserPassword) {
     return res.status(404).json(`invalid password`);
   }
 
-  return res.status(200).json(isValidUserEmail);
+  const token = jwt.sign({ id: isValidUserEmail.id }, process.env.TOKEN_SECRET);
+  res.header(`auth-token`, token).send(token);
 };
 //delete user///
 const deleteUser = async (req, res) => {
