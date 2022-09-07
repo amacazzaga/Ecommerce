@@ -51,21 +51,19 @@ const getUser = async (req, res) => {
 //loggin user//
 const logginUser = async (req, res) => {
   const { email, password } = req.body;
-  const isValidUserEmail = await User.findOne({ email });
-  if (!isValidUserEmail) {
+  const user = await User.findOne({ email });
+  if (!user) {
     return res.status(404).json(`no such email`);
   }
   //comparing the req.body pass with the one on db//
-  const isValidUserPassword = await bcrypt.compare(
-    password,
-    isValidUserEmail.password
-  );
+  const isValidUserPassword = await bcrypt.compare(password, user.password);
   if (!isValidUserPassword) {
     return res.status(404).json(`invalid password`);
   }
   //create a jwt when logg in
-  const token = jwt.sign({ id: isValidUserEmail.id} , process.env.TOKEN_SECRET);
-  res.header(`auth-token`, token).send("token in header")
+  const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET);
+  res.header(`user-id`, user.id);
+  res.header(`auth-token`, token).send("token in header");
 };
 //delete user///
 const deleteUser = async (req, res) => {
