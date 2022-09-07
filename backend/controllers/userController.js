@@ -62,7 +62,7 @@ const logginUser = async (req, res) => {
   }
   //create a jwt when logg in
   const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET);
-  res.header(`user-id`, user.id);
+  //res.header(`user-id`, user.id);
   res.header(`auth-token`, token).send("token in header");
 };
 //delete user///

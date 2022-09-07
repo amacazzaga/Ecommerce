@@ -4,7 +4,7 @@ const authToken = (req, res, next) => {
   if (!token) return res.status(400).json(`no token found`);
   try {
     const verify = jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log(verify);
+    
     next();
   } catch (err) {
     return res.status(401).json(`invalid token`);
