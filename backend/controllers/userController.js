@@ -49,7 +49,7 @@ const getUser = async (req, res) => {
   res.status(200).json(user);
 };
 //loggin user//
-const logginUser = async (req, res) => {
+const loginUser = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
@@ -58,12 +58,12 @@ const logginUser = async (req, res) => {
   //comparing the req.body pass with the one on db//
   const isValidUserPassword = await bcrypt.compare(password, user.password);
   if (!isValidUserPassword) {
-    return res.status(404).json(`invalid password`);
+    return res.status(401).json(`invalid password`);
   }
   //create a jwt when logg in
   const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET);
   //res.header(`user-id`, user.id);
-  res.header(`auth-token`, token).send("token in header");
+ return  res.status(200).header(`authorization`, token).send("token in header");
 };
 //delete user///
 const deleteUser = async (req, res) => {
@@ -96,5 +96,5 @@ module.exports = {
   getUser,
   deleteUser,
   updateUser,
-  logginUser,
+  loginUser,
 };

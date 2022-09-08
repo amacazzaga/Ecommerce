@@ -5,7 +5,7 @@ const {
   getUser,
   deleteUser,
   updateUser,
-  logginUser,
+  loginUser,
 } = require(`../controllers/userController`);
 const {
   userPostAuth,
@@ -18,7 +18,7 @@ const userPostSchema = require(`../validations/userPostValidation`);
 const userPatchSchema = require(`../validations/userPatchValidation`);
 
 router.get("/", authToken,rolAdmin, getUsers); /*user, admin*/
-router.post(`/loggin`, logginUser); /*loggin route*/
+router.post(`/login`, loginUser); /*loggin route*/
 router.post("/", userPostAuth(userPostSchema), createUser); /*libre*/
 router.get("/:id", getUser); /*user,admin*/
 router.delete(`/:id`, deleteUser); /*user,admin*/
