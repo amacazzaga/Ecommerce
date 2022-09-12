@@ -48,7 +48,7 @@ const getUser = async (req, res) => {
   }
   res.status(200).json(user);
 };
-//loggin user//
+//login user//
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -83,7 +83,7 @@ const updateUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json(`not a valid id`);
   }
-  const user = await User.findOneAndUpdate({ id }, req.body);
+  const user = await User.findByIdAndUpdate( id , req.body);
   if (!user) {
     return res.status(404).json(`no such user`);
   }
