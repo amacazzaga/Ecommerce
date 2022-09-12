@@ -1,5 +1,4 @@
 const User = require(`../models/userModels`);
-const jwt_decode = require(`jwt-decode`);
 const jwt = require(`jsonwebtoken`);
 //userpost yup auth//
 const userPostAuth = (schema) => async (req, res, next) => {
@@ -26,18 +25,16 @@ const userPatchAuth = (schema) => async (req, res, next) => {
 //user update itself auth//
 const userUpdateItself = async (req, res, next) => {
   const token = req.header(`authorization`);
-  const { id } = req.params;
   if (!token) return res.status(400).json(`no token found`);
   try {
-    const decode = jwt_decode(token);
-    const user = await User.findById(id);
-    console.log(decode.id);
-    console.log(user.id);
-    if(decode.id!=user.id) return res.status(401).json(`unauthorized`)
+    const verify = jwt.verify(token, process.env.TOKEN_SECRET);
+    const user = await User.findById(verify.id);
+    console.log(user);
+    if (!user) return res.status(401).json(`unauthorized`)
     next();
   } catch (err) {
     return res.status(400);
   }
 };
 
-module.exports = { userPostAuth, userPatchAuth,userUpdateItself };
+module.exports = { userPostAuth, userPatchAuth, userUpdateItself };
