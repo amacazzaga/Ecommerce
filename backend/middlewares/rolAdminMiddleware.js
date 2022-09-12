@@ -6,12 +6,9 @@ const rolAdmin = async (req, res, next) => {
   const token = req.header(`authorization`);
   if (!token) return res.status(400).json(`no id on header found`);
   try {
-    console.log(token);
     const decode = jwt_decode(token);
-    console.log(decode.id);
     const user = await User.findById(decode.id);
-    console.log(user.rol);
-    const isUserAdmin = user.rol.some(r=>r=="admin");
+    const isUserAdmin = user.rol.some((r) => r == "admin");
     if (!isUserAdmin) {
       return res.status(401).json(`no admin`);
     }

@@ -18,7 +18,7 @@ const userPostSchema = require(`../validations/userPostValidation`);
 const userPatchSchema = require(`../validations/userPatchValidation`);
 
 router.get("/", authToken,rolAdmin, getUsers); /*user, admin*/
-router.post(`/login`, loginUser); /*loggin route*/
+router.post(`/login`, loginUser); /*login route*/
 router.post("/", userPostAuth(userPostSchema), createUser); /*libre*/
 router.get("/:id", getUser); /*user,admin*/
 router.delete(`/:id`, deleteUser); /*user,admin*/
