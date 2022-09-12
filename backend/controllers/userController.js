@@ -21,7 +21,6 @@ const createUser = async (req, res) => {
       return res.status(400).json(`this e-mail already exist`);
     }
     const hashedPassword = await bcrypt.hash(password, 8); // hashing password
-    //create an email already exist//
 
     const user = await User.create({
       name,
@@ -63,7 +62,7 @@ const loginUser = async (req, res) => {
   //create a jwt when logg in
   const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET);
   //res.header(`user-id`, user.id);
- return  res.status(200).header(`authorization`, token).send("token in header");
+  return res.status(200).header(`authorization`, token).send("token in header");
 };
 //delete user///
 const deleteUser = async (req, res) => {
@@ -83,7 +82,17 @@ const updateUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json(`not a valid id`);
   }
-  const user = await User.findByIdAndUpdate( id , req.body);
+  const { name, lastName, age, email, password, rol } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 8);
+  //no hashing password on edit!!!!//
+  const user = await User.findByIdAndUpdate(id, {
+    name,
+    lastName,
+    age,
+    email,
+    password: hashedPassword,
+    rol,
+  });
   if (!user) {
     return res.status(404).json(`no such user`);
   }
