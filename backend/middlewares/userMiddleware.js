@@ -29,8 +29,8 @@ const userUpdateItself = async (req, res, next) => {
   try {
     const verify = jwt.verify(token, process.env.TOKEN_SECRET);
     const user = await User.findById(verify.id);
-    console.log(user);
-    if (!user) return res.status(401).json(`unauthorized`)
+    if (!user||!verify) return res.status(401).json(`unauthorized`)
+    if(user.id===verify.id);
     next();
   } catch (err) {
     return res.status(400);

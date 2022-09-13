@@ -20,7 +20,6 @@ app.use(`/user`, userRoutes);
 app.use(`/product`, productRoutes);
 //sales routes//
 app.use(`/sales`, salesRoutes);
-
 //mongoose connect//
 mongoose
   .connect(process.env.MONGO_URI)
