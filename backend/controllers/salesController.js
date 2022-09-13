@@ -40,7 +40,8 @@ const getPurchase = async (req, res) => {
   }
   const purchase = await Sales.find({idUser});
   if (!purchase) {
-    return res.status(404).json(`you have no purchase`);
+    return res.status(404).json(`you have no purchase`);//bring
+    //empty array
   }
   res.status(200).json(purchase);
 };

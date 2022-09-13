@@ -20,18 +20,18 @@ const userPatchSchema = require(`../validations/userPatchValidation`);
 
 router.get("/", authToken, rolAdmin, getUsers); /*user, admin*/
 router.post(`/login`, loginUser); /*login route*/
-router.post("/", userPostAuth(userPostSchema), createUser); /*libre*/
-router.get("/:id", getUser); /*user,admin*/
-router.delete(`/:id`, deleteUser); /*user,admin*/
+router.post("/", userPostAuth(userPostSchema), createUser); /*free*/
+router.get("/:id",authToken, rolAdmin, getUser); /*user,admin*/
+router.delete(`/:id`,authToken, rolAdmin, deleteUser); /*user,admin*/
 router.patch(
   `/:id`,
-  userPatchAuth(userPatchSchema), //validate schema//
+  userPatchAuth(userPatchSchema),authToken, rolAdmin, //validate schema//
   updateUser
 ); /*user, admin*/
 router.patch(
   `/edit/:id`,
   userPatchAuth(userPatchSchema), //validate schema//
-  userUpdateItself,
+  userUpdateItself,//middleware uses token here//
   updateUser
 ); /*user*/
 module.exports = router;
