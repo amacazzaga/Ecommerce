@@ -57,24 +57,12 @@ const deleteSales = async (req, res) => {
   }
   res.status(200).json(sales);
 };
-//update sales///
-const updateSales = async (req, res) => {
-  const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json(`not a valid id`);
-  }
-  const sales = await Sales.findOneAndUpdate({ id }, req.body );
-  if (!sales) {
-    return res.status(404).json(`no such sales`);
-  }
-  res.status(200).json(sales);
-};
+
 
 module.exports = {
   getSale,
   createSales,
   getSales,
   deleteSales,
-  updateSales,
   getPurchase
 };

@@ -1,4 +1,5 @@
 const express = require(`express`);
+const router = express.Router();
 const {
   createUser,
   getUsers,
@@ -14,10 +15,9 @@ const {
 } = require(`../middlewares/userMiddleware`);
 const { authToken } = require(`../middlewares/tokenMiddleware`);
 const { rolAdmin } = require(`../middlewares/rolAdminMiddleware`);
-const router = express.Router();
 const userPostSchema = require(`../validations/userPostValidation`);
 const userPatchSchema = require(`../validations/userPatchValidation`);
-
+//ROUTES//
 router.get("/", authToken, rolAdmin, getUsers); /*user, admin*/
 router.post(`/login`, loginUser); /*login route*/
 router.post("/", userPostAuth(userPostSchema), createUser); /*free*/

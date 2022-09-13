@@ -1,20 +1,19 @@
 const express = require(`express`);
+const router = express.Router();
 const {
   createSales,
   getSale,
   getPurchase,
   getSales,
   deleteSales,
-  updateSales
 } = require(`../controllers/salesController`);
-/////
-const router = express.Router();
-///
-router.get("/", getSales); /*user admin*/
+const { authToken } = require(`../middlewares/tokenMiddleware`);
+const { rolAdmin } = require(`../middlewares/rolAdminMiddleware`);
+///ROUTES//
+router.get("/",authToken,rolAdmin, getSales); /*user admin*/
 router.post("/", createSales); /*system*/
-router.get("/:id", getSale); /*user admin*/
+router.get("/:id",authToken,rolAdmin, getSale); /*user admin*/
 router.get("/myshopping/:idUser", getPurchase); /*user client*/
-router.delete(`/:id`,deleteSales)/*user admin*/
-router.patch(`/:id`,updateSales) //borrar update//
-//agregar ruta para traer todas las compras de un user:el mismo user//
+router.delete(`/:id`,authToken,rolAdmin,deleteSales)/*user admin*/
+
 module.exports = router;

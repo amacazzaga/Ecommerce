@@ -1,4 +1,5 @@
 const express = require(`express`);
+const router = express.Router();
 const {
   createProduct,
   getProducts,
@@ -10,21 +11,26 @@ const {
   productPostAuth,
   productPatchAuth,
 } = require(`../middlewares/productMiddleware`);
-const router = express.Router();
 const productPostSchema = require(`../validations/productPostValidation`);
 const productPatchSchema = require(`../validations/productPatchValidation`);
-
-router.get("/", getProducts); /*libre*/
+const { authToken } = require(`../middlewares/tokenMiddleware`);
+const { rolAdmin } = require(`../middlewares/rolAdminMiddleware`);
+//ROUTES//
+router.get("/", getProducts); /*free*/
 router.post(
   "/",
   productPostAuth(productPostSchema),
+  authToken,
+  rolAdmin,
   createProduct
 ); /*user,admin*/
-router.get("/:id", getProduct); /*libre*/
-router.delete(`/:id`, deleteProduct); /*user ,admin*/
+router.get("/:id", getProduct); /*free*/
+router.delete(`/:id`, authToken, rolAdmin, deleteProduct); /*user ,admin*/
 router.patch(
   `/:id`,
   productPatchAuth(productPatchSchema),
+  authToken,
+  rolAdmin,
   updateProduct
 ); /*user,admin*/
 
