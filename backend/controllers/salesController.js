@@ -32,6 +32,18 @@ const getSale = async (req, res) => {
   }
   res.status(200).json(sales);
 };
+//get shopping by client//
+const getPurchase = async (req, res) => {
+  const { idUser } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(idUser)) {
+    return res.status(400).json(`not a valid id`);
+  }
+  const purchase = await Sales.find({idUser});
+  if (!purchase) {
+    return res.status(404).json(`you have no purchase`);
+  }
+  res.status(200).json(purchase);
+};
 //delete sales///
 const deleteSales = async (req, res) => {
   const { id } = req.params;
@@ -63,4 +75,5 @@ module.exports = {
   getSales,
   deleteSales,
   updateSales,
+  getPurchase
 };

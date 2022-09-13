@@ -33,5 +33,5 @@ router.patch(
   userPatchAuth(userPatchSchema), //validate schema//
   userUpdateItself,
   updateUser
-); /*user, admin*/
+); /*user*/
 module.exports = router;
