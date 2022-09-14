@@ -5,8 +5,8 @@ const productPostSchema = yup.object({
   category: yup.string().required(),
   image: yup.string(),
   price: yup.number().positive().integer().required(),
+  amount: yup.number().positive().integer().required(),
   description: yup.string().required(),
-
 });
 
 module.exports = productPostSchema;
