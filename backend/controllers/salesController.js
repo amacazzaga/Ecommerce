@@ -15,7 +15,7 @@ const createSales = async (req, res) => {
   const { idUser,idProduct,amount, finalPrice } = req.body; //destructuring
   try {
     const sales = await Sales.create({ idUser,idProduct,amount, finalPrice });
-    res.status(200).json(sales);
+    res.status(201).json(sales);
   } catch (err) {
     res.status(400).json({ mss: "error" });
   }
