@@ -1,9 +1,17 @@
-import{BrowserRoute,Routes,Route}from"react-router-dom"
+import{BrowserRouter,Routes,Route}from"react-router-dom"
 function App() {
   return (
-    <div className="App">
-     hello
+    <body>
+    <div className="container-xxl">
+    <BrowserRouter>
+   <header>
+    <navbar>navbar</navbar>
+   </header>
+   <main>main</main>
+   <footer>footer</footer>
+    </BrowserRouter>
     </div>
+    </body>
   );
 }
 
