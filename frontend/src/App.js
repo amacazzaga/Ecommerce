@@ -1,11 +1,14 @@
 import{BrowserRouter,Routes,Route}from"react-router-dom"
+import Navbar from "./components/Navbar";
 function App() {
   return (
     <body>
     <div className="container-xxl">
     <BrowserRouter>
    <header>
-    <navbar>navbar</navbar>
+    <navbar>
+      <Navbar/>
+    </navbar>
    </header>
    <main>main</main>
    <footer>footer</footer>
