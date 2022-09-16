@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div>
       <nav class="navbar navbarupcolor">
         <div class="container-fluid">
-          <a class="navbar-brand"></a>
+          <a class="navbar-brand" href="/"></a>
           <form class="d-flex">
             <input
               class="form-control me-2"
@@ -96,14 +97,19 @@ const Navbar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                 Account
+                  Account
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li>
-                    <a class="dropdown-item" href="/">
-                      Login
-                    </a>
-                  </li>
+                <ul
+                  class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start"
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  <Link to="/login">
+                    <li>
+                      <a class="dropdown-item" href="/">
+                        Login
+                      </a>
+                    </li>
+                  </Link>
                   <li>
                     <a class="dropdown-item" href="/">
                       Register
