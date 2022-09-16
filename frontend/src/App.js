@@ -10,8 +10,8 @@ function App() {
       <Navbar/>
     </navbar>
    </header>
-   <main className="container-xl">main</main>
-   <footer className="container-xl">footer</footer>
+   <main className="container-xl"></main>
+   <footer className="container-xl"></footer>
     </BrowserRouter>
     </div>
     </body>
