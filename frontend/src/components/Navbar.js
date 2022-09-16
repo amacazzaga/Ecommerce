@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <div>
-      <nav class="navbar navbar-light bg-light">
+      <nav class="navbar navbar-light  navbarupcolor">
         <div class="container-fluid">
           <a class="navbar-brand"></a>
           <form class="d-flex">
@@ -13,13 +13,13 @@ const Navbar = () => {
               placeholder="Search"
               aria-label="Search"
             ></input>
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn" type="submit">
               Search
             </button>
           </form>
         </div>
       </nav>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light navbardowncolor">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
             E-Commerce
