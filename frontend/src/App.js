@@ -6,12 +6,12 @@ function App() {
     <div className="container-xxl">
     <BrowserRouter>
    <header>
-    <navbar>
+    <navbar className="container-xl">
       <Navbar/>
     </navbar>
    </header>
-   <main>main</main>
-   <footer>footer</footer>
+   <main className="container-xl">main</main>
+   <footer className="container-xl">footer</footer>
     </BrowserRouter>
     </div>
     </body>
