@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <div>
-      <nav class="navbar navbar-light  navbarupcolor">
+      <nav class="navbar navbarupcolor">
         <div class="container-fluid">
           <a class="navbar-brand"></a>
           <form class="d-flex">
@@ -88,7 +88,7 @@ const Navbar = () => {
               </li>
             </ul>
             <div class="d-flex">
-              <div class="dropdown">
+              <div class="dropdown dropstart">
                 <button
                   class="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -101,17 +101,12 @@ const Navbar = () => {
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li>
                     <a class="dropdown-item" href="/">
-                      Action
+                      Login
                     </a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="/">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="/">
-                      Something else here
+                      Register
                     </a>
                   </li>
                 </ul>
