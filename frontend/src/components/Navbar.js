@@ -88,7 +88,7 @@ const Navbar = () => {
               </li>
             </ul>
             <div class="d-flex">
-              <div class="dropdown dropstart">
+              <div class="dropdown">
                 <button
                   class="btn btn-secondary dropdown-toggle"
                   type="button"
