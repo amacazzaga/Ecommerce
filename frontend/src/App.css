@@ -4,4 +4,10 @@
 .navbardowncolor{
     background-color: #d90429;
 }
+.btn-search {
+    border: solid;
+    border-radius: 10px;
+    background-color: #8d99ae;
+    
+}
 
