@@ -100,7 +100,7 @@ const Navbar = () => {
                   Account
                 </button>
                 <ul
-                  class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start"
+                  class="dropdown-menu"
                   aria-labelledby="dropdownMenuButton1"
                 >
                   <Link to="/login">
