@@ -16,8 +16,10 @@ const LoginForm = () => {
         email: email,
         password: password,
       });
+      console.log(resp)
       setCookie("token", resp.data.token); //send en header auth//
-    } catch (error) {
+    } catch (error) { //if catch err, is no resp!
+      console.log(error)
       setError(error.response.data);
     }
   };

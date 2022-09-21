@@ -99,10 +99,7 @@ const Navbar = () => {
                 >
                   Account
                 </button>
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton1"
-                >
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <Link to="/login">
                     <li>
                       <a class="dropdown-item" href="/">
@@ -110,11 +107,13 @@ const Navbar = () => {
                       </a>
                     </li>
                   </Link>
-                  <li>
-                    <a class="dropdown-item" href="/">
-                      Register
-                    </a>
-                  </li>
+                  <Link to="/sign">
+                    <li>
+                      <a class="dropdown-item" href="/">
+                        Sign In
+                      </a>
+                    </li>
+                  </Link>
                 </ul>
               </div>
             </div>

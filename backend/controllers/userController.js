@@ -30,7 +30,7 @@ const createUser = async (req, res) => {
       password: hashedPassword,
       rol,
     });
-    res.status(201).json(user);//give a token
+    res.status(201).json(user);
   } catch (err) {
     res.status(400).json({ mss: "error" });
   }
