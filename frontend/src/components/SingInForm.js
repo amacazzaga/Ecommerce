@@ -3,47 +3,70 @@ import { useState } from "react";
 import axios from "axios";
 
 const SingInForm = () => {
-    const [name,setName]=useState("")
-    const [lastName,setLastName]=useState("")
-    const [age,setAge]=useState("")
-    const [email,setEmail]=useState("")
-    const [password,setPassword]=useState("")
-    const handleSubmit = (e)=>{
-       e.preventDefault() 
-        console.log("submited")
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.post("http://localhost:4000/user", {
+        name: name,
+        lastName: lastName,
+        age: age,
+        email: email,
+        password: password,
+      });
+      console.log(resp.data);
+    } catch (err) {
+        console.log(err.response.data.errors[0])
     }
-      return (
+  };
+  return (
     <div>
       <form onSubmit={handleSubmit}>
         <div class="mb-3">
           <label class="form-label">Name</label>
-          <input type="text" class="form-control" onChange={(e)=>setName(e.target.value)}></input>
+          <input
+            type="text"
+            class="form-control"
+            onChange={(e) => setName(e.target.value)}
+          ></input>
           <div class="form-text"></div>
         </div>
         <div class="mb-3">
           <label class="form-label">Last Name</label>
-          <input type="text" class="form-control" onChange={(e)=>setLastName(e.target.value)}></input>
+          <input
+            type="text"
+            class="form-control"
+            onChange={(e) => setLastName(e.target.value)}
+          ></input>
           <div class="form-text"></div>
         </div>
         <div class="mb-3">
           <label class="form-label">Age</label>
-          <input type="text" class="form-control" onChange={(e)=>setAge(e.target.value)}></input>
+          <input
+            type="text"
+            class="form-control"
+            onChange={(e) => setAge(e.target.value)}
+          ></input>
           <div class="form-text"></div>
         </div>
         <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">
-          Email
-        </label>
-        <input
-          type="email"
-          class="form-control"
-          aria-describedby="emailHelp"  
-          onChange={(e)=>setEmail(e.target.value)} 
-        ></input>
-        <div class="form-text">
-          We'll never share your email with anyone else.
+          <label for="exampleInputEmail1" class="form-label">
+            Email
+          </label>
+          <input
+            type="email"
+            class="form-control"
+            aria-describedby="emailHelp"
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+          <div class="form-text">
+            We'll never share your email with anyone else.
+          </div>
         </div>
-      </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">
             Password
@@ -51,7 +74,7 @@ const SingInForm = () => {
           <input
             type="password"
             class="form-control"
-            onChange={(e)=>setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
         <button type="submit" class="btn btn-primary">
