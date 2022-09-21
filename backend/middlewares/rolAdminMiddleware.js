@@ -2,7 +2,7 @@ const User = require(`../models/userModels`);
 const jwt = require(`jsonwebtoken`);
 
 const rolAdmin = async (req, res, next) => {
-  const token = req.header(`authorization`);
+  const token = req.header(`Authorization`);
   if (!token) return res.status(400).json(`no id on header found`);
   try {
     const verify = jwt.verify(token, process.env.TOKEN_SECRET);

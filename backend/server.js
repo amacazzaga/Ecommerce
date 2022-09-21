@@ -1,11 +1,13 @@
 require(`dotenv`).config();
 const express = require(`express`);
+const cors = require(`cors`)
 const mongoose = require(`mongoose`);
 const userRoutes = require(`./routes/users`);
 const productRoutes = require(`./routes/products`);
 const salesRoutes = require(`./routes/sales`);
 // express app//
 const app = express(); //setting the app to express
+app.use(cors())
 //middleware//
 /*Las funciones de middleware son funciones que tienen acceso al objeto
 de solicitud (req), y al objeto de respuesta (res)*/
