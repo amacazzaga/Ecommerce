@@ -37,7 +37,7 @@ const LoginForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         ></input>
-        <div id="emailHelp" class="form-text">
+        <div class="form-text">
           We'll never share your email with anyone else.
         </div>
       </div>
@@ -57,7 +57,6 @@ const LoginForm = () => {
         <input
           type="checkbox"
           class="form-check-input"
-          id="exampleCheck1"
         ></input>
         <label class="form-check-label" for="exampleCheck1">
           Remember me
