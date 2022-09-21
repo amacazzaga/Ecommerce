@@ -8,9 +8,13 @@ const SingInForm = () => {
     const [age,setAge]=useState("")
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
-  return (
+    const handleSubmit = (e)=>{
+       e.preventDefault() 
+        console.log("submited")
+    }
+      return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div class="mb-3">
           <label class="form-label">Name</label>
           <input type="text" class="form-control" onChange={(e)=>setName(e.target.value)}></input>
