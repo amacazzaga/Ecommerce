@@ -5,9 +5,10 @@ import axios from "axios";
 const SingInForm = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(0);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error,setError]=useState("")
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -20,7 +21,7 @@ const SingInForm = () => {
       });
       console.log(resp.data);
     } catch (err) {
-        console.log(err.response.data.errors[0])
+        setError(err.response.data.errors[0])
     }
   };
   return (
@@ -81,6 +82,7 @@ const SingInForm = () => {
           Submit
         </button>
       </form>
+      <h5 className="mt-3">{error}</h5>
     </div>
   );
 };
