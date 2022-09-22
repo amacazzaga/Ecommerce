@@ -10,7 +10,7 @@ const SingInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [rol,setRol]=useState(["noadmin"])
+  const [rol, setRol] = useState(["noadmin"]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const SingInForm = () => {
         age: age,
         email: email,
         password: password,
-        rol:rol,
+        rol: rol,
       });
       console.log(resp.data);
     } catch (err) {
@@ -82,20 +82,9 @@ const SingInForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        <div class="mb-3 d-none">
-          <label for="exampleInputPassword1" class="form-label">
-            Rol : Hidden
-          </label>
-          <input
-            type="password"
-            class="form-control "
-            value={rol}
-          ></input>
-        </div>      
-          <button type="submit" class="btn btn-primary">
-            Submit
-          </button>        
-      
+        <button type="submit" class="btn btn-primary">
+          Submit
+        </button>
       </form>
       <h5 className="mt-3">{error}</h5>
     </div>
