@@ -61,8 +61,8 @@ const loginUser = async (req, res) => {
   }
   //create a jwt when logg in
   const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET);
-  //res.header(`user-id`, user.id);
-  return res.status(200).header(`Authorization`, token).send({"token":token})
+  const isUserAdmin = user.rol.some((r) => r == "admin");
+  return res.status(200).header(`Authorization`, token).send({"token":token,"isUserAdmin":isUserAdmin})
  
 };
 //delete user///
