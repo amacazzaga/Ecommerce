@@ -17,6 +17,7 @@ const LoginForm = () => {
         password: password,
       });
       console.log(resp)
+      console.log(resp.data.isUserAdmin)
       setCookie("token", resp.data.token); //send en header auth//
     } catch (error) { //if catch err, is no resp!
       console.log(error)
