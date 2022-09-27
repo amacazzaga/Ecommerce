@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import {useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
 const LoginForm = () => {
@@ -8,6 +8,10 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [error,setError]=useState("")
   const [cookie, setCookie] = useCookies();
+  const [userIsAdmin,setUserIsAdmin]=useState(null)
+  useEffect(() => {
+   localStorage.setItem("admin",JSON.stringify(userIsAdmin))
+  }, [userIsAdmin]);
   //handle submit form//
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,14 +21,15 @@ const LoginForm = () => {
         password: password,
       });
       console.log(resp)
-      console.log(resp.data.isUserAdmin)
       setCookie("token", resp.data.token); //send en header auth//
+      setUserIsAdmin(resp.data.isUserAdmin)
     } catch (error) { //if catch err, is no resp!
       console.log(error)
       setError(error.response.data);
     }
   };
-  return (
+  if(userIsAdmin===null)
+  {return (
     <form onSubmit={handleSubmit}>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">
@@ -68,7 +73,13 @@ const LoginForm = () => {
       </button>
       <h5 className="mt-3">{error}</h5>
     </form>
-  );
+  );}
+  if(userIsAdmin===true){
+    return (<h1>admin</h1>)
+  }
+  if(!userIsAdmin){
+    return (<h1>not admin</h1>)
+  }
 };
 
 export default LoginForm;

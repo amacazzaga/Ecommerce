@@ -20,8 +20,7 @@ function App() {
             </Routes>
             <Routes>
               <Route path="/sign" element={<SingInForm />} />
-            </Routes>
-          
+            </Routes>         
           </main>
           <footer className="container-xl"></footer>
         </div>
