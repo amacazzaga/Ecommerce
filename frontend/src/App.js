@@ -3,9 +3,12 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import LoginForm from "./components/LoginForm";
 import SingInForm from "./components/SingInForm";
+import { DataProvider } from "./context/UserContext";
+
 
 function App() {
   return (
+    <DataProvider>
     <body>
       <BrowserRouter>
         <div className="container-xxl">
@@ -26,6 +29,7 @@ function App() {
         </div>
       </BrowserRouter>
     </body>
+    </DataProvider>
   );
 }
 
