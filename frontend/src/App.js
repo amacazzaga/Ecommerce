@@ -3,12 +3,13 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import LoginForm from "./components/LoginForm";
 import SingInForm from "./components/SingInForm";
-import { DataProvider } from "./context/UserContext";
-
+import { useState } from "react";
+import { UserContext } from "./context/UserContext";
 
 function App() {
+  const [userIsAdmin,setUserIsAdmin]=useState(null)
   return (
-    <DataProvider>
+    <UserContext.Provider value={{userIsAdmin,setUserIsAdmin}}>
     <body>
       <BrowserRouter>
         <div className="container-xxl">
@@ -23,13 +24,13 @@ function App() {
             </Routes>
             <Routes>
               <Route path="/sign" element={<SingInForm />} />
-            </Routes>         
+            </Routes>
           </main>
           <footer className="container-xl"></footer>
         </div>
       </BrowserRouter>
     </body>
-    </DataProvider>
+    </UserContext.Provider>
   );
 }
 

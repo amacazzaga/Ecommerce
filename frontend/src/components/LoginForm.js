@@ -1,14 +1,15 @@
 import React from "react";
 import axios from "axios";
-import {useEffect, useState } from "react";
+import {useEffect, useState,useContext } from "react";
 import { useCookies } from "react-cookie";
-
+import { UserContext } from "../context/UserContext";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error,setError]=useState("")
   const [cookie, setCookie] = useCookies();
-  const [userIsAdmin,setUserIsAdmin]=useState(null)
+  const {userIsAdmin,setUserIsAdmin}=useContext(UserContext)
+ 
   useEffect(() => {
    localStorage.setItem("admin",JSON.stringify(userIsAdmin))
   }, [userIsAdmin]);
