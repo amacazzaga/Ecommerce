@@ -60,8 +60,8 @@ const loginUser = async (req, res) => {
     return res.status(401).json(`invalid password`);
   }
   //create a jwt when logg in
-  const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET);
   const isUserAdmin = user.rol.some((r) => r == "admin");
+  const token = jwt.sign({ id: user.id ,isUserAdmin}, process.env.TOKEN_SECRET);
   return res.status(200).header(`Authorization`, token).send({"token":token,"isUserAdmin":isUserAdmin})
  
 };

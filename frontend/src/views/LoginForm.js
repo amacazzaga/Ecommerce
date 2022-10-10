@@ -1,19 +1,16 @@
 import React from "react";
 import axios from "axios";
-import {useEffect, useState,useContext } from "react";
+import { useState } from "react";
 import { useCookies } from "react-cookie";
-import { UserContext } from "../context/UserContext";
+import Layout from "../components/Layout";
+
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error,setError]=useState("")
+  const [error, setError] = useState("");
   const [cookie, setCookie] = useCookies();
-  const {userIsAdmin,setUserIsAdmin}=useContext(UserContext)
  
-  useEffect(() => {
-   localStorage.setItem("admin",JSON.stringify(userIsAdmin))
-  }, [userIsAdmin]);
-  //handle submit form//
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -21,16 +18,18 @@ const LoginForm = () => {
         email: email,
         password: password,
       });
-      console.log(resp)
+      console.log(resp);
       setCookie("token", resp.data.token); //send en header auth//
-      setUserIsAdmin(resp.data.isUserAdmin)
-    } catch (error) { //if catch err, is no resp!
-      console.log(error)
+      window.location.href = "/"
+    } catch (error) {
+      //if catch err, is no resp!
+      console.log(error);
       setError(error.response.data);
     }
   };
-  if(userIsAdmin===null)
-  {return (
+
+  return (
+    <Layout>
     <form onSubmit={handleSubmit}>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">
@@ -61,10 +60,7 @@ const LoginForm = () => {
         ></input>
       </div>
       <div class="mb-3 form-check">
-        <input
-          type="checkbox"
-          class="form-check-input"
-        ></input>
+        <input type="checkbox" class="form-check-input"></input>
         <label class="form-check-label" for="exampleCheck1">
           Remember me
         </label>
@@ -74,13 +70,8 @@ const LoginForm = () => {
       </button>
       <h5 className="mt-3">{error}</h5>
     </form>
-  );}
-  if(userIsAdmin===true){
-    return (<h1>admin</h1>)
-  }
-  if(!userIsAdmin){
-    return (<h1>not admin</h1>)
-  }
+    </Layout>
+  );
 };
 
 export default LoginForm;

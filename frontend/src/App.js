@@ -1,36 +1,26 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import LoginForm from "./components/LoginForm";
-import SingInForm from "./components/SingInForm";
-import { useState } from "react";
-import { UserContext } from "./context/UserContext";
+import { CookiesProvider, useCookies } from "react-cookie";
+import AppRoutes from "./AppRoutes";
+import jwt_decode from "jwt-decode";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [userIsAdmin,setUserIsAdmin]=useState(null)
+  const [cookie] = useCookies();
+  const [user, setUser] = useState(null);
+  const token = cookie.token;
+  useEffect(() => {
+    console.log("cookie", token);
+    if (token) {
+      const decoded = jwt_decode(token);
+      console.log(decoded);
+      setUser(decoded)
+    } else {
+      setUser(null)
+    }
+  }, [token]);
   return (
-    <UserContext.Provider value={{userIsAdmin,setUserIsAdmin}}>
-    <body>
-      <BrowserRouter>
-        <div className="container-xxl">
-          <header>
-            <navbar className="container-xl">
-              <Navbar />
-            </navbar>
-          </header>
-          <main className="container-xl">
-            <Routes>
-              <Route path="/login" element={<LoginForm />} />
-            </Routes>
-            <Routes>
-              <Route path="/sign" element={<SingInForm />} />
-            </Routes>
-          </main>
-          <footer className="container-xl"></footer>
-        </div>
-      </BrowserRouter>
-    </body>
-    </UserContext.Provider>
+    <CookiesProvider>
+      <AppRoutes user={user} />
+    </CookiesProvider>
   );
 }
 
