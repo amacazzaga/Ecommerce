@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-
 import axios from "axios";
+import Layout from "../components/Layout";
 
 const SingInForm = () => {
   const [name, setName] = useState("");
@@ -29,6 +29,7 @@ const SingInForm = () => {
     }
   };
   return (
+    <Layout>
     <div>
       <form onSubmit={handleSubmit}>
         <div class="mb-3">
@@ -88,6 +89,7 @@ const SingInForm = () => {
       </form>
       <h5 className="mt-3">{error}</h5>
     </div>
+    </Layout>
   );
 };
 
