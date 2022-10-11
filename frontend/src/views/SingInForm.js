@@ -24,6 +24,8 @@ const SingInForm = () => {
         rol: rol,
       });
       console.log(resp.data);
+      window.location.href = "/login"
+      window.alert(`User was created : ${email}, please login to start shopping`)
     } catch (err) {
       setError(err.response.data.errors[0]);
     }
