@@ -8,7 +8,7 @@ function AppRoutes({ user }) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={user ? <HomeLoggedIn /> : <HomeLoggedOut />} />
+        <Route path="/" element={user !== null ?  <HomeLoggedIn /> : <HomeLoggedOut />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/sign" element={<SingInForm />} />
       </Routes>

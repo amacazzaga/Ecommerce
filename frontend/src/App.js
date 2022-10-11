@@ -11,11 +11,8 @@ function App() {
     console.log("cookie", token);
     if (token) {
       const decoded = jwt_decode(token);
-      console.log(decoded);
-      setUser(decoded)
-    } else {
-      setUser(null)
-    }
+      setUser(decoded.isUserAdmin);
+    } else setUser(null);
   }, [token]);
   return (
     <CookiesProvider>

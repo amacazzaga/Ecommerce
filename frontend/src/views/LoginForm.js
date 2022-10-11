@@ -10,7 +10,6 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const [cookie, setCookie] = useCookies();
  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
