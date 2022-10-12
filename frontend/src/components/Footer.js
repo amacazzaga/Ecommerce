@@ -51,10 +51,7 @@ const Footer = () => {
           </section>
         </div>
         <div class="text-center p-3">
-          © 2020 Copyright:
-          <a class="text-white" href="/">
-            MDBootstrap.com
-          </a>
+          © 2022 Copyright
         </div>
       </footer>
     </div>

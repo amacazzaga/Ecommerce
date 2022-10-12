@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
         </navbar>
       </header>
       <main className="container-xl">{children}</main>
-      <footer >
+      <footer className="container-xxl" >
         <Footer/>
       </footer>
     </div>
