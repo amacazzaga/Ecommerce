@@ -7,6 +7,7 @@ function App() {
   const [cookie] = useCookies();
   const [user, setUser] = useState(null);
   const token = cookie.token;
+  // set the user state depending on the token send backend//
   useEffect(() => {
     console.log("cookie", token);
     if (token) {

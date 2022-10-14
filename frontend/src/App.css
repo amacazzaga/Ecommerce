@@ -9,6 +9,10 @@
     border-radius: 10px;
     background-color: #8d99ae;
 }
+li {
+    font-weight: bolder;
+    text-decoration: none;
+}
 .footer{
     position: fixed;
     left: 0;

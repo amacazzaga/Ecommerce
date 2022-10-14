@@ -1,11 +1,11 @@
 import React from 'react'
-import LayoutLogged from '../components/LayoutLogged'
+import LayoutLoggedAdm from '../components/LayoutLoggedAdm'
 
 const AdminBoard = () => {
   return (
-    <LayoutLogged>
-    <div>AdminBoard</div>
-    </LayoutLogged>
+    <LayoutLoggedAdm>
+ <h1>se</h1>
+    </LayoutLoggedAdm>
   )
 }
 

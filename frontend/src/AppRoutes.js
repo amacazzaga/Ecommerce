@@ -12,7 +12,7 @@ function AppRoutes({ user }) {
       <Routes>
         <Route
           path="/"
-          element={user !== null ? <HomeLoggedIn /> : <HomeLoggedOut />}
+          element={user !== null ? <HomeLoggedIn user={user} /> : <HomeLoggedOut />}
         />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/sign" element={<SingInForm />} />
