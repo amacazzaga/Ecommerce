@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NavbarLoggedAdm = () => {
   return (
     <div>
-      <nav class="navbar navbarupcolor">
+      <nav class="navbar navbarupcoloradmboard">
         <div class="container-fluid">
           <a class="navbar-brand" href="/"></a>
           <form class="d-flex">
@@ -20,7 +20,7 @@ const NavbarLoggedAdm = () => {
           </form>
         </div>
       </nav>
-      <nav class="navbar navbar-expand-lg navbar-light navbardowncolor">
+      <nav class="navbar navbar-expand-lg navbar-light navbardowncoloradmboard">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
             E-Commerce

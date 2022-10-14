@@ -4,6 +4,14 @@
 .navbardowncolor{
     background-color: #d90429;
 }
+.navbarupcoloradmboard{
+    background-color: #023047;
+}
+.navbardowncoloradmboard{
+    background-color: #a8dadc
+   
+}
+
 .btn-search {
     border: solid;
     border-radius: 10px;
