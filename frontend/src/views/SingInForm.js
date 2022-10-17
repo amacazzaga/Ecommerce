@@ -32,7 +32,7 @@ const SingInForm = () => {
   };
   return (
     <Layout>
-    <div>
+    <div className="m-5">
       <form onSubmit={handleSubmit}>
         <div class="mb-3">
           <label class="form-label">Name</label>

@@ -37,6 +37,7 @@ li {
     text-decoration: none;
 }
 .footer{
+    margin-top: 4px;
     position: fixed;
     left: 0;
     bottom: 0;
