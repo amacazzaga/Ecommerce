@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const NavbarLogged = () => {
+  const [cookie,setCookie]=useCookies()
   return (
     <div>
       <nav class="navbar navbarupcolor">
@@ -107,7 +109,7 @@ const NavbarLogged = () => {
                       </a>
                     </li>
                   </Link>
-                  <li onClick={()=>{/*borrar cookies*/}}>
+                  <li onClick={()=>{setCookie("token","")}}>
                     <a class="dropdown-item" href="/">
                       LogOut
                     </a>

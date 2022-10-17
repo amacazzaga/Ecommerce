@@ -4,7 +4,7 @@ import LayoutLogged from '../components/LayoutLogged'
 const UserBoard = () => {
   return (
     <LayoutLogged>
-    <div>UserBoard</div>
+    <h1>UserBoard</h1>
     </LayoutLogged>
   )
 }
