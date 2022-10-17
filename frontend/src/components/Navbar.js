@@ -91,7 +91,7 @@ const Navbar = () => {
             <div class="d-flex">
               <div class="dropdown">
                 <button
-                  class="btn btn-secondary dropdown-toggle"
+                  class="btn account-btn dropdown-toggle"
                   type="button"
                   id="dropdownMenuButton1"
                   data-bs-toggle="dropdown"

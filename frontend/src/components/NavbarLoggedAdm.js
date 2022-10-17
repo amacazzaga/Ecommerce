@@ -40,11 +40,13 @@ const NavbarLoggedAdm = () => {
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <Link to={`products`}>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">
                   Products
                 </a>
               </li>
+              </Link>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">
                   Users

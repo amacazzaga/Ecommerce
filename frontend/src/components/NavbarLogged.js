@@ -93,7 +93,7 @@ const NavbarLogged = () => {
             <div class="d-flex">
               <div class="dropdown">
                 <button
-                  class="btn btn-secondary dropdown-toggle"
+                  class="btn account-btn dropdown-toggle"
                   type="button"
                   id="dropdownMenuButton1"
                   data-bs-toggle="dropdown"
@@ -101,7 +101,7 @@ const NavbarLogged = () => {
                 >
                   Account
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
                   <Link to="/myaccount">
                     <li>
                       <a class="dropdown-item" href="/">

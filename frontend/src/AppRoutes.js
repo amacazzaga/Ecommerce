@@ -20,6 +20,7 @@ function AppRoutes({ user }) {
           path="/myaccount"
           element={user ? <AdminBoard /> : <UserBoard />}
         />
+        <Route path="myaccount/products" element={<h1>products.map</h1>} />
       </Routes>
     </BrowserRouter>
   );
