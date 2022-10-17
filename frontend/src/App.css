@@ -17,11 +17,20 @@
     background-color: #15616d;
     color:white 
 }
+.account-btn:hover{
+    border: solid;
+    border-radius: 15px;
+    background-color: #15616d;
+    color:white 
+}
 .btn-search {
     border: solid;
-    border-radius: 10px;
+    border-radius: 9px;
     background-color: #15616d;
     color:white
+}
+.btn-search:hover {
+   border-radius: 14px;
 }
 li {
     font-weight: bolder;
