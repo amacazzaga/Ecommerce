@@ -9,7 +9,6 @@ function App() {
   const token = cookie.token;
   // set the user state depending on the token send backend//
   useEffect(() => {
-    console.log("cookie", token);
     if (token) {
       const decoded = jwt_decode(token);
       setUser(decoded.isUserAdmin);
