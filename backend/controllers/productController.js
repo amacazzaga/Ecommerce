@@ -20,6 +20,7 @@ const createProduct = async (req, res) => {
     res.status(400).json({ mss: "error" });
   }
 };
+// funcion de stock, una tabla nueva, con id de producto y cantidad// 
 //get a single product//
 const getProduct = async (req, res) => {
   const { id } = req.params;

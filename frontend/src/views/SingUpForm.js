@@ -3,14 +3,14 @@ import { useState } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
 
-const SingInForm = () => {
+const SingUpForm = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(0);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [rol, setRol] = useState(["noadmin"]);
+  const [rol] = useState(["noadmin"]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -95,4 +95,4 @@ const SingInForm = () => {
   );
 };
 
-export default SingInForm;
+export default SingUpForm;

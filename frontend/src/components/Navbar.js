@@ -107,10 +107,10 @@ const Navbar = () => {
                       </a>
                     </li>
                   </Link>
-                  <Link to="/sign">
+                  <Link to="/signup">
                     <li>
                       <a class="dropdown-item" href="/">
-                        Sign In
+                        Sign Up
                       </a>
                     </li>
                   </Link>
