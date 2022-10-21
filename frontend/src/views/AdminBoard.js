@@ -3,6 +3,7 @@ import axios from "axios";
 import LayoutLoggedAdm from "../components/LayoutLoggedAdm";
 import ProductsTable from "./ProductsTable";
 import TableHead from "./TableHead";
+import FormPostProduct from "./FormPostProduct";
 
 const AdminBoard = () => {
   const [products, setProducts] = useState([]);
@@ -16,12 +17,14 @@ const AdminBoard = () => {
   return (
     <div>
       <LayoutLoggedAdm>
+      <FormPostProduct/>
         <TableHead />
         {products.map((m) => (
           <ProductsTable
             name={m.name}
             price={m.price}
             description={m.description}
+            image ={m.image}
           />
         ))}
       </LayoutLoggedAdm>

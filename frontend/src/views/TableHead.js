@@ -5,10 +5,12 @@ const TableHead = () => {
     <table class="table container">
       <thead>
         <tr>
-          <th className="col-3">First</th>
-          <th className="col-3">Last</th>
-          <th className="col-3">Handle</th>
-          <th className="col-2">Edit</th>
+          <th className="col-2">Name</th>
+          <th className="col-2">Price</th>
+          <th className="col-2">Description</th>
+          <th className="col-2">Category</th>
+          <th className="col-2">Image</th>
+          <th className="col-1">Edit</th>
           <th className="col-1">Delete</th>
         </tr>
       </thead>
