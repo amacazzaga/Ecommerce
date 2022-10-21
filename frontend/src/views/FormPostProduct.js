@@ -3,7 +3,7 @@ import React from "react";
 const FormPostProduct = () => {
   return (
     <div className="container">
-    <div className="form border border-5 rounded-3 mb-5 mt-5">
+    <form onSubmit={()=>{console.log("form submite")}} className="form border border-5 rounded-3 mb-5 mt-5">
       <table class="table container">
         <thead>
           <tr>
@@ -22,8 +22,8 @@ const FormPostProduct = () => {
         <input className="col-2 m-1"></input>
         <input className="col-2 m-1"></input>
         <input className="col-2 m-1" ></input>
-        <button className="btn btn-primary btn-sm mb-2 col-1 m-1 ">Add</button>
-      </div>
+        <button className="btn btn-primary btn-sm mb-2 col-1 m-1 " type="submit">Add</button>
+      </form>
     </div>
   );
 };

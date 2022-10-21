@@ -10,7 +10,6 @@ const AdminBoard = () => {
   useEffect(() => {
     axios.get("http://localhost:4000/product").then((response) => {
       setProducts(response.data);
-      console.log(response.data);
     });
   }, [products]);
 
