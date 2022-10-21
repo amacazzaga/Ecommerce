@@ -22,7 +22,7 @@ const FormPostProduct = () => {
         <input className="col-2 m-1"></input>
         <input className="col-2 m-1"></input>
         <input className="col-2 m-1" ></input>
-        <button className="btn btn-primary btn-sm mb-2 col-1 m-1">Add</button>
+        <button className="btn btn-primary btn-sm mb-2 col-1 m-1 ">Add</button>
       </div>
     </div>
   );
