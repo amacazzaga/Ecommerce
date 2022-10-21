@@ -2,6 +2,7 @@ import React from "react";
 
 const FormPostProduct = () => {
   return (
+    <div className="container">
     <div className="form border border-5 rounded-3 mb-5 mt-5">
       <table class="table container">
         <thead>
@@ -11,12 +12,11 @@ const FormPostProduct = () => {
             <th className="col-2">Description</th>
             <th className="col-2">Category</th>
             <th className="col-2">Image</th>
-            <th className="col-1"></th>
-            <th className="col-1"></th>
+            <th className="col-1"></th>   
+            <th className="col-1"></th>       
           </tr>
         </thead>
       </table>
-      <div className="container">
         <input className="col-2 m-1"></input>
         <input className="col-2 m-1"></input>
         <input className="col-2 m-1"></input>
