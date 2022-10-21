@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LayoutLoggedAdm from "../components/LayoutLoggedAdm";
 import ProductsTable from "./ProductsTable";
+import TableHead from "./TableHead";
 
 const AdminBoard = () => {
   const [products, setProducts] = useState([]);
@@ -13,15 +14,18 @@ const AdminBoard = () => {
   }, [products]);
 
   return (
-    <LayoutLoggedAdm>
-      {products.map((m) => (
-        <ProductsTable
-          name={m.name}
-          price={m.price}
-          description={m.description}
-        />
-      ))}
-    </LayoutLoggedAdm>
+    <div>
+      <LayoutLoggedAdm>
+        <TableHead />
+        {products.map((m) => (
+          <ProductsTable
+            name={m.name}
+            price={m.price}
+            description={m.description}
+          />
+        ))}
+      </LayoutLoggedAdm>
+    </div>
   );
 };
 
