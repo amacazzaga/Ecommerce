@@ -1,6 +1,14 @@
 import React from "react";
+import axios from "axios";
+import { useState } from "react";
+import { useCookies } from "react-cookie";
 
 const FormPostProduct = () => {
+  const [name, setName] = useState();
+  const [price, setPrice] = useState();
+  const [category, setCategory] = useState();
+  const [description,setDescription]=useState()
+  const [amount,setAmount]= useState()
   return (
     <div class="accordion-item m-2">
       <h2 class="accordion-header" id="headingOne">
@@ -24,7 +32,11 @@ const FormPostProduct = () => {
         <div class="accordion-body">
           {/*here goes the form*/}
           <div className="container">
-            <form>
+            <form
+              onSubmit={() => {
+                console.log("submitted");
+              }}
+            >
               {/*name*/}
               <div class="mb-3 row">
                 <div class="col-sm-12">
@@ -33,6 +45,7 @@ const FormPostProduct = () => {
                     readonly
                     class="form-control"
                     placeholder="Name"
+                    onChange={(e)=>setName(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -44,6 +57,7 @@ const FormPostProduct = () => {
                     readonly
                     class="form-control"
                     placeholder="Price"
+                    onChange={(e)=>setPrice(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -52,7 +66,7 @@ const FormPostProduct = () => {
                 class="form-select"
                 aria-label="Default select example"
                 onChange={(e) => {
-                  console.log(e.target.value);
+                  setCategory(e.target.value);
                 }}
               >
                 <option selected>Category</option>
@@ -68,7 +82,7 @@ const FormPostProduct = () => {
                   rows="3"
                   placeholder="Description"
                   onChange={(e) => {
-                    console.log(e.target.value);
+                    setDescription(e.target.value);
                   }}
                 ></textarea>
                 {/*image*/}
@@ -88,10 +102,13 @@ const FormPostProduct = () => {
                     readonly
                     class="form-control"
                     placeholder="Amount"
+                    onChange={(e)=>setAmount(e.target.value)}
                   ></input>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Add Product!</button>
+              <button type="submit" class="btn btn-primary">
+                Add Product!
+              </button>
             </form>
           </div>
           {/*end of the form*/}

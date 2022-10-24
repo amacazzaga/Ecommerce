@@ -16,14 +16,14 @@ const AdminBoard = () => {
   return (
     <div>
       <LayoutLoggedAdm>
-      <FormPostProduct/>
+        <FormPostProduct />
         <TableHead />
         {products.map((m) => (
           <ProductsTable
             name={m.name}
             price={m.price}
             description={m.description}
-            image ={m.image}
+            image={m.image}
           />
         ))}
       </LayoutLoggedAdm>
