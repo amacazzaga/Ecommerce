@@ -28,7 +28,23 @@ const FormPostProduct = () => {
               {/*name*/}
               <div class="mb-3 row">
                 <div class="col-sm-12">
-                  <input type="text" readonly class="form-control" placeholder="Name"></input>
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control"
+                    placeholder="Name"
+                  ></input>
+                </div>
+              </div>
+              {/*price*/}
+              <div class="mb-3 row">
+                <div class="col-sm-12">
+                  <input
+                    type="number"
+                    readonly
+                    class="form-control"
+                    placeholder="Price"
+                  ></input>
                 </div>
               </div>
               {/*category*/}
@@ -38,6 +54,30 @@ const FormPostProduct = () => {
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </select>
+              {/*description*/}
+              <div class="mb-3">
+                <textarea
+                  class="form-control mt-3"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  placeholder="Description"
+                ></textarea>
+                {/*image*/}
+                <div class="mb-3">
+                  <input class="form-control mt-2" type="file" id="formFile"></input>
+                </div>
+              </div>
+               {/*amount*/}
+               <div class="mb-3 row">
+                <div class="col-sm-12">
+                  <input
+                    type="number"
+                    readonly
+                    class="form-control"
+                    placeholder="Amount"
+                  ></input>
+                </div>
+              </div>
             </form>
           </div>
           {/*end of the form*/}
