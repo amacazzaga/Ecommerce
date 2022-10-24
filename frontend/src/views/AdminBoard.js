@@ -24,6 +24,7 @@ const AdminBoard = () => {
             price={m.price}
             description={m.description}
             image={m.image}
+            category ={m.category}
           />
         ))}
       </LayoutLoggedAdm>

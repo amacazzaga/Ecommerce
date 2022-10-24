@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductsTable = ({ name, price, description,image }) => {
+const ProductsTable = ({ name, price, description,image,category }) => {
   return (
     <table class="table container">
     <tbody>
@@ -8,7 +8,7 @@ const ProductsTable = ({ name, price, description,image }) => {
         <td className="col-2">{name}</td>
         <td className="col-2">{price}</td>
         <td className="col-2">{description}</td>
-        <td className="col-2">category</td>
+        <td className="col-2">{category}</td>
         <td className="col-2">{image}</td>
         <td className="col-1">edit</td>
         <td className="col-1">delete</td>

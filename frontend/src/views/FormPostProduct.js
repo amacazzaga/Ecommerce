@@ -84,6 +84,7 @@ const FormPostProduct = () => {
                 class="form-select"
                 aria-label="Default select example"
                 onChange={(e) => {
+                  console.log(e.target.value)
                   setCategory(e.target.value);
                 }}
               >
