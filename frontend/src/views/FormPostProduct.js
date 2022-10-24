@@ -48,7 +48,13 @@ const FormPostProduct = () => {
                 </div>
               </div>
               {/*category*/}
-              <select class="form-select" aria-label="Default select example">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                onChange={(e) => {
+                  console.log(e.target.value);
+                }}
+              >
                 <option selected>Category</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -61,14 +67,21 @@ const FormPostProduct = () => {
                   id="exampleFormControlTextarea1"
                   rows="3"
                   placeholder="Description"
+                  onChange={(e) => {
+                    console.log(e.target.value);
+                  }}
                 ></textarea>
                 {/*image*/}
                 <div class="mb-3">
-                  <input class="form-control mt-2" type="file" id="formFile"></input>
+                  <input
+                    class="form-control mt-3"
+                    type="file"
+                    id="formFile"
+                  ></input>
                 </div>
               </div>
-               {/*amount*/}
-               <div class="mb-3 row">
+              {/*amount*/}
+              <div class="mb-3 row">
                 <div class="col-sm-12">
                   <input
                     type="number"
@@ -78,6 +91,7 @@ const FormPostProduct = () => {
                   ></input>
                 </div>
               </div>
+              <button type="submit" class="btn btn-primary">Add Product!</button>
             </form>
           </div>
           {/*end of the form*/}
