@@ -11,7 +11,6 @@ const FormPostProduct = () => {
           data-bs-target="#collapseOne"
           aria-expanded="true"
           aria-controls="collapseOne"
-          
         >
           Add a Product
         </button>
@@ -23,39 +22,25 @@ const FormPostProduct = () => {
         data-bs-parent="#accordionExample"
       >
         <div class="accordion-body">
+          {/*here goes the form*/}
           <div className="container">
-            <form
-              onSubmit={() => {
-                console.log("form submite");
-              }}
-              className="form border border-5 rounded-3 mb-1 mt-1"
-            >
-              <table class="table container">
-                <thead>
-                  <tr>
-                    <th className="col-2">Name</th>
-                    <th className="col-2">Price</th>
-                    <th className="col-2">Description</th>
-                    <th className="col-2">Category</th>
-                    <th className="col-2">Image</th>
-                    <th className="col-1"></th>
-                    <th className="col-1"></th>
-                  </tr>
-                </thead>
-              </table>
-              <input className="col-2 m-1"></input>
-              <input className="col-2 m-1"></input>
-              <input className="col-2 m-1"></input>
-              <input className="col-2 m-1"></input>
-              <input className="col-2 m-1"></input>
-              <button
-                className="btn btn-primary btn-sm mb-2 col-1 m-1 "
-                type="submit"
-              >
-                Add
-              </button>
+            <form>
+              {/*name*/}
+              <div class="mb-3 row">
+                <div class="col-sm-12">
+                  <input type="text" readonly class="form-control" placeholder="Name"></input>
+                </div>
+              </div>
+              {/*category*/}
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Category</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
             </form>
           </div>
+          {/*end of the form*/}
         </div>
       </div>
     </div>
