@@ -4,26 +4,33 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 
 const FormPostProduct = () => {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const resp = await axios.post("http://localhost:4000/product", {
-        name: name,
-        price: price,
-        category: category,
-        description: description,
-        amount: amount,
-      });
-      console.log(resp);
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  };
   const [name, setName] = useState();
   const [price, setPrice] = useState();
   const [category, setCategory] = useState();
   const [description, setDescription] = useState();
   const [amount, setAmount] = useState();
+  const [cookie] = useCookies();
+  const token = cookie.token;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.post(
+        "http://localhost:4000/product",
+        {
+          name: name,
+          price: price,
+          category: category,
+          description: description,
+          amount: amount,
+        },
+        { headers: { "Authorization": token } }
+      );
+      console.log(resp);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
   return (
     <div class="accordion-item m-2">
       <h2 class="accordion-header" id="headingOne">
