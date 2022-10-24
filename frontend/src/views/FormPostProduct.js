@@ -4,11 +4,26 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 
 const FormPostProduct = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.post("http://localhost:4000/product", {
+        name: name,
+        price: price,
+        category: category,
+        description: description,
+        amount: amount,
+      });
+      console.log(resp);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
   const [name, setName] = useState();
   const [price, setPrice] = useState();
   const [category, setCategory] = useState();
-  const [description,setDescription]=useState()
-  const [amount,setAmount]= useState()
+  const [description, setDescription] = useState();
+  const [amount, setAmount] = useState();
   return (
     <div class="accordion-item m-2">
       <h2 class="accordion-header" id="headingOne">
@@ -32,11 +47,7 @@ const FormPostProduct = () => {
         <div class="accordion-body">
           {/*here goes the form*/}
           <div className="container">
-            <form
-              onSubmit={() => {
-                console.log("submitted");
-              }}
-            >
+            <form onSubmit={handleSubmit}>
               {/*name*/}
               <div class="mb-3 row">
                 <div class="col-sm-12">
@@ -45,7 +56,7 @@ const FormPostProduct = () => {
                     readonly
                     class="form-control"
                     placeholder="Name"
-                    onChange={(e)=>setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -57,7 +68,7 @@ const FormPostProduct = () => {
                     readonly
                     class="form-control"
                     placeholder="Price"
-                    onChange={(e)=>setPrice(e.target.value)}
+                    onChange={(e) => setPrice(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -102,7 +113,7 @@ const FormPostProduct = () => {
                     readonly
                     class="form-control"
                     placeholder="Amount"
-                    onChange={(e)=>setAmount(e.target.value)}
+                    onChange={(e) => setAmount(e.target.value)}
                   ></input>
                 </div>
               </div>

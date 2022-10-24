@@ -12,9 +12,9 @@ const getProducts = async (req, res) => {
 };
 //create new product//
 const createProduct = async (req, res) => {
-  const { name,image,price,description,amount } = req.body; //destructuring
+  const { name,image,price,description,amount,category } = req.body; //destructuring
   try {
-    const product = await Product.create({ name,image,price,description,amount});
+    const product = await Product.create({ name,image,price,description,amount,category});
     res.status(201).json(product);
   } catch (err) {
     res.status(400).json({ mss: "error" });
