@@ -27,7 +27,7 @@ const FormPostProduct = () => {
         { headers: { Authorization: token } }
       );
       console.log(resp);
-      setError("El Producto Se Ha Cargado Correctamente!")
+      setError(`El Siguiente Producto Se Ha Cargado Correctamente : ${resp.data.name}`)
     } catch (error) {
       console.log(error.response.data);
       setError("El Producto No Se Ha Podido Cargar!")
