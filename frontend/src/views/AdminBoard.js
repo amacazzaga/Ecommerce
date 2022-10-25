@@ -20,11 +20,13 @@ const AdminBoard = () => {
         <TableHead />
         {products.map((m) => (
           <ProductsTable
+            key={m.id}
+            id={m.id}
             name={m.name}
             price={m.price}
             description={m.description}
             image={m.image}
-            category ={m.category}
+            category={m.category}
           />
         ))}
       </LayoutLoggedAdm>

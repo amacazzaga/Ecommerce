@@ -10,6 +10,7 @@ const FormPostProduct = () => {
   const [description, setDescription] = useState();
   const [amount, setAmount] = useState();
   const [cookie] = useCookies();
+  const [error,setError]= useState()
   const token = cookie.token;
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,16 +24,19 @@ const FormPostProduct = () => {
           description: description,
           amount: amount,
         },
-        { headers: { "Authorization": token } }
+        { headers: { Authorization: token } }
       );
       console.log(resp);
+      setError("El Producto Se Ha Cargado Correctamente!")
     } catch (error) {
       console.log(error.response.data);
+      setError("El Producto No Se Ha Podido Cargar!")
     }
   };
 
   return (
     <div class="accordion-item m-2">
+      {/*accordion*/}
       <h2 class="accordion-header" id="headingOne">
         <button
           class="accordion-button"
@@ -84,7 +88,7 @@ const FormPostProduct = () => {
                 class="form-select"
                 aria-label="Default select example"
                 onChange={(e) => {
-                  console.log(e.target.value)
+                  console.log(e.target.value);
                   setCategory(e.target.value);
                 }}
               >
@@ -129,6 +133,7 @@ const FormPostProduct = () => {
                 Add Product!
               </button>
             </form>
+            <h5 className="m-4">{error}</h5>
           </div>
           {/*end of the form*/}
         </div>
