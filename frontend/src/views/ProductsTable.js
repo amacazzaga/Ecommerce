@@ -1,9 +1,22 @@
 import React from "react";
 import axios from "axios";
-
-const ProductsTable = ({ name, price, description, image, category, _id }) => {
+import { useCookies } from "react-cookie";
+const ProductsTable = ({ name, price, description, image, category, id }) => {
+  const [cookie] = useCookies();
+  const token = cookie.token;
+  const deleteProduct = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.delete(
+        `http://localhost:4000/product/${id}`,
+        { headers: { Authorization: token } }
+      );
+      console.log(resp);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
   return (
-
     <table class="table container">
       <tbody>
         <tr>
@@ -18,7 +31,11 @@ const ProductsTable = ({ name, price, description, image, category, _id }) => {
             </button>
           </td>
           <td className="col-1">
-            <button type="button" class="btn btn-danger">
+            <button
+              onClick={deleteProduct}
+              type="button"
+              class="btn btn-danger"
+            >
               delete
             </button>
           </td>
