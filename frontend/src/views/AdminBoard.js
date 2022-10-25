@@ -20,8 +20,8 @@ const AdminBoard = () => {
         <TableHead />
         {products.map((m) => (
           <ProductsTable
-            key={m.id}
-            id={m.id}
+            key={m._id}
+            id={m._id}
             name={m.name}
             price={m.price}
             description={m.description}

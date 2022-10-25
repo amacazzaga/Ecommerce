@@ -1,7 +1,9 @@
 import React from "react";
+import axios from "axios";
 
-const ProductsTable = ({ name, price, description, image, category, id }) => {
+const ProductsTable = ({ name, price, description, image, category, _id }) => {
   return (
+
     <table class="table container">
       <tbody>
         <tr>
