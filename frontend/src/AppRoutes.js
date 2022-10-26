@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminBoard from "./views/AdminBoard";
+import EditProduct from "./views/EditProduct";
 import HomeLoggedIn from "./views/HomeLoggedIn";
 import HomeLoggedOut from "./views/HomeLoggedOut";
 import LoginForm from "./views/LoginForm";
@@ -22,7 +23,10 @@ function AppRoutes({ user }) {
           path="/myaccount"
           element={user ? <AdminBoard /> : <UserBoard />}
         />
-        <Route path="myaccount/products" element={<h1>products.map</h1>} />
+        <Route
+          path={`/myaccount/:id`}
+          element={<EditProduct/>}
+        />
       </Routes>
     </BrowserRouter>
   );
