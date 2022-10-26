@@ -24,8 +24,8 @@ function AppRoutes({ user }) {
           element={user ? <AdminBoard /> : <UserBoard />}
         />
         <Route
-          path={`/myaccount/:id`}
-          element={<EditProduct/>}
+          path={`/myaccount/editproduct/:id`}
+          element={user ?<EditProduct/>:<h1>admins can edit!</h1>}
         />
       </Routes>
     </BrowserRouter>

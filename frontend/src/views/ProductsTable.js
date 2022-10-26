@@ -26,7 +26,7 @@ const ProductsTable = ({ name, price, description, image, category, id }) => {
           <td className="col-2">{category}</td>
           <td className="col-2">{image}</td>
           <td className="col-1">
-            <Link to={`/myaccount/${id}`}>
+            <Link to={`/myaccount/editproduct/${id}`}>
               <button class="btn btn-success" type="button">
                 edit
               </button>
