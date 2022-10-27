@@ -17,7 +17,11 @@ const EditProduct = () => {
 
   return (
     <LayoutLoggedAdm>
-      <div>{product.name}</div>
+      {
+        <form>
+          <input placeholder={product.name}></input>
+        </form>
+      }
     </LayoutLoggedAdm>
   );
 };
