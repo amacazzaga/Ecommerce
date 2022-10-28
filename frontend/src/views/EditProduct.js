@@ -2,17 +2,50 @@ import React from "react";
 import LayoutLoggedAdm from "../components/LayoutLoggedAdm";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 
 const EditProduct = () => {
   const [product, setProduct] = useState({});
+  const [editName, setEditName] = useState();
+  const [editPrice, setEditPrice] = useState();
+  const [editCategory, setEditCategory] = useState();
+  const [editDescription, setEditDescription] = useState();
+  const [editAmount, setEditAmount] = useState();
+  const [cookie] = useCookies();
+  const [error, setError] = useState();
+  const token = cookie.token;
   const { id } = useParams();
   const getProduct = async () => {
     const resp = await axios.get(`http://localhost:4000/product/${id}`);
     setProduct(resp.data);
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.patch(
+        `http://localhost:4000/product/${id}`,
+        {
+          name: editName,
+          price: editPrice,
+          category: editCategory,
+          description: editDescription,
+          amount: editAmount,
+        },
+        { headers: { Authorization: token } }
+      );
+      console.log(resp);
+      setError(
+        `El Siguiente Producto Se Ha Editado Correctamente : ${resp.data.name}`
+      );
+    } catch (error) {
+      console.log(error.response.data);
+      setError("El Producto No Se Ha Podido Editar!");
+    }
+  };
+
   useEffect(() => {
-    console.log(product)
+    console.log(product);
     getProduct();
   }, []);
 
@@ -38,7 +71,7 @@ const EditProduct = () => {
             aria-labelledby="panelsStayOpen-headingOne"
           >
             <div class="accordion-body">
-              <form>
+              <form onSubmit={handleSubmit}>
                 {/*name*/}
                 <div class="mb-3 row">
                   <div class="col-sm-12">
@@ -47,6 +80,7 @@ const EditProduct = () => {
                       readonly
                       class="form-control"
                       placeholder={product.name}
+                      onChange={(e) => setEditName(e.target.value)}
                     ></input>
                   </div>
                 </div>
@@ -58,12 +92,14 @@ const EditProduct = () => {
                       readonly
                       class="form-control"
                       placeholder={product.price}
+                      onChange={(e) => setEditPrice(e.target.value)}
                     ></input>
                   </div>
                 </div>
                 {/*category*/}
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Category</option>
+                <select class="form-select" aria-label="Default select example"
+                  onChange={(e) => setEditCategory(e.target.value)}>
+                  <option>Category</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -75,6 +111,7 @@ const EditProduct = () => {
                     id="exampleFormControlTextarea1"
                     rows="3"
                     placeholder={product.description}
+                    onChange={(e) => setEditDescription(e.target.value)}
                   ></textarea>
                   {/*image*/}
                   <div class="mb-3">
@@ -93,6 +130,7 @@ const EditProduct = () => {
                       readonly
                       class="form-control"
                       placeholder={product.amount}
+                      onChange={(e) => setEditAmount(e.target.value)}
                     ></input>
                   </div>
                 </div>
