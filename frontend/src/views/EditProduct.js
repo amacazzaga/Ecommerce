@@ -138,6 +138,7 @@ const EditProduct = () => {
                   Save !
                 </button>
               </form>
+              <h5 className="m-4">{error}</h5>
             </div>
           </div>
         </div>
