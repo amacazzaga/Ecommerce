@@ -26,11 +26,11 @@ function AppRoutes({ user }) {
         />
         <Route
           path={`/myaccount/editproduct/:id`}
-          element={<EditProduct />}
+          element={user?<EditProduct />:<h1>not admin</h1>}
         />
           <Route
           path={`/myaccount/users`}
-          element={<EditUser/>}
+          element={user?<EditUser/>:<h1>not admin</h1>}
         />
       </Routes>
     </BrowserRouter>
