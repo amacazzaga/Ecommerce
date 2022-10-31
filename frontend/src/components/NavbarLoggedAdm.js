@@ -47,11 +47,13 @@ const NavbarLoggedAdm = () => {
                 </a>
               </li>
               </Link>
+              <Link to={`users`}>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">
                   Users
                 </a>
               </li>
+              </Link>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">
                   Sales
