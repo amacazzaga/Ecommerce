@@ -97,8 +97,11 @@ const EditProduct = () => {
                   </div>
                 </div>
                 {/*category*/}
-                <select class="form-select" aria-label="Default select example"
-                  onChange={(e) => setEditCategory(e.target.value)}>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  onChange={(e) => setEditCategory(e.target.value)}
+                >
                   <option>Category</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
