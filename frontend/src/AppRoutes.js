@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminBoardHome from "./views/AdminBoardHome";
+import AdminBoardUsers from "./views/AdminBoardUsers";
 import EditProduct from "./views/EditProduct";
-import EditUser from "./views/EditUser";
 import HomeLoggedIn from "./views/HomeLoggedIn";
 import HomeLoggedOut from "./views/HomeLoggedOut";
 import LoginForm from "./views/LoginForm";
 import SingUpForm from "./views/SingUpForm";
 import UserBoard from "./views/UserBoard";
+
 
 function AppRoutes({ user }) {
   return (
@@ -30,7 +31,7 @@ function AppRoutes({ user }) {
         />
         <Route
           path={`/myaccount/users`}
-          element={user ? <EditUser /> : <h1>not admin</h1>}
+          element={user ? <AdminBoardUsers/> : <h1>not admin</h1>}
         />
       </Routes>
     </BrowserRouter>
