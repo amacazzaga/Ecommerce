@@ -5,13 +5,11 @@ const UsersTableHead = () => {
     <table class="table container">
       <thead>
         <tr>
-          <th className="col-2">Email</th>
-          <th className="col-2">Name</th>
-          <th className="col-2">LastName</th>
-          <th className="col-2">Age</th>
-          <th className="col-2">Rol</th>
-          <th className="col-1">Edit</th>
-          <th className="col-1">Delete</th>
+          <th className="col-3">Email</th>
+          <th className="col-3">Name</th>
+          <th className="col-3">LastName</th>
+          <th className="col-1">Age</th>
+          
         </tr>
       </thead>
     </table>

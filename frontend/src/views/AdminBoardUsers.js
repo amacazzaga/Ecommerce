@@ -23,7 +23,13 @@ const AdminBoardUsers = () => {
     <LayoutLoggedAdm>
       <UsersTableHead />
       {users.map((u) => (
-        <UsersTable email={u.email} />
+        <UsersTable
+          email={u.email}
+          name={u.name}
+          lastName={u.lastName}
+          age={u.age}
+          id={u._id}
+        />
       ))}
     </LayoutLoggedAdm>
   );
