@@ -27,7 +27,7 @@ const AdminBoardUsers = () => {
           email={u.email}
           name={u.name}
           lastName={u.lastName}
-          age={u.age}
+          rol={u.rol[0]}
           id={u._id}
         />
       ))}
