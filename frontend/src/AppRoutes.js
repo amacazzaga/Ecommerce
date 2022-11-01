@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AdminBoard from "./views/AdminBoard";
+import AdminBoardHome from "./views/AdminBoardHome";
 import EditProduct from "./views/EditProduct";
 import EditUser from "./views/EditUser";
 import HomeLoggedIn from "./views/HomeLoggedIn";
@@ -22,7 +22,7 @@ function AppRoutes({ user }) {
         <Route path="/signup" element={<SingUpForm />} />
         <Route
           path="/myaccount"
-          element={user ? <AdminBoard /> : <UserBoard />}
+          element={user ? <AdminBoardHome /> : <UserBoard />}
         />
         <Route
           path={`/myaccount/editproduct/:id`}

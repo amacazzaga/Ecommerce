@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LayoutLoggedAdm from "../components/LayoutLoggedAdm";
 import ProductsTable from "./ProductsTable";
-import TableHead from "./TableHead";
+import ProductsTableHead from "./ProductsTableHead";
 import FormPostProduct from "./FormPostProduct";
 
-const AdminBoard = () => {
+const AdminBoardHome = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:4000/product").then((response) => {
@@ -17,7 +17,7 @@ const AdminBoard = () => {
     <div>
       <LayoutLoggedAdm>
         <FormPostProduct />
-        <TableHead />
+        <ProductsTableHead />
         {products.map((m) => (
           <ProductsTable
             key={m._id}
@@ -34,4 +34,4 @@ const AdminBoard = () => {
   );
 };
 
-export default AdminBoard;
+export default AdminBoardHome;
