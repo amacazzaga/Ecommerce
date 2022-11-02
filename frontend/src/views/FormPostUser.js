@@ -61,7 +61,7 @@ const FormPostUser = () => {
         data-bs-parent="#accordionExample"
       >
         <div class="accordion-body">
-          <div className="m-5">
+          <div className="container">
             <form onSubmit={handleSubmit}>
               <div class="mb-2">
                 <label class="form-label">Name</label>
