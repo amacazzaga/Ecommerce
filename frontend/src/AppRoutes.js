@@ -33,6 +33,10 @@ function AppRoutes({ user }) {
           path={`/myaccount/users`}
           element={user ? <AdminBoardUsers/> : <h1>not admin</h1>}
         />
+          <Route
+          path={`/myaccount/users/editusers/:id`}
+          element={user ? <h1>edituser</h1> : <h1>not admin</h1>}
+        />
       </Routes>
     </BrowserRouter>
   );
