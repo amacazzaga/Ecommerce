@@ -4,6 +4,7 @@ import axios from "axios";
 import LayoutLoggedAdm from "../components/LayoutLoggedAdm";
 import UsersTableHead from "./UsersTableHead";
 import UsersTable from "./UsersTable";
+import FormPostUser from "./FormPostUser";
 
 const AdminBoardUsers = () => {
   const [cookie] = useCookies();
@@ -18,9 +19,10 @@ const AdminBoardUsers = () => {
   };
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [users]);
   return (
     <LayoutLoggedAdm>
+      <FormPostUser/>
       <UsersTableHead />
       {users.map((u) => (
         <UsersTable
