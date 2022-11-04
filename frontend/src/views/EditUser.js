@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 
 const EditUser = () => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
   const { id } = useParams();
   const [cookie] = useCookies();
   const token = cookie.token;
@@ -49,6 +49,7 @@ const EditUser = () => {
                 {/*name*/}
                 <div class="mb-3 row">
                   <div class="col-sm-12">
+                    <label class="form-label">Name</label>
                     <input
                       type="text"
                       readonly
@@ -57,11 +58,38 @@ const EditUser = () => {
                     ></input>
                   </div>
                 </div>
+                {/*lastname*/}
+                <div class="mb-3 row">
+                  <div class="col-sm-12">
+                    <label class="form-label">Last Name</label>
+                    <input
+                      type="text"
+                      readonly
+                      class="form-control"
+                      placeholder={user.lastName}
+                    ></input>
+                  </div>
+                </div>
+                {/*email*/}
+                <div class="mb-3 row">
+                  <div class="col-sm-12">
+                    <label class="form-label">Email</label>
+                    <input
+                      type="text"
+                      readonly
+                      class="form-control"
+                      placeholder={user.email}
+                    ></input>
+                  </div>
+                </div>
                 <button type="submit" class="btn btn-primary m-2">
                   Save !
                 </button>
+                <button type="button" class="btn btn-danger">
+                  Delete User!
+                </button>
               </form>
-              <h5 className="m-4"></h5>
+              <h5 className="m-4">error</h5>
             </div>
           </div>
         </div>
