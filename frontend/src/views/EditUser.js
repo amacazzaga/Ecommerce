@@ -22,7 +22,52 @@ const EditUser = () => {
   useEffect(() => {
     getUsers();
   }, [user]);
-  return <LayoutLoggedAdm></LayoutLoggedAdm>;
+
+  return (
+    <LayoutLoggedAdm>
+      <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseOne"
+              aria-expanded="true"
+              aria-controls="panelsStayOpen-collapseOne"
+            >
+              Edit User
+            </button>
+          </h2>
+          <div
+            id="panelsStayOpen-collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="panelsStayOpen-headingOne"
+          >
+            <div class="accordion-body">
+              <form>
+                {/*name*/}
+                <div class="mb-3 row">
+                  <div class="col-sm-12">
+                    <input
+                      type="text"
+                      readonly
+                      class="form-control"
+                      placeholder={user.name}
+                    ></input>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary m-2">
+                  Save !
+                </button>
+              </form>
+              <h5 className="m-4"></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </LayoutLoggedAdm>
+  );
 };
 
 export default EditUser;
