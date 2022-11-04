@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminBoardHome from "./views/AdminBoardHome";
 import AdminBoardUsers from "./views/AdminBoardUsers";
 import EditProduct from "./views/EditProduct";
+import EditUser from "./views/EditUser";
 import HomeLoggedIn from "./views/HomeLoggedIn";
 import HomeLoggedOut from "./views/HomeLoggedOut";
 import LoginForm from "./views/LoginForm";
@@ -35,7 +36,7 @@ function AppRoutes({ user }) {
         />
           <Route
           path={`/myaccount/users/editusers/:id`}
-          element={user ? <h1>edituser</h1> : <h1>not admin</h1>}
+          element={user ? <EditUser/> : <h1>not admin</h1>}
         />
       </Routes>
     </BrowserRouter>

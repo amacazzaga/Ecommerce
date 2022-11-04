@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import {useEffect, useState } from "react";
+import { useState } from "react";
 import { useCookies } from "react-cookie";
 
 const FormPostUser = () => {
