@@ -80,15 +80,17 @@ const SingUpForm = () => {
             ></input>
           </div>
           <div class="mb-3">
-            <label class="form-label">18 Years Or Older</label>
+            <label class="form-label">Im 18 Years Or Older</label>
             <div>
               <input
                 class="form-check-input"
                 type="checkbox"
                 id="checkboxNoLabel"
-                value=""
+                value={age}
                 aria-label="..."
-                onChange={(e) => setAge(true)}
+                onClick={() => {
+                  age ? setAge(false) : setAge(true);
+                }}
               ></input>
             </div>
             <div class="form-text"></div>
