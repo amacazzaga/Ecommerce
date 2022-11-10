@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 const SingUpForm = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -86,9 +86,9 @@ const SingUpForm = () => {
                 class="form-check-input"
                 type="checkbox"
                 id="checkboxNoLabel"
-                value="18"
+                value=""
                 aria-label="..."
-                onChange={(e) => setAge(e.target.value)}
+                onChange={(e) => setAge(true)}
               ></input>
             </div>
             <div class="form-text"></div>

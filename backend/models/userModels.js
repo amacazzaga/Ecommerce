@@ -11,7 +11,7 @@ const userSchema = new Schema({
     required: true,
   },
   age: {
-    type: Number,
+    type: Boolean,
     required: true,
   },
   email: {
