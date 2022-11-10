@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 
 const EditUser = () => {
   const [user, setUser] = useState({});
+  const [name, setEditName] = useState();
+  const [lastName, setEditLastName] = useState();
+  const [email, setEditEmail] = useState();
   const { id } = useParams();
   const [cookie] = useCookies();
   const token = cookie.token;
@@ -16,7 +19,25 @@ const EditUser = () => {
       headers: { Authorization: token },
     });
     setUser(resp.data);
-    console.log(resp.data);
+    //console.log(resp.data);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.patch(
+        `http://localhost:4000/user/${id}`,
+        {
+          name: name,
+          lastName: lastName,
+          email: email,
+        },
+        { headers: { Authorization: token } }
+      );
+      console.log(resp)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   useEffect(() => {
@@ -45,9 +66,9 @@ const EditUser = () => {
             aria-labelledby="panelsStayOpen-headingOne"
           >
             <div class="accordion-body">
-              <form>
+              <form onSubmit={handleSubmit} >
                 {/*name*/}
-                <div class="mb-3 row">
+                <div class="mb-4 row">
                   <div class="col-sm-12">
                     <label class="form-label">Name</label>
                     <input
@@ -55,11 +76,12 @@ const EditUser = () => {
                       readonly
                       class="form-control"
                       placeholder={user.name}
+                      onChange={(e) => setEditName(e.target.value)}
                     ></input>
                   </div>
                 </div>
                 {/*lastname*/}
-                <div class="mb-3 row">
+                <div class="mb-4 row">
                   <div class="col-sm-12">
                     <label class="form-label">Last Name</label>
                     <input
@@ -67,11 +89,12 @@ const EditUser = () => {
                       readonly
                       class="form-control"
                       placeholder={user.lastName}
+                      onChange={(e) => setEditLastName(e.target.value)}
                     ></input>
                   </div>
                 </div>
                 {/*email*/}
-                <div class="mb-3 row">
+                <div class="mb-4 row">
                   <div class="col-sm-12">
                     <label class="form-label">Email</label>
                     <input
@@ -79,13 +102,14 @@ const EditUser = () => {
                       readonly
                       class="form-control"
                       placeholder={user.email}
+                      onChange={(e) => setEditEmail(e.target.value)}
                     ></input>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary m-2">
+                <button type="submit" class="btn btn-primary m-1">
                   Save !
                 </button>
-                <button type="button" class="btn btn-danger">
+                <button type="button" class="btn btn-danger m-3">
                   Delete User!
                 </button>
               </form>

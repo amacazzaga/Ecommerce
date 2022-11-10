@@ -58,14 +58,8 @@ const LoginForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input"></input>
-        <label class="form-check-label" for="exampleCheck1">
-          Remember me
-        </label>
-      </div>
       <button type="submit" class="btn btn-primary">
-        Submit
+        Login
       </button>
       <h5 className="mt-3">{error}</h5>
     </form>

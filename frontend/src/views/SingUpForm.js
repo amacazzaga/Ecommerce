@@ -24,73 +24,81 @@ const SingUpForm = () => {
         rol: rol,
       });
       console.log(resp.data);
-      window.location.href = "/login"
-      window.alert(`User was created : ${email}, please login to start shopping`)
+      window.location.href = "/login";
+      window.alert(
+        `User was created : ${email}, please login to start shopping`
+      );
     } catch (err) {
       setError(err.response.data.errors[0]);
     }
   };
   return (
     <Layout>
-    <div className="m-5">
-      <form onSubmit={handleSubmit}>
-        <div class="mb-3">
-          <label class="form-label">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-          <div class="form-text"></div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Last Name</label>
-          <input
-            type="text"
-            class="form-control"
-            onChange={(e) => setLastName(e.target.value)}
-          ></input>
-          <div class="form-text"></div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Age</label>
-          <input
-            type="text"
-            class="form-control"
-            onChange={(e) => setAge(e.target.value)}
-          ></input>
-          <div class="form-text"></div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            class="form-control"
-            aria-describedby="emailHelp"
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-          <div class="form-text">
-            We'll never share your email with anyone else.
+      <div className="m-5">
+        <form onSubmit={handleSubmit}>
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              onChange={(e) => setName(e.target.value)}
+            ></input>
+            <div class="form-text"></div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            class="form-control"
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </div>
-        <button type="submit" class="btn btn-primary">
-          Submit
-        </button>
-      </form>
-      <h5 className="mt-3">{error}</h5>
-    </div>
+          <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              onChange={(e) => setLastName(e.target.value)}
+            ></input>
+            <div class="form-text"></div>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              aria-describedby="emailHelp"
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <div class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              class="form-control"
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">18 Years Or Older</label>
+            <div>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="checkboxNoLabel"
+                value="18"
+                aria-label="..."
+                onChange={(e) => setAge(e.target.value)}
+              ></input>
+            </div>
+            <div class="form-text"></div>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Sign Up
+          </button>
+        </form>
+        <h5 className="mt-3">{error}</h5>
+      </div>
     </Layout>
   );
 };

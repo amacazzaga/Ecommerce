@@ -61,9 +61,14 @@ const loginUser = async (req, res) => {
   }
   //create a jwt when logg in
   const isUserAdmin = user.rol.some((r) => r == "admin");
-  const token = jwt.sign({ id: user.id ,isUserAdmin}, process.env.TOKEN_SECRET);
-  return res.status(200).header(`Authorization`, token).send({"token":token,"isUserAdmin":isUserAdmin})
- 
+  const token = jwt.sign(
+    { id: user.id, isUserAdmin },
+    process.env.TOKEN_SECRET
+  );
+  return res
+    .status(200)
+    .header(`Authorization`, token)
+    .send({ token: token, isUserAdmin: isUserAdmin });
 };
 //delete user///
 const deleteUser = async (req, res) => {
@@ -83,16 +88,27 @@ const updateUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json(`not a valid id`);
   }
-  const { name, lastName, age, email, password, rol } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 8);
-  //no hashing password on edit!!!!//
+  const { name, lastName, password, age, rol } = req.body;
+
+  const props = [
+    { value: name, key: "name" },
+    { value: lastName, key: "lastName" },
+    { value: password, key: "password" },
+    { value: rol, key: "rol" },
+  ];
+
+  const result = props.reduce(async(res, current) => {
+    if (current.value) {
+      const transformed =
+        current.key == "password"
+          ?  await bcrypt.hash(current.value, 8)
+          : current.value;
+      return { ...res, [current.key]: transformed };
+    } else return res;
+  }, {});
+
   const user = await User.findByIdAndUpdate(id, {
-    name,
-    lastName,
-    age,
-    email,
-    password: hashedPassword,
-    rol,
+    ...result,
   });
   if (!user) {
     return res.status(404).json(`no such user`);
