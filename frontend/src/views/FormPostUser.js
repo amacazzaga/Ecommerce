@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 const FormPostUser = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -31,7 +31,7 @@ const FormPostUser = () => {
       );
       console.log(resp);
       setError(
-        `El Siguiente UserSe Ha Cargado Correctamente : ${resp.data.name}`
+        `El Siguiente User Se Ha Cargado Correctamente : ${resp.data.name}`
       );
     } catch (error) {
       console.log(error.response.data);
@@ -78,15 +78,6 @@ const FormPostUser = () => {
                   type="text"
                   class="form-control"
                   onChange={(e) => setLastName(e.target.value)}
-                ></input>
-                <div class="form-text"></div>
-              </div>
-              <div class="mb-2">
-                <label class="form-label">Age</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  onChange={(e) => setAge(e.target.value)}
                 ></input>
                 <div class="form-text"></div>
               </div>

@@ -27,7 +27,7 @@ const userSchema = new Schema({
     required: true,
     
   }
-});
+},{ timestamps: true });
 
 module.exports = mongoose.model("Users", userSchema);
 /*name the collection with the string*/

@@ -18,7 +18,7 @@ const salesSchema = new Schema({
     type: Number,
     required: true,
   },
-});
+},{ timestamps: true });
 
 module.exports = mongoose.model("Sales", salesSchema);
 /*name the collection with the string*/

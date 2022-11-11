@@ -88,7 +88,7 @@ const updateUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json(`not a valid id`);
   }
-  const { name, lastName, password, age, rol } = req.body;
+  const { name, lastName, password, rol } = req.body;
 
   const props = [
     { value: name, key: "name" },
@@ -97,19 +97,19 @@ const updateUser = async (req, res) => {
     { value: rol, key: "rol" },
   ];
 
-  const result = props.reduce(async(res, current) => {
+  const result = props.reduce((res, current) => {
     if (current.value) {
       const transformed =
         current.key == "password"
-          ?  await bcrypt.hash(current.value, 8)
+          ?  bcrypt.hashSync(current.value, 8)
           : current.value;
+      console.log("trans", transformed);
+
       return { ...res, [current.key]: transformed };
     } else return res;
   }, {});
-
-  const user = await User.findByIdAndUpdate(id, {
-    ...result,
-  });
+   console.log("result", result);
+  const user = await User.findByIdAndUpdate(id,  result);
   if (!user) {
     return res.status(404).json(`no such user`);
   }
