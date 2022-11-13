@@ -10,6 +10,7 @@ const EditUser = () => {
   const [name, setEditName] = useState();
   const [lastName, setEditLastName] = useState();
   const [email, setEditEmail] = useState();
+  const [error, setError]= useState()
   const { id } = useParams();
   const [cookie] = useCookies();
   const token = cookie.token;
@@ -37,6 +38,19 @@ const EditUser = () => {
       console.log(resp)
     } catch (error) {
       console.log(error)
+    }
+  };
+  const deleteUser = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.delete(`http://localhost:4000/user/${id}`, {
+        headers: { Authorization: token },
+      });
+      console.log(resp);
+      setError(`El Usuario : ${user.name} , Se Ha Borrado De La Base De Datos Correctamente`)
+    } catch (error) {
+      setError(`El Usuario : ${user.name} , No Se Ha Podido Eliminar`)
+      console.log(error.response.data);
     }
   };
 
@@ -109,11 +123,11 @@ const EditUser = () => {
                 <button type="submit" class="btn btn-primary m-1">
                   Save !
                 </button>
-                <button type="button" class="btn btn-danger m-3">
+                <button onClick={deleteUser} type="button" class="btn btn-danger m-3">
                   Delete User!
                 </button>
               </form>
-              <h5 className="m-4">error</h5>
+              <h5 className="m-4">{error}</h5>
             </div>
           </div>
         </div>

@@ -101,15 +101,14 @@ const updateUser = async (req, res) => {
     if (current.value) {
       const transformed =
         current.key == "password"
-          ?  bcrypt.hashSync(current.value, 8)
+          ? bcrypt.hashSync(current.value, 8)
           : current.value;
-      console.log("trans", transformed);
 
       return { ...res, [current.key]: transformed };
     } else return res;
   }, {});
-   console.log("result", result);
-  const user = await User.findByIdAndUpdate(id,  result);
+
+  const user = await User.findByIdAndUpdate(id, result);
   if (!user) {
     return res.status(404).json(`no such user`);
   }
