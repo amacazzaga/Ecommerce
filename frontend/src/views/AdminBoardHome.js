@@ -7,19 +7,20 @@ import FormPostProduct from "./FormPostProduct";
 
 const AdminBoardHome = () => {
   const [products, setProducts] = useState([]);
-  useEffect(() => {
+  const fetchProducts = () => {
     axios.get("http://localhost:4000/product").then((response) => {
       setProducts(response.data);
     });
-  }, [products]);
+  };
+  useEffect(() => {fetchProducts()}, []);
 
   return (
     <div>
       <LayoutLoggedAdm>
-        <FormPostProduct />
+        <FormPostProduct reloadProducts ={fetchProducts}  />
         <ProductsTableHead />
         {products.map((m) => (
-          <ProductsTable
+          <ProductsTable reloadProducts ={fetchProducts}
             key={m._id}
             id={m._id}
             name={m.name}

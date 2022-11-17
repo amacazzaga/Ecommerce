@@ -1,16 +1,17 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
-const FormPostProduct = () => {
+const FormPostProduct = ({reloadProducts}) => {
   const [name, setName] = useState();
   const [price, setPrice] = useState();
   const [category, setCategory] = useState();
+  const [data, setData] = useState();
   const [description, setDescription] = useState();
   const [amount, setAmount] = useState();
   const [cookie] = useCookies();
-  const [error,setError]= useState()
+  const [message, setMessage] = useState();
   const token = cookie.token;
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,13 +28,49 @@ const FormPostProduct = () => {
         { headers: { Authorization: token } }
       );
       console.log(resp);
-      setError(`El Siguiente Producto Se Ha Cargado Correctamente : ${resp.data.name}`)
+      setMessage(
+        `El Siguiente Producto Se Ha Cargado Correctamente : ${resp.data.name}`
+      );
+      reloadProducts()
     } catch (error) {
       console.log(error.response.data);
-      setError("El Producto No Se Ha Podido Cargar!")
+      setMessage("El Producto No Se Ha Podido Cargar!");
+  
     }
   };
-
+  const handleImage = async () => {
+    if(!data) return;
+    console.log("data",data)
+    try {
+      const resp = await axios.post(
+        `https://api.imgur.com/3/image/`,
+        {
+          data,
+        },
+        {
+          headers: { Authorization: "Client-ID 093daa7306521c2" },
+        }
+      );
+      console.log(resp);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  ///////////
+  function getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+  ///////////////
+  useEffect(() => {
+  // console.log("data", data)
+  handleImage()
+  }, [data]);
+  ////////////
   return (
     <div class="accordion-item m-2">
       {/*accordion*/}
@@ -114,7 +151,17 @@ const FormPostProduct = () => {
                     class="form-control mt-3"
                     type="file"
                     id="formFile"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      getBase64(file).then((data) => {
+                        setData(data);
+                        console.log(data);
+                      });
+                    }}
                   ></input>
+                  <div class="container mb-3">
+                    <img class="mt-3" alt="" />
+                  </div>
                 </div>
               </div>
               {/*amount*/}
@@ -133,7 +180,7 @@ const FormPostProduct = () => {
                 Add Product!
               </button>
             </form>
-            <h5 className="m-4">{error}</h5>
+            <h5 className="m-4">{message}</h5>
           </div>
           {/*end of the form*/}
         </div>

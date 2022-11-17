@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
-const ProductsTable = ({ name, price, description, image, category, id }) => {
+const ProductsTable = ({ name, price, description, image, category, id ,reloadProducts}) => {
   const [cookie] = useCookies();
   const token = cookie.token;
   const deleteProduct = async (e) => {
@@ -12,6 +12,7 @@ const ProductsTable = ({ name, price, description, image, category, id }) => {
         headers: { Authorization: token },
       });
       console.log(resp);
+      reloadProducts()
     } catch (error) {
       console.log(error.response.data);
     }
