@@ -3,6 +3,7 @@ import AdminBoardHome from "./views/AdminBoardHome";
 import AdminBoardUsers from "./views/AdminBoardUsers";
 import EditProduct from "./views/EditProduct";
 import EditUser from "./views/EditUser";
+import EditImage from "./views/EditImage";
 import HomeLoggedIn from "./views/HomeLoggedIn";
 import HomeLoggedOut from "./views/HomeLoggedOut";
 import LoginForm from "./views/LoginForm";
@@ -29,6 +30,10 @@ function AppRoutes({ user }) {
         <Route
           path={`/myaccount/editproduct/:id`}
           element={user ? <EditProduct /> : <h1>not admin</h1>}
+        />
+         <Route
+          path={`/myaccount/editimage/:id`}
+          element={user ? <EditImage/> : <h1>not admin</h1>}
         />
         <Route
           path={`/myaccount/users`}

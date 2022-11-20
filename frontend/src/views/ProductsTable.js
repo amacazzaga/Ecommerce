@@ -2,7 +2,15 @@ import React from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
-const ProductsTable = ({ name, price, description, image, category, id ,reloadProducts}) => {
+const ProductsTable = ({
+  name,
+  price,
+  description,
+  image,
+  category,
+  id,
+  reloadProducts,
+}) => {
   const [cookie] = useCookies();
   const token = cookie.token;
   const deleteProduct = async (e) => {
@@ -12,7 +20,7 @@ const ProductsTable = ({ name, price, description, image, category, id ,reloadPr
         headers: { Authorization: token },
       });
       console.log(resp);
-      reloadProducts()
+      reloadProducts();
     } catch (error) {
       console.log(error.response.data);
     }
@@ -25,7 +33,11 @@ const ProductsTable = ({ name, price, description, image, category, id ,reloadPr
           <td className="col-2">{price}</td>
           <td className="col-2">{description}</td>
           <td className="col-2">{category}</td>
-          <td className="col-2">{image}</td>
+          <td className="col-2">
+            <Link to={`/myaccount/editimage/${id}`}>
+            <button class="btn btn-primary">add</button>
+            </Link>
+          </td>
           <td className="col-1">
             <Link to={`/myaccount/editproduct/${id}`}>
               <button class="btn btn-success" type="button">

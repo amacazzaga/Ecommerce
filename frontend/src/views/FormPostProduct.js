@@ -1,13 +1,13 @@
 import React from "react";
 import axios from "axios";
+
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
-const FormPostProduct = ({reloadProducts}) => {
+const FormPostProduct = ({ reloadProducts }) => {
   const [name, setName] = useState();
   const [price, setPrice] = useState();
   const [category, setCategory] = useState();
-  const [data, setData] = useState();
   const [description, setDescription] = useState();
   const [amount, setAmount] = useState();
   const [cookie] = useCookies();
@@ -31,45 +31,15 @@ const FormPostProduct = ({reloadProducts}) => {
       setMessage(
         `El Siguiente Producto Se Ha Cargado Correctamente : ${resp.data.name}`
       );
-      reloadProducts()
+      reloadProducts();
     } catch (error) {
       console.log(error.response.data);
       setMessage("El Producto No Se Ha Podido Cargar!");
-  
     }
   };
-  const handleImage = async () => {
-    if(!data) return;
-    console.log("data",data)
-    try {
-      const resp = await axios.post(
-        `https://api.imgur.com/3/image/`,
-        {
-          data,
-        },
-        {
-          headers: { Authorization: "Client-ID 093daa7306521c2" },
-        }
-      );
-      console.log(resp);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   ///////////
-  function getBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  }
-  ///////////////
-  useEffect(() => {
-  // console.log("data", data)
-  handleImage()
-  }, [data]);
+ 
   ////////////
   return (
     <div class="accordion-item m-2">
@@ -95,7 +65,7 @@ const FormPostProduct = ({reloadProducts}) => {
         <div class="accordion-body">
           {/*here goes the form*/}
           <div className="container">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id="productFile">
               {/*name*/}
               <div class="mb-3 row">
                 <div class="col-sm-12">
@@ -145,25 +115,8 @@ const FormPostProduct = ({reloadProducts}) => {
                     setDescription(e.target.value);
                   }}
                 ></textarea>
-                {/*image*/}
-                <div class="mb-3">
-                  <input
-                    class="form-control mt-3"
-                    type="file"
-                    id="formFile"
-                    onChange={(e) => {
-                      const file = e.target.files[0];
-                      getBase64(file).then((data) => {
-                        setData(data);
-                        console.log(data);
-                      });
-                    }}
-                  ></input>
-                  <div class="container mb-3">
-                    <img class="mt-3" alt="" />
-                  </div>
-                </div>
               </div>
+             
               {/*amount*/}
               <div class="mb-3 row">
                 <div class="col-sm-12">
@@ -176,7 +129,7 @@ const FormPostProduct = ({reloadProducts}) => {
                   ></input>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary" form="productFile">
                 Add Product!
               </button>
             </form>
@@ -186,6 +139,7 @@ const FormPostProduct = ({reloadProducts}) => {
         </div>
       </div>
     </div>
+    
   );
 };
 
