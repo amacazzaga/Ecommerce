@@ -16,9 +16,6 @@ const s3 = new S3Client({
 });
 //
 const postImage = async (req, res) => {
-  console.log("req.body", req.body);
-  console.log("file.file", req.file);
-  req.file.buffer;
   try {
     const params = {
       Bucket: bucketName,
@@ -27,6 +24,7 @@ const postImage = async (req, res) => {
       ContentType: req.file.mimetype,
     };
     const command = new PutObjectCommand(params);
+    if(!command) return
     await s3.send(command);
     res.status(201).json(command);
   } catch (err) {
