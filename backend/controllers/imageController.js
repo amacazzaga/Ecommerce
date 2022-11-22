@@ -19,18 +19,18 @@ const postImage = async (req, res) => {
   console.log("req.body", req.body);
   console.log("file.file", req.file);
   req.file.buffer;
-  const params = {
-    Bucket: bucketName,
-    Key: req.file.originalname,
-    Body: req.file.buffer,
-    ContentType: req.file.mimetype,
-  };
   try {
+    const params = {
+      Bucket: bucketName,
+      Key: req.file.originalname,
+      Body: req.file.buffer,
+      ContentType: req.file.mimetype,
+    };
     const command = new PutObjectCommand(params);
     await s3.send(command);
-    res.status(201).json(command)
+    res.status(201).json(command);
   } catch (err) {
-   res.status(400).json({mss:"error"})
+    res.status(400).json({ mss: "error" });
   }
 };
 
