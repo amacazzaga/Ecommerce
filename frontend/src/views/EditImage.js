@@ -7,9 +7,9 @@ import LayoutLoggedAdm from "../components/LayoutLoggedAdm";
 
 const EditImage = () => {
   const [cookie] = useCookies();
+  const [file, setFile] = useState();
   const { id } = useParams();
   const token = cookie.token;
-  const [file, setFile] = useState();
   //
   const getProduct = async () => {
     const resp = await axios.get(`http://localhost:4000/product/${id}`);

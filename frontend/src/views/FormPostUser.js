@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
-const FormPostUser = () => {
+const FormPostUser = ({reloadUsers}) => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(true);
@@ -30,6 +30,7 @@ const FormPostUser = () => {
         { headers: { Authorization: token } }
       );
       console.log(resp);
+      reloadUsers()
       setError(
         `El Siguiente User Se Ha Cargado Correctamente : ${resp.data.name}`
       );

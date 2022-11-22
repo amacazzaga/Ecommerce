@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const UsersTable = ({ email, name, lastName, age, id, rol }) => {
+const UsersTable = ({ email, name, lastName, age, id, rol, }) => {
   return (
     <table class="table container">
       <tbody>

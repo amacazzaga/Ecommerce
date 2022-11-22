@@ -19,10 +19,10 @@ const AdminBoardUsers = () => {
   };
   useEffect(() => {
     getUsers();
-  }, [users]);
+  }, []);
   return (
     <LayoutLoggedAdm>
-      <FormPostUser/>
+      <FormPostUser reloadUsers={getUsers} />
       <UsersTableHead />
       {users.map((u) => (
         <UsersTable
