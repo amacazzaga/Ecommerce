@@ -13,9 +13,9 @@ const EditImage = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", file);
-    await axios.post("http://localhost:4000/images", formData, {
+   const resp = await axios.post("http://localhost:4000/images", formData, {
       headers: { "Content-Type": "multipart/form-data", Authorization: token },
-    });
+    }).then((resp)=>{console.log(resp)});
   };
 
   return (

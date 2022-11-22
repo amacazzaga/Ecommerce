@@ -25,9 +25,13 @@ const postImage = async (req, res) => {
     Body: req.file.buffer,
     ContentType: req.file.mimetype,
   };
-  const command = new PutObjectCommand(params);
-
-  await s3.send(command);
+  try {
+    const command = new PutObjectCommand(params);
+    await s3.send(command);
+    res.status(201).json(command)
+  } catch (err) {
+   res.status(400).json({mss:"error"})
+  }
 };
 
 module.exports = {
