@@ -9,6 +9,7 @@ import HomeLoggedOut from "./views/HomeLoggedOut";
 import LoginForm from "./views/LoginForm";
 import SingUpForm from "./views/SingUpForm";
 import UserBoard from "./views/UserBoard";
+import UserPurchase from "./views/UserPurchase";
 
 
 function AppRoutes({ user }) {
@@ -38,6 +39,10 @@ function AppRoutes({ user }) {
         <Route
           path={`/myaccount/users`}
           element={user ? <AdminBoardUsers/> : <h1>not admin</h1>}
+        />
+          <Route
+          path={`/myaccount/users/sales/:id`}
+          element={user ? <UserPurchase/> : <h1>not admin</h1>}
         />
           <Route
           path={`/myaccount/users/editusers/:id`}
