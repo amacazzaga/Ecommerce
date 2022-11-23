@@ -8,6 +8,7 @@ const UsersTable = ({ email, name, lastName, age, id, rol, }) => {
           <td className="col-3">{name}</td>
           <td className="col-3">{lastName}</td>
           <td className="col-1">{rol}</td>
+          <td className="col-1"></td>
           <td className="col-1">
             <Link to ={`/myaccount/users/editusers/${id}`}>
             <button class="btn btn-success" type="button">

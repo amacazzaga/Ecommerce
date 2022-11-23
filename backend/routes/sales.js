@@ -11,6 +11,7 @@ const { authToken } = require(`../middlewares/tokenMiddleware`);
 const { rolAdmin } = require(`../middlewares/rolAdminMiddleware`);
 ///ROUTES//
 router.get("/",authToken,rolAdmin, getSales); /*user admin*/
+router.get("/:idUser",authToken,rolAdmin,getPurchase)/*user admin*/
 router.post("/", createSales); /*system*/
 router.get("/:id",authToken,rolAdmin, getSale); /*user admin*/
 router.get("/myshopping/:idUser", getPurchase); /*user client*/

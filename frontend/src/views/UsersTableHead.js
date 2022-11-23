@@ -9,6 +9,7 @@ const UsersTableHead = () => {
           <th className="col-3">Name</th>
           <th className="col-3">LastName</th>
           <th className="col-1">Rol</th>
+          <th className="col-1">Sales</th>
           <th className="col-1">Edit</th>
           
         </tr>
