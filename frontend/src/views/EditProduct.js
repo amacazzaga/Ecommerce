@@ -17,8 +17,12 @@ const EditProduct = () => {
   const token = cookie.token;
   const { id } = useParams();
   const getProduct = async () => {
-    const resp = await axios.get(`http://localhost:4000/product/${id}`);
-    setProduct(resp.data);
+    const resp = await axios.get(`http://localhost:4000/product/${id}`).then((resp)=>{
+      console.log(resp.data)
+      setProduct(resp.data);
+      console.log(product)      
+    });
+   
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +38,8 @@ const EditProduct = () => {
         },
         { headers: { Authorization: token } }
       );
-      console.log(resp);
+      console.log(resp)
+      console.log(id);
       setError(
         `El Siguiente Producto Se Ha Editado Correctamente : ${resp.data.name}`
       );
@@ -45,8 +50,8 @@ const EditProduct = () => {
   };
 
   useEffect(() => {
-    console.log(product);
     getProduct();
+    console.log(product);
   }, []);
 
   return (

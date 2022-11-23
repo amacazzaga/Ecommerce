@@ -15,7 +15,7 @@ const UserPurchase = () => {
             headers: { Authorization: token },
           })
           .then((resp) => {
-           console.log(resp)
+           console.log(resp.data)
           })
           .catch((err) => {
             console.log(err);

@@ -51,7 +51,7 @@ const updateProduct = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
    return res.status(400).json(`not a valid id`);
   }
-  const product = await Product.findOneAndUpdate({id},req.body);
+  const product = await Product.findByIdAndUpdate(id,req.body);
   if (!product) {
    return res.status(404).json(`no such product`);
   }

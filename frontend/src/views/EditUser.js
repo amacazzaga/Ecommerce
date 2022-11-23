@@ -15,7 +15,7 @@ const EditUser = () => {
   const [cookie] = useCookies();
   const token = cookie.token;
 
-  const getUsers = async () => {
+  const getUser = async () => {
     const resp = await axios
       .get(`http://localhost:4000/user/${id}`, {
         headers: { Authorization: token },
@@ -40,10 +40,10 @@ const EditUser = () => {
         },
         { headers: { Authorization: token } }
       );
-      setMessage(`El Usuario : ${user.name} , Se Ha Actualizado`)
+      setMessage(`El Usuario : ${user.name} , Se Ha Actualizado`);
       console.log(resp);
     } catch (error) {
-      setMessage(`El Usuario : ${user.name} , No Se Ha Podido Actualizar`)
+      setMessage(`El Usuario : ${user.name} , No Se Ha Podido Actualizar`);
       console.log(error);
     }
   };
@@ -64,7 +64,7 @@ const EditUser = () => {
   };
 
   useEffect(() => {
-    getUsers();
+    getUser();
   }, []);
 
   return (
