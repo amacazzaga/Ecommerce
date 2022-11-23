@@ -43,6 +43,7 @@ const EditUser = () => {
       setMessage(`El Usuario : ${user.name} , Se Ha Actualizado`)
       console.log(resp);
     } catch (error) {
+      setMessage(`El Usuario : ${user.name} , No Se Ha Podido Actualizar`)
       console.log(error);
     }
   };
