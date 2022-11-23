@@ -56,7 +56,7 @@ const EditUser = () => {
 
   useEffect(() => {
     getUsers();
-  }, [user]);
+  }, []);
 
   return (
     <LayoutLoggedAdm>
