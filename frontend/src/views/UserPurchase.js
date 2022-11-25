@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import UserPurchaseTableHead from "./UserPurchaseTableHead";
+import UserPurchaseTable from "./UserPurchaseTable";
 
 const UserPurchase = () => {
   const [cookie] = useCookies();
-  const [user,setUser]=useState()
-  const [sales, setSales] = useState();
+  const [user, setUser] = useState({});
+  const [sales, setSales] = useState([]);
   const token = cookie.token;
   const { id } = useParams();
 
@@ -49,6 +50,14 @@ const UserPurchase = () => {
   return (
     <LayoutLoggedAdm>
       <UserPurchaseTableHead />
+      {sales.map((m) => (
+        <UserPurchaseTable userEmail={user.email}
+        key={m._id}
+        amount ={m.amount}  
+        idProduct={m.idProduct}
+        finalPrice ={m.finalPrice}
+        />
+      ))}
     </LayoutLoggedAdm>
   );
 };
