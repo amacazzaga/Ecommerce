@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
+import UserPurchaseTableHead from "./UserPurchaseTableHead";
 
 const UserPurchase = () => {
   const [cookie] = useCookies();
@@ -47,7 +48,7 @@ const UserPurchase = () => {
 
   return (
     <LayoutLoggedAdm>
-      <div>{id}</div>
+      <UserPurchaseTableHead />
     </LayoutLoggedAdm>
   );
 };
