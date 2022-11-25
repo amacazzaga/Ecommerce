@@ -56,6 +56,7 @@ const UserPurchase = () => {
         amount ={m.amount}  
         idProduct={m.idProduct}
         finalPrice ={m.finalPrice}
+        date={m.date}
         />
       ))}
     </LayoutLoggedAdm>

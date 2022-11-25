@@ -54,11 +54,6 @@ const NavbarLoggedAdm = () => {
                 </a>
               </li>
               </Link>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">
-                  Sales
-                </a>
-              </li>
             </ul>
             <div class="d-flex">
               <div class="dropdown">
