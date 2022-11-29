@@ -8,9 +8,7 @@ const getUsers = async (req, res) => {
   try {
     const page = req.query.page
     const limit =req.query.limit
-    console.log("page",page)
-    console.log("limit",limit)
-    const user = await User.find().limit(limit);
+    const user = await User.find().limit(limit).skip(page);
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ mss: "error" });
