@@ -7,8 +7,9 @@ import FormPostProduct from "./FormPostProduct";
 
 const AdminBoardHome = () => {
   const [products, setProducts] = useState([]);
+  const [pagination,setPagination]=useState(0)
   const fetchProducts = () => {
-    axios.get("http://localhost:4000/product").then((response) => {
+    axios.get(`http://localhost:4000/product?page=${pagination}&limit=4`).then((response) => {
       setProducts(response.data);
     });
   };
@@ -30,6 +31,37 @@ const AdminBoardHome = () => {
             category={m.category}
           />
         ))}
+         <div className="container-xxl mt-2">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"  >
+            <button class="page-link" value={pagination-1}  onClick={(e)=>setPagination(e.target.value)} >
+              Previous
+            </button>
+          </li>
+          <li class="page-item" >
+            <button class="page-link" value="0" onClick={(e)=>setPagination(e.target.value)} >
+              1
+            </button>
+          </li>
+          <li class="page-item">
+            <button class="page-link" value="1" onClick={(e)=>setPagination(e.target.value)} >
+              2
+            </button>
+          </li>
+          <li class="page-item">
+            <button class="page-link" value="2" onClick={(e)=>setPagination(e.target.value)} >
+              3
+            </button>
+          </li>
+          <li class="page-item">
+            <button class="page-link" value={pagination} onClick={(e)=>setPagination(e.target.value,console.log(pagination))}  >
+              Next
+            </button >
+          </li>
+        </ul>
+      </nav>
+      </div>
       </LayoutLoggedAdm>
     </div>
   );

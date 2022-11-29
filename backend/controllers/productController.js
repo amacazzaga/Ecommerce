@@ -4,7 +4,9 @@ const mongoose = require(`mongoose`);
 //get all products//
 const getProducts = async (req, res) => {
   try {
-    const product = await Product.find();
+    const page = req.query.page
+    const limit =req.query.limit
+    const product = await Product.find().limit(limit).skip(page);
     res.status(200).json(product);
   } catch (err) {
     res.status(400).json({ mss: "error" });
