@@ -35,8 +35,7 @@ const EditImage = () => {
       });
   };
   //
-  useEffect(() => {
-    
+  useEffect(() => {   
     getProduct();
   }, []);
 

@@ -11,7 +11,7 @@ const AdminBoardUsers = () => {
   const [users, setUsers] = useState([]);
   const token = cookie.token;
   const getUsers = async () => {
-    const resp = await axios.get(`http://localhost:4000/user`, {
+    const resp = await axios.get(`http://localhost:4000/user/?page=1&limit=5`, {
       headers: { Authorization: token },
     });
     setUsers(resp.data);

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 const NavbarLogged = () => {
-  const [cookie,setCookie]=useCookies()
+  const [cookie, setCookie] = useCookies();
   return (
     <div>
       <nav class="navbar navbarupcolor">
@@ -47,46 +47,12 @@ const NavbarLogged = () => {
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/">
-                  Link
+                  My Shopping
                 </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="/"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a class="dropdown-item" href="/">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="/">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="/">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link disabled"
-                  href="/"
-                  tabindex="-1"
-                  aria-disabled="true"
-                >
-                  Disabled
+                <a class="nav-link" href="/">
+                  My Profile
                 </a>
               </li>
             </ul>
@@ -101,7 +67,10 @@ const NavbarLogged = () => {
                 >
                   Account
                 </button>
-                <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                <ul
+                  class="dropdown-menu "
+                  aria-labelledby="dropdownMenuButton1"
+                >
                   <Link to="/myaccount">
                     <li>
                       <a class="dropdown-item" href="/">
@@ -109,7 +78,11 @@ const NavbarLogged = () => {
                       </a>
                     </li>
                   </Link>
-                  <li onClick={()=>{setCookie("token","")}}>
+                  <li
+                    onClick={() => {
+                      setCookie("token", "");
+                    }}
+                  >
                     <a class="dropdown-item" href="/">
                       LogOut
                     </a>
