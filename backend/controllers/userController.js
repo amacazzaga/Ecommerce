@@ -6,12 +6,14 @@ const jwt = require(`jsonwebtoken`);
 //get all users//
 const getUsers = async (req, res) => {
   try {
+    //pagination
     const page = req.query.page;
     const usersPerPage = 4;
     const user = await User.find()
-      .sort({ email: 1})
-      .skip(page*usersPerPage)
-      .limit(usersPerPage); //sort?
+      .sort({ email: 1 })
+      .skip(page * usersPerPage)
+      .limit(usersPerPage);
+    //
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ mss: "error" });

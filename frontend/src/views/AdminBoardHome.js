@@ -10,14 +10,14 @@ const AdminBoardHome = () => {
   const [pagination, setPagination] = useState(0);
   const fetchProducts = () => {
     axios
-      .get(`http://localhost:4000/product?page=${pagination}&limit=4`)
+      .get(`http://localhost:4000/product?page=${pagination}`)
       .then((response) => {
         setProducts(response.data);
       });
   };
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [pagination]);
 
   return (
     <div>

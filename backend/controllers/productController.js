@@ -4,9 +4,14 @@ const mongoose = require(`mongoose`);
 //get all products//
 const getProducts = async (req, res) => {
   try {
-    const page = req.query.page
-    const limit =req.query.limit
-    const product = await Product.find().limit(limit).skip(page);
+    //pagination
+    const page = req.query.page;
+    const productsPerPage = 15;
+    const product = await Product.find()
+      .sort({ name: 1 })
+      .skip(page * productsPerPage)
+      .limit(productsPerPage);
+      //
     res.status(200).json(product);
   } catch (err) {
     res.status(400).json({ mss: "error" });
@@ -14,24 +19,31 @@ const getProducts = async (req, res) => {
 };
 //create new product//
 const createProduct = async (req, res) => {
-  const { name,image,price,description,amount,category } = req.body; //destructuring
+  const { name, image, price, description, amount, category } = req.body; //destructuring
   try {
-    const product = await Product.create({ name,image,price,description,amount,category});
+    const product = await Product.create({
+      name,
+      image,
+      price,
+      description,
+      amount,
+      category,
+    });
     res.status(201).json(product);
   } catch (err) {
     res.status(400).json({ mss: "error" });
   }
 };
-// funcion de stock, una tabla nueva, con id de producto y cantidad// 
+// funcion de stock, una tabla nueva, con id de producto y cantidad//
 //get a single product//
 const getProduct = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(400).json(`not a valid id`);
+    return res.status(400).json(`not a valid id`);
   }
   const product = await Product.findById(id);
   if (!product) {
-   return res.status(404).json(`no such product`);
+    return res.status(404).json(`no such product`);
   }
   res.status(200).json(product);
 };
@@ -39,11 +51,11 @@ const getProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(400).json(`not a valid id`);
+    return res.status(400).json(`not a valid id`);
   }
   const product = await Product.findByIdAndDelete(id);
   if (!product) {
-   return res.status(404).json(`no such product`);
+    return res.status(404).json(`no such product`);
   }
   res.status(200).json(product);
 };
@@ -51,11 +63,11 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-   return res.status(400).json(`not a valid id`);
+    return res.status(400).json(`not a valid id`);
   }
-  const product = await Product.findByIdAndUpdate(id,req.body);
+  const product = await Product.findByIdAndUpdate(id, req.body);
   if (!product) {
-   return res.status(404).json(`no such product`);
+    return res.status(404).json(`no such product`);
   }
   res.status(200).json(product);
 };
@@ -65,5 +77,5 @@ module.exports = {
   createProduct,
   getProduct,
   deleteProduct,
-  updateProduct
+  updateProduct,
 };
