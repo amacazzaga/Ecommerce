@@ -12,7 +12,7 @@ const AdminBoardUsers = () => {
   const [pagination,setPagination]=useState(0)
   const token = cookie.token;
   const getUsers = async () => {
-    const resp = await axios.get(`http://localhost:4000/user/?page=${pagination}&limit=4`, {
+    const resp = await axios.get(`http://localhost:4000/user/?page=${pagination}`, {
       headers: { Authorization: token },
     });
     setUsers(resp.data);
@@ -58,7 +58,7 @@ const AdminBoardUsers = () => {
             </button>
           </li>
           <li class="page-item">
-            <button class="page-link" value={pagination} onClick={(e)=>setPagination(e.target.value,console.log(pagination))}  >
+            <button class="page-link"  onClick={()=>setPagination((pagination)=>pagination+1)}  >
               Next
             </button >
           </li>
