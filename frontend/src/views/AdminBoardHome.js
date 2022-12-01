@@ -42,36 +42,27 @@ const AdminBoardHome = () => {
               <li class="page-item">
                 <button
                   class="page-link"
-                  value={pagination - 1}
-                  onClick={(e) => setPagination(e.target.value)}
+                  onClick={() =>
+                    setPagination(
+                      pagination < 0 ? pagination === 0 : pagination - 1
+                    )
+                  }
                 >
                   Previous
                 </button>
               </li>
               <li class="page-item">
-                <button
-                  class="page-link"
-                  value="0"
-                  onClick={(e) => setPagination(e.target.value)}
-                >
+                <button class="page-link" onClick={() => setPagination(0)}>
                   1
                 </button>
               </li>
               <li class="page-item">
-                <button
-                  class="page-link"
-                  value="1"
-                  onClick={(e) => setPagination(e.target.value)}
-                >
+                <button class="page-link" onClick={() => setPagination(1)}>
                   2
                 </button>
               </li>
               <li class="page-item">
-                <button
-                  class="page-link"
-                  value="2"
-                  onClick={(e) => setPagination(e.target.value)}
-                >
+                <button class="page-link" onClick={() => setPagination(2)}>
                   3
                 </button>
               </li>
