@@ -6,6 +6,7 @@ import { useCookies } from "react-cookie";
 import LayoutLoggedAdm from "../components/LayoutLoggedAdm";
 
 const EditImage = () => {
+  const cloudFrontBaseUrl="https://d3tlwzcpumxs2b.cloudfront.net"
   const [cookie] = useCookies();
   const [file, setFile] = useState();
   const { id } = useParams();
@@ -41,7 +42,7 @@ const EditImage = () => {
 
   return (
     <LayoutLoggedAdm>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>      
         <input
           onChange={(e) => setFile(e.target.files[0])}
           type="file"

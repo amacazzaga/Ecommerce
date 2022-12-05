@@ -1,6 +1,7 @@
 import React from 'react'
 import LayoutLogged from '../components/LayoutLogged'
 import axios from "axios"
+
 import {useCookies} from"react-cookie"
 import { useEffect } from 'react'
 

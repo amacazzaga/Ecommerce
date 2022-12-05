@@ -67,6 +67,16 @@ const AdminBoardHome = () => {
                 </button>
               </li>
               <li class="page-item">
+                <button class="page-link" onClick={() => setPagination(3)}>
+                  4
+                </button>
+              </li>
+              <li class="page-item">
+                <button class="page-link" onClick={() => setPagination(4)}>
+                  5
+                </button>
+              </li>
+              <li class="page-item">
                 <button class="page-link" value="">
                   Next
                 </button>
