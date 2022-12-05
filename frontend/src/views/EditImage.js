@@ -6,11 +6,12 @@ import { useCookies } from "react-cookie";
 import LayoutLoggedAdm from "../components/LayoutLoggedAdm";
 
 const EditImage = () => {
-  const cloudFrontBaseUrl="https://d3tlwzcpumxs2b.cloudfront.net"
+  const cloudFrontBaseUrl="https://d3tlwzcpumxs2b.cloudfront.net/"
   const [cookie] = useCookies();
   const [file, setFile] = useState();
   const { id } = useParams();
   const token = cookie.token;
+  const [image,setImage]= useState()
   //
   const getProduct = async () => {
     const resp = await axios.get(`http://localhost:4000/product/${id}`);
@@ -29,7 +30,8 @@ const EditImage = () => {
         },
       })
       .then((resp) => {
-        console.log(resp);
+        console.log(resp.data.input.Key);
+        setImage(resp.data.input.Key)
       })
       .catch((err) => {
         console.log(err);
@@ -42,6 +44,8 @@ const EditImage = () => {
 
   return (
     <LayoutLoggedAdm>
+      <div>
+        <img src={cloudFrontBaseUrl+image}></img>
       <form onSubmit={onSubmit}>      
         <input
           onChange={(e) => setFile(e.target.files[0])}
@@ -50,6 +54,7 @@ const EditImage = () => {
         ></input>
         <button type="submit">Submit</button>
       </form>
+      </div>
     </LayoutLoggedAdm>
   );
 };
