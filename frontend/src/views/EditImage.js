@@ -27,7 +27,7 @@ const EditImage = () => {
     <LayoutLoggedAdm>
       <div className="container-xl"></div>
       <CardImage />
-      <FormSubmitImage imageArray={imageArray} />
+      <FormSubmitImage getProduct={getProduct} imageArray={imageArray} />
     </LayoutLoggedAdm>
   );
 };

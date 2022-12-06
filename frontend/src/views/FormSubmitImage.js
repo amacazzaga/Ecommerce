@@ -3,11 +3,11 @@ import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { useEffect } from "react";
 
 const FormSubmitImage = ({ imageArray }) => {
   const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
   const [file, setFile] = useState();
-  const [imageName, setImageName] = useState(imageArray);
   const [cookie] = useCookies();
   const { id } = useParams();
   const token = cookie.token;
@@ -17,7 +17,7 @@ const FormSubmitImage = ({ imageArray }) => {
       .patch(
         `http://localhost:4000/product/${id}`,
         {
-          imageName: imageName,
+          imageName: imageArray,
         },
         {
           headers: { Authorization: token },
@@ -44,13 +44,17 @@ const FormSubmitImage = ({ imageArray }) => {
       })
       .then((resp) => {
         console.log(resp.data.input.Key);
-        setImageName(imageName.push(resp.data.input.Key));
+        imageArray.push(resp.data.input.Key);
         patchImageProduct();
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  useEffect(() => {
+   
+  }, [])
+  
   return (
     <form onSubmit={onSubmit}>
       <input
