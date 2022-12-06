@@ -26,7 +26,10 @@ const EditImage = () => {
       {imageProductArray.map((m) => (
         <CardImage imageName={m} />
       ))}
-      <FormSubmitImage imageProductArray={imageProductArray} />
+      <FormSubmitImage
+        imageProductArray={imageProductArray}
+        getProduct={getProduct} //this renders image once is patched succes
+      />
     </LayoutLoggedAdm>
   );
 };

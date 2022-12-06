@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-const FormSubmitImage = ({ imageProductArray }) => {
+const FormSubmitImage = ({ imageProductArray,getProduct }) => {
   const [file, setFile] = useState();
   const [cookie] = useCookies();
   const { id } = useParams();
@@ -23,6 +23,7 @@ const FormSubmitImage = ({ imageProductArray }) => {
       )
       .then((resp) => {
         console.log(resp);
+        getProduct()
       })
       .catch((err) => {
         console.log(err);

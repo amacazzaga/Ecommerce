@@ -1,5 +1,6 @@
 require(`dotenv`).config();
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const sharp = require(`sharp`)
 
 // FROM .ENV
 const bucketName = process.env.BUCKET_NAME;
@@ -16,11 +17,12 @@ const s3 = new S3Client({
 });
 //
 const postImage = async (req, res) => {
+ const buffer= await sharp(req.file.buffer).resize({height:1920,width:1000,fit:"contain"}).toBuffer()
   try {
     const params = {
       Bucket: bucketName,
       Key: req.file.originalname,
-      Body: req.file.buffer,
+      Body: buffer,
       ContentType: req.file.mimetype,
     };
     const command = new PutObjectCommand(params);
