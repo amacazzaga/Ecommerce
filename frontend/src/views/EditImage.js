@@ -22,9 +22,10 @@ const EditImage = () => {
 
   return (
     <LayoutLoggedAdm>
-      <div className="container-xl"></div>
       {imageProductArray.map((m) => (
-        <CardImage imageName={m} />
+        <div className="container-xl ">
+          <CardImage imageName={m} />
+        </div>
       ))}
       <FormSubmitImage
         imageProductArray={imageProductArray}
