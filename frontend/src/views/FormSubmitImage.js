@@ -52,14 +52,17 @@ const FormSubmitImage = ({ imageProductArray,getProduct }) => {
   };
 
   return (
+    <div className="container-xxl">
     <form onSubmit={onSubmit}>
       <input
         onChange={(e) => setFile(e.target.files[0])}
+        className="m-1"
         type="file"
         accept="image/*"
       ></input>
-      <button type="submit">Submit</button>
+      <button className="btn btn-primary m-1" type="submit">Submit</button>
     </form>
+    </div>
   );
 };
 
