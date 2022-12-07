@@ -17,7 +17,7 @@ const s3 = new S3Client({
 });
 //
 const postImage = async (req, res) => {
- const buffer= await sharp(req.file.buffer).resize({height:1920,width:1000,fit:"contain"}).toBuffer()
+ const buffer= await sharp(req.file.buffer).resize({height:1920,width:1920,fit:"contain"}).toBuffer()
   try {
     const params = {
       Bucket: bucketName,

@@ -22,11 +22,9 @@ const EditImage = () => {
 
   return (
     <LayoutLoggedAdm>
-      {imageProductArray.map((m) => (
-        <div className="container-xl ">
-          <CardImage imageName={m} />
-        </div>
-      ))}
+      <div className="container-xl ">
+        <CardImage imageProductArray={imageProductArray} />
+      </div>
       <FormSubmitImage
         imageProductArray={imageProductArray}
         getProduct={getProduct} //this renders image once is patched succes
