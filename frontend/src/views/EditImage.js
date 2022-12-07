@@ -22,13 +22,13 @@ const EditImage = () => {
 
   return (
     <LayoutLoggedAdm>
-      <div className="container-xl ">
+      <div className="container-xxl ">
         <CardImage imageProductArray={imageProductArray} />
+        <FormSubmitImage
+          imageProductArray={imageProductArray}
+          getProduct={getProduct} //this renders image once is patched succes
+        />
       </div>
-      <FormSubmitImage
-        imageProductArray={imageProductArray}
-        getProduct={getProduct} //this renders image once is patched succes
-      />
     </LayoutLoggedAdm>
   );
 };

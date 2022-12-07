@@ -122,13 +122,6 @@ const EditProduct = () => {
                     onChange={(e) => setEditDescription(e.target.value)}
                   ></textarea>
                   {/*image*/}
-                  <div class="mb-3">
-                    <input
-                      class="form-control mt-3"
-                      type="file"
-                      id="formFile"
-                    ></input>
-                  </div>
                 </div>
                 {/*amount*/}
                 <div class="mb-3 row">
