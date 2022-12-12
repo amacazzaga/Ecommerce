@@ -23,7 +23,7 @@ const EditImage = () => {
   return (
     <LayoutLoggedAdm>
       <div className="container-xl justify-content-center ">
-        <CardImage imageProductArray={imageProductArray} />
+        <CardImage imageProductArray={imageProductArray} getProduct={getProduct} />
         <FormSubmitImage
           imageProductArray={imageProductArray}
           getProduct={getProduct} //this renders image once is patched succes
