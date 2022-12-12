@@ -20,72 +20,70 @@ const AdminBoardHome = () => {
   }, [pagination]);
 
   return (
-    <div>
-      <LayoutLoggedAdm>
-        <FormPostProduct reloadProducts={fetchProducts} />
-        <ProductsTableHead />
-        {products.map((m) => (
-          <ProductsTable
-            reloadProducts={fetchProducts}
-            key={m._id}
-            id={m._id}
-            name={m.name}
-            price={m.price}
-            description={m.description}
-            image={m.image}
-            category={m.category}
-          />
-        ))}
-        <div className="container-xxl mt-2">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item">
-                <button
-                  class="page-link"
-                  onClick={() =>
-                    setPagination(
-                      pagination < 0 ? pagination === 0 : pagination - 1
-                    )
-                  }
-                >
-                  Previous
-                </button>
-              </li>
-              <li class="page-item">
-                <button class="page-link" onClick={() => setPagination(0)}>
-                  1
-                </button>
-              </li>
-              <li class="page-item">
-                <button class="page-link" onClick={() => setPagination(1)}>
-                  2
-                </button>
-              </li>
-              <li class="page-item">
-                <button class="page-link" onClick={() => setPagination(2)}>
-                  3
-                </button>
-              </li>
-              <li class="page-item">
-                <button class="page-link" onClick={() => setPagination(3)}>
-                  4
-                </button>
-              </li>
-              <li class="page-item">
-                <button class="page-link" onClick={() => setPagination(4)}>
-                  5
-                </button>
-              </li>
-              <li class="page-item">
-                <button class="page-link" value="">
-                  Next
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </LayoutLoggedAdm>
-    </div>
+    <LayoutLoggedAdm>
+      <FormPostProduct reloadProducts={fetchProducts} />
+      <ProductsTableHead />
+      {products.map((m) => (
+        <ProductsTable
+          reloadProducts={fetchProducts}
+          key={m._id}
+          id={m._id}
+          name={m.name}
+          price={m.price}
+          description={m.description}
+          image={m.image}
+          category={m.category}
+        />
+      ))}
+      <div className="container-xxl">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <button
+                class="page-link"
+                onClick={() =>
+                  setPagination(
+                    pagination < 0 ? pagination === 0 : pagination - 1
+                  )
+                }
+              >
+                Previous
+              </button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" onClick={() => setPagination(0)}>
+                1
+              </button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" onClick={() => setPagination(1)}>
+                2
+              </button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" onClick={() => setPagination(2)}>
+                3
+              </button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" onClick={() => setPagination(3)}>
+                4
+              </button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" onClick={() => setPagination(4)}>
+                5
+              </button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" value="">
+                Next
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </LayoutLoggedAdm>
   );
 };
 

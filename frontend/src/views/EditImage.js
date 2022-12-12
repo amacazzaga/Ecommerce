@@ -22,7 +22,7 @@ const EditImage = () => {
 
   return (
     <LayoutLoggedAdm>
-      <div className="container-xxl ">
+      <div className="container-xl justify-content-center ">
         <CardImage imageProductArray={imageProductArray} />
         <FormSubmitImage
           imageProductArray={imageProductArray}
