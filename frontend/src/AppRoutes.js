@@ -12,7 +12,7 @@ import UserBoard from "./views/UserBoard";
 import UserPurchase from "./views/UserPurchase";
 
 
-function AppRoutes({ user }) {
+function AppRoutes({ user,userId }) {
   return (
     <BrowserRouter>
       <Routes>
@@ -26,7 +26,7 @@ function AppRoutes({ user }) {
         <Route path="/signup" element={<SingUpForm />} />
         <Route
           path="/myaccount"
-          element={user ? <AdminBoardHome /> : <UserBoard />}
+          element={user ? <AdminBoardHome /> : <UserBoard userId={userId} />}
         />
         <Route
           path={`/myaccount/editproduct/:id`}
