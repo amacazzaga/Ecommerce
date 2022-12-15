@@ -10,6 +10,10 @@
 .navbardowncoloradmboard{
     background-color: #a8dadc  
 }
+a:-webkit-any-link {
+    text-decoration: none;
+    color: inherit;
+  } 
 .account-btn{
     border: solid;
     border-radius: 10px;
