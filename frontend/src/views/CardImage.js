@@ -32,7 +32,7 @@ const CardImage = ({ imageProductArray, getProduct }) => {
       });
   };
   //
-  const deleteImage = async () => {
+  const deleteImage = () => {
     const copy = [].concat(imageProductArray);
     copy.splice([page], 1);
     setRemoved(copy);
@@ -41,7 +41,6 @@ const CardImage = ({ imageProductArray, getProduct }) => {
     patchImageProduct();
     getProduct();
   }, [removed]);
-
   //
   return (
     <div class="card align-items-center border border-5 m-1  ">
@@ -56,7 +55,6 @@ const CardImage = ({ imageProductArray, getProduct }) => {
         width="400"
         alt="..."
       />
-
       <div class="card-body">
         <h5 class="card-title">{imageProductArray[page]}</h5>
       </div>
