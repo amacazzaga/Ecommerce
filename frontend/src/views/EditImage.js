@@ -7,12 +7,14 @@ import CardImage from "./CardImage";
 import FormSubmitImage from "./FormSubmitImage";
 
 const EditImage = () => {
+  const [productName, setProductName] = useState();
   const { id } = useParams();
   const [imageProductArray, setImageProductArray] = useState([]);
   //////
   const getProduct = async () => {
     const resp = await axios.get(`http://localhost:4000/product/${id}`);
     console.log(resp);
+    setProductName(resp.data.name);
     setImageProductArray(resp.data.imageName);
   };
   ///
@@ -23,7 +25,13 @@ const EditImage = () => {
   return (
     <LayoutLoggedAdm>
       <div className="container-xl justify-content-center ">
-        <CardImage imageProductArray={imageProductArray} getProduct={getProduct} />
+        <div className="container-xl">
+          <h1> {productName}</h1>
+        </div>
+        <CardImage
+          imageProductArray={imageProductArray}
+          getProduct={getProduct}
+        />
         <FormSubmitImage
           imageProductArray={imageProductArray}
           getProduct={getProduct} //this renders image once is patched succes
