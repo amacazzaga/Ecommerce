@@ -1,3 +1,4 @@
+const User = require(`../models/userModels`);
 const Sales = require(`../models/salesModels`);
 const Product = require(`../models/productModels`);
 const mongoose = require(`mongoose`);
@@ -16,8 +17,9 @@ const createSales = async (req, res) => {
   const { idUser, idProduct, amount, finalPrice } = req.body; //destructuring
   try {
     const product = await Product.findById(idProduct);
-    if (!product) {
-      return res.status(404).json(`no such product`);
+    const user = await User.findById(idUser);
+    if (!product || !user) {
+      return res.status(404).json(`invalid product or user not found`);
     }
     const sales = await Sales.create({ idUser, idProduct, amount, finalPrice });
     res.status(201).json(sales);
