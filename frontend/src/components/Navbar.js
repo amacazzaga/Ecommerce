@@ -1,25 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div>
-      <nav class="navbar navbarupcolor">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/"></a>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            ></input>
-            <button class="btn-search" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </nav>
       <nav class="navbar navbar-expand-lg navbar-light navbardowncolor">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
@@ -45,37 +28,28 @@ const Navbar = () => {
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/signup">
-                 Sign Up!
+                  Sign Up!
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">
+                  Login
                 </a>
               </li>
             </ul>
             <div class="d-flex">
-              <div class="dropdown">
-                <button
-                  class="btn account-btn dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Account
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <Link to="/login">
-                    <li>
-                      <a class="dropdown-item" href="/">
-                        Login
-                      </a>
-                    </li>
-                  </Link>
-                  <Link to="/signup">
-                    <li>
-                      <a class="dropdown-item" href="/">
-                        Sign Up
-                      </a>
-                    </li>
-                  </Link>
-                </ul>
+              <div class="container-fluid">
+                <form class="d-flex">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn-search" type="submit">
+                    Search
+                  </button>
+                </form>
               </div>
             </div>
           </div>

@@ -11,42 +11,39 @@ import SingUpForm from "./views/SingUpForm";
 import UserBoard from "./views/UserBoard";
 import UserPurchase from "./views/UserPurchase";
 
-
-function AppRoutes({ user,userId }) {
+function AppRoutes({ userIsAdmin, userId }) {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path="/"
-          element={
-            user !== null ? <HomeLoggedIn user={user} /> : <HomeLoggedOut />
-          }
+          element={userId ? <HomeLoggedIn /> : <HomeLoggedOut />}
         />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SingUpForm />} />
         <Route
           path="/myaccount"
-          element={user ? <AdminBoardHome /> : <UserBoard userId={userId} />}
+          element={userIsAdmin ? <AdminBoardHome /> : <UserBoard />}
         />
         <Route
           path={`/myaccount/editproduct/:id`}
-          element={user ? <EditProduct /> : <h1>not admin</h1>}
+          element={userIsAdmin ? <EditProduct /> : <h1>not admin</h1>}
         />
-         <Route
+        <Route
           path={`/myaccount/editimage/:id`}
-          element={user ? <EditImage/> : <h1>not admin</h1>}
+          element={userIsAdmin ? <EditImage /> : <h1>not admin</h1>}
         />
         <Route
           path={`/myaccount/users`}
-          element={user ? <AdminBoardUsers/> : <h1>not admin</h1>}
+          element={userIsAdmin ? <AdminBoardUsers /> : <h1>not admin</h1>}
         />
-          <Route
+        <Route
           path={`/myaccount/users/editusers/:id`}
-          element={user ? <EditUser/> : <h1>not admin</h1>}
+          element={userIsAdmin ? <EditUser /> : <h1>not admin</h1>}
         />
-          <Route
+        <Route
           path={`/myaccount/users/sales/:id`}
-          element={user ? <UserPurchase/> : <h1>not admin</h1>}
+          element={userIsAdmin ? <UserPurchase /> : <h1>not admin</h1>}
         />
       </Routes>
     </BrowserRouter>

@@ -5,20 +5,20 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [cookie] = useCookies();
-  const [user, setUser] = useState(null);
+  const [userIsAdmin, setUserIsAdmin] = useState(null);
   const [userId,setUserId]=useState()
   const token = cookie.token;
   // set the user state depending on the token send backend//
   useEffect(() => {
     if (token) {
       const decoded = jwt_decode(token);
-      setUser(decoded.isUserAdmin);
+      setUserIsAdmin(decoded.isUserAdmin);
       setUserId(decoded.id)
-    } else setUser(null);
+    } else setUserIsAdmin(null);
   }, [token]);
   return (
     <CookiesProvider>
-      <AppRoutes user={user} userId={userId} />
+      <AppRoutes userIsAdmin={userIsAdmin} userId={userId} />
     </CookiesProvider>
   );
 }
