@@ -54,7 +54,7 @@ const UserPurchase = () => {
         <UserPurchaseTable userEmail={user.email}
         key={m._id}
         amount ={m.amount}  
-        idProduct={m.idProduct}
+        idSale={m._id}
         finalPrice ={m.finalPrice}
         date={m.date}
         />
