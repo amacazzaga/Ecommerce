@@ -14,14 +14,20 @@ const getSales = async (req, res) => {
 };
 //create new sales//
 const createSales = async (req, res) => {
-  const { idUser, idProduct, amount, finalPrice } = req.body; //destructuring
+  const { idUser, details } = req.body; //destructuring
   try {
-    const product = await Product.findById(idProduct);
+    const detailsMap = details.map((d) => {
+      return Product.findById(d.idProduct);
+    });
+    const productsResult = await Promise.all(detailsMap);
+
     const user = await User.findById(idUser);
-    if (!product || !user) {
-      return res.status(404).json(`invalid product or user not found`);
+    console.log("productsResult",productsResult)
+    if (productsResult.some(p=>p==null) || !user) {
+      return res.status(404).json(`invalid product or user not found`); 
     }
-    const sales = await Sales.create({ idUser, idProduct, amount, finalPrice });
+
+    const sales = await Sales.create({ idUser, details });
     res.status(201).json(sales);
   } catch (err) {
     res.status(400).json({ mss: "error" });
