@@ -33,14 +33,21 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   };
   ////delete image from s3
   const deleteImageOnS3 = async () => {
-    const resp = await axios.delete("http://localhost:4000/images", {
-      headers: {
-        Authorization: token,
-      },
-      data: {
-        imageName: imageProductArray[page],
-      },
-    });
+    const resp = await axios
+      .delete("http://localhost:4000/images", {
+        headers: {
+          Authorization: token,
+        },
+        data: {
+          imageName: imageProductArray[page], //body req
+        },
+      })
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   ///////////
   //// delete from the new array//
@@ -48,7 +55,7 @@ const CardImage = ({ imageProductArray, getProduct }) => {
     const copy = [].concat(imageProductArray);
     copy.splice([page], 1);
     setRemoved(copy); //new array without the imageName removed
-    deleteImageOnS3()//this funct delete image from s3
+    deleteImageOnS3(); //this funct delete image from s3
   };
   useEffect(() => {
     patchImageProduct();
