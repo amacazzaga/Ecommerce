@@ -40,7 +40,6 @@ const postImage = async (req, res) => {
   }
 };
 const deleteImage = async (req, res) => {
-  console.log(req.body)
   try {
     const params = {
       Bucket: bucketName,
@@ -48,10 +47,13 @@ const deleteImage = async (req, res) => {
     };
     const command = new DeleteObjectCommand(params);
     await s3.send(command);
-  } catch (err) {}
+    res.status(200).json(command);
+  } catch (err) {
+    res.status(400).json({ mss: "error" });
+  }
 };
 
 module.exports = {
   postImage,
-  deleteImage
+  deleteImage,
 };

@@ -42,13 +42,13 @@ const CardImage = ({ imageProductArray, getProduct }) => {
       },
     });
   };
-
+  ///////////
   //// delete from the new array//
   const deleteImageOnArray = () => {
     const copy = [].concat(imageProductArray);
     copy.splice([page], 1);
     setRemoved(copy); //new array without the imageName removed
-    deleteImageOnS3()
+    deleteImageOnS3()//this funct delete image from s3
   };
   useEffect(() => {
     patchImageProduct();
