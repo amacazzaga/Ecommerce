@@ -20,13 +20,11 @@ const createSales = async (req, res) => {
       return Product.findById(d.idProduct);
     });
     const productsResult = await Promise.all(detailsMap);
-
     const user = await User.findById(idUser);
-    console.log("productsResult",productsResult)
-    if (productsResult.some(p=>p==null) || !user) {
-      return res.status(404).json(`invalid product or user not found`); 
-    }
-
+    console.log("productsResult", productsResult);
+    if (productsResult.some((p) => p == null) || !user) {
+      return res.status(404).json(`invalid product or user not found`);
+    }//buscar tb stock de cada producto y actualizar la tablda de stock
     const sales = await Sales.create({ idUser, details });
     res.status(201).json(sales);
   } catch (err) {

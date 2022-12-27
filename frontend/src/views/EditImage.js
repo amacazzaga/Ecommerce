@@ -15,7 +15,7 @@ const EditImage = () => {
     const resp = await axios.get(`http://localhost:4000/product/${id}`);
     console.log(resp);
     setProductName(resp.data.name);
-    setImageProductArray(resp.data.imageName);
+    setImageProductArray(resp.data.imageNameArray);
   };
   ///
   useEffect(() => {

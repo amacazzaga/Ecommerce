@@ -11,7 +11,7 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
-    imageName: {
+    imageNameArray: {
       type: Array,
       required: false /*for now*/,
     },

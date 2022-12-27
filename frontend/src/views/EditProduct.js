@@ -21,8 +21,7 @@ const EditProduct = () => {
       console.log(resp.data)
       setProduct(resp.data);
       console.log(product)      
-    });
-   
+    });   
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +47,6 @@ const EditProduct = () => {
       setError("El Producto No Se Ha Podido Editar!");
     }
   };
-
   useEffect(() => {
     getProduct();
     console.log(product);
