@@ -39,6 +39,7 @@ const postImage = async (req, res) => {
     res.status(400).json({ mss: "error" });
   }
 };
+//
 const deleteImage = async (req, res) => {
   try {
     const params = {
