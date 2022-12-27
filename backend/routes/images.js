@@ -1,7 +1,7 @@
 const express = require(`express`);
 const multer = require(`multer`);
 const router = express.Router();
-const { postImage } = require(`../controllers/imageController`);
+const { postImage,deleteImage } = require(`../controllers/imageController`);
 const { authToken } = require(`../middlewares/tokenMiddleware`);
 const { rolAdmin } = require(`../middlewares/rolAdminMiddleware`);
 //MIDDLEWARE!!!
@@ -11,5 +11,6 @@ upload.single(`image`);
 //
 
 router.post("/", upload.single(`image`), authToken, rolAdmin, postImage);
+router.delete("/",authToken,rolAdmin,deleteImage);
 
 module.exports = router;

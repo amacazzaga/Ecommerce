@@ -1,6 +1,10 @@
 require(`dotenv`).config();
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
-const sharp = require(`sharp`)
+const {
+  S3Client,
+  PutObjectCommand,
+  DeleteObjectCommand,
+} = require("@aws-sdk/client-s3");
+const sharp = require(`sharp`);
 
 // FROM .ENV
 const bucketName = process.env.BUCKET_NAME;
@@ -17,7 +21,9 @@ const s3 = new S3Client({
 });
 //
 const postImage = async (req, res) => {
- const buffer= await sharp(req.file.buffer).resize({height:1920,width:1920,fit:"contain"}).toBuffer()
+  const buffer = await sharp(req.file.buffer)
+    .resize({ height: 1920, width: 1920, fit: "contain" })
+    .toBuffer();
   try {
     const params = {
       Bucket: bucketName,
@@ -26,14 +32,26 @@ const postImage = async (req, res) => {
       ContentType: req.file.mimetype,
     };
     const command = new PutObjectCommand(params);
-    if(!command) return
+    if (!command) return;
     await s3.send(command);
     res.status(201).json(command);
   } catch (err) {
     res.status(400).json({ mss: "error" });
   }
 };
+const deleteImage = async (req, res) => {
+  console.log(req.body)
+  try {
+    const params = {
+      Bucket: bucketName,
+      Key: req.body.imageName,
+    };
+    const command = new DeleteObjectCommand(params);
+    await s3.send(command);
+  } catch (err) {}
+};
 
 module.exports = {
   postImage,
+  deleteImage
 };
