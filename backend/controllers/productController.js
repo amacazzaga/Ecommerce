@@ -11,7 +11,7 @@ const getProducts = async (req, res) => {
       .sort({ name: 1 })
       .skip(page * productsPerPage)
       .limit(productsPerPage);
-      //
+    //
     res.status(200).json(product);
   } catch (err) {
     res.status(400).json({ mss: "error" });
@@ -25,15 +25,17 @@ const createProduct = async (req, res) => {
       name,
       price,
       description,
-      amount,
+      //amount,
       category,
     });
     res.status(201).json(product);
+    console.log(product._id);
   } catch (err) {
     res.status(400).json({ mss: "error" });
   }
 };
 // funcion de stock, una tabla nueva, con id de producto y cantidad//
+
 //get a single product//
 const getProduct = async (req, res) => {
   const { id } = req.params;

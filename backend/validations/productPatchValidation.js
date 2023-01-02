@@ -5,7 +5,6 @@ const productPatchSchema = yup.object({
   category: yup.string(),
   imageNameArray: yup.array().max(5),
   price: yup.number().positive().integer(),
-  amount: yup.number().positive().integer(),
   description: yup.string(),
 });
 
