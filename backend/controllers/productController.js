@@ -1,4 +1,5 @@
 const Product = require(`../models/productModels`);
+const Stock = require("../models/stockModels");
 const mongoose = require(`mongoose`);
 
 //get all products//
@@ -25,11 +26,13 @@ const createProduct = async (req, res) => {
       name,
       price,
       description,
-      //amount,
       category,
     });
-    res.status(201).json(product);
-    console.log(product._id);
+    const stock = await Stock.create({
+      idProduct: product._id,
+      stock: amount,
+    });
+    res.status(201).json({product, stock});
   } catch (err) {
     res.status(400).json({ mss: "error" });
   }

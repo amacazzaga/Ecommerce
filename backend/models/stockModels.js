@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const stockSchema = new Schema(
   {
     idProduct: { type: mongoose.Types.ObjectId, required: true },
-    amount: { type: Number, required: true },
+    stock: { type: Number, required: true },
   },
   { timestamps: true }
 );

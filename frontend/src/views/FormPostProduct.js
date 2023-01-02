@@ -29,7 +29,7 @@ const FormPostProduct = ({ reloadProducts }) => {
       );
       console.log(resp);
       setMessage(
-        `El Siguiente Producto Se Ha Cargado Correctamente : ${resp.data.name}`
+        `El Siguiente Producto Se Ha Cargado Correctamente : ${resp.data.product.name}`
       );
       reloadProducts();
     } catch (error) {
@@ -124,7 +124,7 @@ const FormPostProduct = ({ reloadProducts }) => {
                     type="number"
                     readonly
                     class="form-control"
-                    placeholder="Amount"
+                    placeholder="Stock"
                     onChange={(e) => setAmount(e.target.value)}
                   ></input>
                 </div>
