@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useCookies } from "react-cookie";
 
 const FormPostProduct = ({ reloadProducts }) => {
@@ -115,8 +115,7 @@ const FormPostProduct = ({ reloadProducts }) => {
                     setDescription(e.target.value);
                   }}
                 ></textarea>
-              </div>
-             
+              </div>      
               {/*amount*/}
               <div class="mb-3 row">
                 <div class="col-sm-12">
@@ -124,7 +123,7 @@ const FormPostProduct = ({ reloadProducts }) => {
                     type="number"
                     readonly
                     class="form-control"
-                    placeholder="Stock"
+                    placeholder="Stock"// This is amount, but stock for user
                     onChange={(e) => setAmount(e.target.value)}
                   ></input>
                 </div>

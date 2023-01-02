@@ -128,7 +128,7 @@ const EditProduct = () => {
                       type="number"
                       readonly
                       class="form-control"
-                      placeholder={product.amount}
+                      placeholder="Entry"
                       onChange={(e) => setEditAmount(e.target.value)}
                     ></input>
                   </div>
