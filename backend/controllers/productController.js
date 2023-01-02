@@ -58,11 +58,11 @@ const deleteProduct = async (req, res) => {
     return res.status(400).json(`not a valid id`);
   }
   const product = await Product.findByIdAndDelete(id);
-  const findStock = await Stock.findOneAndDelete({idProduct:id})
+  const findStockAndDelete = await Stock.findOneAndDelete({idProduct:id})
   if (!product) {
     return res.status(404).json(`no such product`);
   }
-  res.status(200).json({product,findStock});
+  res.status(200).json(product);
 };
 //update product///
 const updateProduct = async (req, res) => {
