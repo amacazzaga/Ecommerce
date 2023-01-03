@@ -82,7 +82,7 @@ const FormPostProduct = ({ reloadProducts }) => {
               <div class="mb-3 row">
                 <div class="col-sm-12">
                   <input
-                    type="number"
+                    type="number" min="0"
                     readonly
                     class="form-control"
                     placeholder="Price"
@@ -120,7 +120,7 @@ const FormPostProduct = ({ reloadProducts }) => {
               <div class="mb-3 row">
                 <div class="col-sm-12">
                   <input
-                    type="number"
+                    type="number" min="0"
                     readonly
                     class="form-control"
                     placeholder="Stock"// This is amount, but stock for user

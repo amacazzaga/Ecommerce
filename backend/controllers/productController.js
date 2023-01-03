@@ -32,7 +32,7 @@ const createProduct = async (req, res) => {
       idProduct: product._id,
       stock: amount,
     });
-    res.status(201).json({product, stock});
+    res.status(201).json({ product, stock });
   } catch (err) {
     res.status(400).json({ mss: "error" });
   }
@@ -58,7 +58,7 @@ const deleteProduct = async (req, res) => {
     return res.status(400).json(`not a valid id`);
   }
   const product = await Product.findByIdAndDelete(id);
-  const findStockAndDelete = await Stock.findOneAndDelete({idProduct:id})
+  const findStockAndDelete = await Stock.findOneAndDelete({ idProduct: id });
   if (!product) {
     return res.status(404).json(`no such product`);
   }
@@ -71,6 +71,7 @@ const updateProduct = async (req, res) => {
     return res.status(400).json(`not a valid id`);
   }
   const product = await Product.findByIdAndUpdate(id, req.body);
+  //const stock = await.Stock.findOneAndUpdate({idProduct,amount})
   if (!product) {
     return res.status(404).json(`no such product`);
   }
