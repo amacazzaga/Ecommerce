@@ -91,7 +91,7 @@ const EditProduct = () => {
                 <div class="mb-3 row">
                   <div class="col-sm-12">
                     <input
-                      type="number"
+                      type="number" min="0"
                       readonly
                       class="form-control"
                       placeholder={product.price}
@@ -125,7 +125,7 @@ const EditProduct = () => {
                 <div class="mb-3 row">
                   <div class="col-sm-12">
                     <input
-                      type="number"
+                      type="number" min="0"
                       readonly
                       class="form-control"
                       placeholder="Entry"
