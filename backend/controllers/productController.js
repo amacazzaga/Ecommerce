@@ -37,7 +37,6 @@ const createProduct = async (req, res) => {
     res.status(400).json({ mss: "error" });
   }
 };
-// funcion de stock, una tabla nueva, con id de producto y cantidad//
 
 //get a single product//
 const getProduct = async (req, res) => {
@@ -62,20 +61,30 @@ const deleteProduct = async (req, res) => {
   if (!product) {
     return res.status(404).json(`no such product`);
   }
-  res.status(200).json(product);
+  res.status(200).json({ product, findStockAndDelete });
 };
 //update product///
 const updateProduct = async (req, res) => {
   const { id } = req.params;
+  const { name, price, description, amount, category } = req.body;
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json(`not a valid id`);
   }
-  const product = await Product.findByIdAndUpdate(id, req.body);
-  //const stock = await.Stock.findOneAndUpdate({idProduct,amount})
+  const product = await Product.findByIdAndUpdate(id, {
+    name,
+    price,
+    description,
+    amount,
+    category,
+  });
+  const stock = await Stock.findOneAndUpdate(
+    { idProduct: id },
+    { $inc: { stock: amount } }
+  );
   if (!product) {
     return res.status(404).json(`no such product`);
   }
-  res.status(200).json(product);
+  res.status(200).json({ product, stock });
 };
 
 module.exports = {
