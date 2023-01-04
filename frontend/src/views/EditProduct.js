@@ -33,7 +33,7 @@ const EditProduct = () => {
           price: editPrice,
           category: editCategory,
           description: editDescription,
-          amount: editAmount,
+          amount: editAmount,//ends up in stock table mongodb!!
         },
         { headers: { Authorization: token } }
       );
@@ -128,7 +128,7 @@ const EditProduct = () => {
                       type="number" min="0"
                       readonly
                       class="form-control"
-                      placeholder="Entry"
+                      placeholder="Entry : New Stock"
                       onChange={(e) => setEditAmount(e.target.value)}
                     ></input>
                   </div>

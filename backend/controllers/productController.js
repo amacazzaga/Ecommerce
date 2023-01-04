@@ -21,6 +21,7 @@ const getProducts = async (req, res) => {
 //create new product//
 const createProduct = async (req, res) => {
   const { name, price, description, amount, category } = req.body; //destructuring
+  if(!amount)return
   try {
     const product = await Product.create({
       name,

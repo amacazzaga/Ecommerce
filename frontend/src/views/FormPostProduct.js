@@ -123,7 +123,7 @@ const FormPostProduct = ({ reloadProducts }) => {
                     type="number" min="0"
                     readonly
                     class="form-control"
-                    placeholder="Stock"// This is amount, but stock for user
+                    placeholder="Entry : Stock"// This is amount, but stock for user
                     onChange={(e) => setAmount(e.target.value)}
                   ></input>
                 </div>
