@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
@@ -38,8 +37,6 @@ const FormPostProduct = ({ reloadProducts }) => {
     }
   };
 
-  ///////////
- 
   ////////////
   return (
     <div class="accordion-item m-2">
