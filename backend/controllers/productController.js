@@ -32,7 +32,7 @@ const createProduct = async (req, res) => {
       idProduct: product._id,
       stock: amount,
     });
-    res.status(201).json({ product, stock });
+    res.status(201).json(product);
   } catch (err) {
     res.status(400).json({ mss: "error" });
   }
@@ -61,12 +61,13 @@ const deleteProduct = async (req, res) => {
   if (!product) {
     return res.status(404).json(`no such product`);
   }
-  res.status(200).json({ product, findStockAndDelete });
+  res.status(200).json(product);
 };
 //update product///
 const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const { name, price, description, amount, category } = req.body;
+  const { name, price, description, amount, category, imageNameArray } =
+    req.body;
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json(`not a valid id`);
   }
@@ -74,17 +75,19 @@ const updateProduct = async (req, res) => {
     name,
     price,
     description,
-    amount,
     category,
+    imageNameArray,
   });
-  const stock = await Stock.findOneAndUpdate(
-    { idProduct: id },
-    { $inc: { stock: amount } }
-  );
+  if (amount !== undefined) {
+    const stock = await Stock.findOneAndUpdate(
+      { idProduct: id },
+      { $inc: { stock: amount } }
+    );
+  }
   if (!product) {
     return res.status(404).json(`no such product`);
   }
-  res.status(200).json({ product, stock });
+  res.status(200).json(product);
 };
 
 module.exports = {

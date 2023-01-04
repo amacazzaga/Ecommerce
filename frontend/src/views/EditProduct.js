@@ -40,7 +40,7 @@ const EditProduct = () => {
       console.log(resp)
       console.log(id);
       setError(
-        `El Siguiente Producto Se Ha Editado Correctamente : ${resp.data.product.name}`
+        `El Siguiente Producto Se Ha Editado Correctamente : ${resp.data.name}`
       );
     } catch (error) {
       console.log(error.response.data);

@@ -29,7 +29,7 @@ const FormPostProduct = ({ reloadProducts }) => {
       );
       console.log(resp);
       setMessage(
-        `El Siguiente Producto Se Ha Cargado Correctamente : ${resp.data.product.name}`
+        `El Siguiente Producto Se Ha Cargado Correctamente : ${resp.data.name}`
       );
       reloadProducts();
     } catch (error) {

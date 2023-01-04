@@ -13,7 +13,7 @@ const productSchema = new Schema(
     },
     imageNameArray: {
       type: Array,
-      required: false /*for now*/,
+      required: false,
     },
     price: {
       type: Number,
