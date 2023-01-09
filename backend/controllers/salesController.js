@@ -1,6 +1,7 @@
 const User = require(`../models/userModels`);
 const Sales = require(`../models/salesModels`);
 const Product = require(`../models/productModels`);
+const Stock = require("../models/stockModels");
 const mongoose = require(`mongoose`);
 
 //get all sales//
@@ -16,19 +17,29 @@ const getSales = async (req, res) => {
 const createSales = async (req, res) => {
   const { idUser, details } = req.body; //destructuring
   try {
-    const detailsMap = details.map((d) => {
-      return Product.findById(d.idProduct);
+    const detailsMap = details.map(async (d) => {
+      return Product.findById(d.idProduct).then((p) => {
+        return { product: p, amount: d.amount };
+      });
     });
     const productsResult = await Promise.all(detailsMap);
     const user = await User.findById(idUser);
-    console.log("productsResult", productsResult);
     if (productsResult.some((p) => p == null) || !user) {
       return res.status(404).json(`invalid product or user not found`);
-    }//buscar tb stock de cada producto y actualizar la tablda de stock
+    }
     const sales = await Sales.create({ idUser, details });
+    console.log("productsResult", productsResult);
+    const mapById = productsResult.map((s) => {
+      return Stock.findOneAndUpdate(
+        { idProduct: s.product._id },
+        { $inc: { stock: -s.amount } }
+      );
+    });
+    const updateStock = await Promise.all(mapById);
+    console.log(updateStock);
     res.status(201).json(sales);
   } catch (err) {
-    res.status(400).json({ mss: "error" });
+    res.status(400).json({ msg: "product or user not found: missing data" });
   }
 };
 //get a single sale//

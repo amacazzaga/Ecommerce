@@ -9,7 +9,7 @@ const getProducts = async (req, res) => {
     const page = req.query.page;
     const productsPerPage = 15;
     const product = await Product.find()
-      .sort({ name: 1 })//sort products by in the front
+      .sort({ name: 1 }) //sort products by in the front
       .skip(page * productsPerPage)
       .limit(productsPerPage);
     //
@@ -21,7 +21,6 @@ const getProducts = async (req, res) => {
 //create new product//
 const createProduct = async (req, res) => {
   const { name, price, description, amount, category } = req.body; //destructuring
-  if(!amount)return //cant create a product without stock
   try {
     const product = await Product.create({
       name,
@@ -78,12 +77,10 @@ const updateProduct = async (req, res) => {
     category,
     imageNameArray,
   });
-  if (amount !== undefined) {
-    const stock = await Stock.findOneAndUpdate(
-      { idProduct: id },
-      { $inc: { stock: amount } }
-    );
-  }
+  const stock = await Stock.findOneAndUpdate(
+    { idProduct: id },
+    { $inc: { stock: amount } }
+  );
   if (!product) {
     return res.status(404).json(`no such product`);
   }

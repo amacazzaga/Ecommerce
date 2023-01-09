@@ -15,11 +15,13 @@ const productPostSchema = require(`../validations/productPostValidation`);
 const productPatchSchema = require(`../validations/productPatchValidation`);
 const { authToken } = require(`../middlewares/tokenMiddleware`);
 const { rolAdmin } = require(`../middlewares/rolAdminMiddleware`);
+const {isValidAmount}=require(`../middlewares/amountMiddleware`)
 //ROUTES//
 router.get("/", getProducts); /*free*/
 router.post(
   "/",
   productPostAuth(productPostSchema),
+  isValidAmount,
   authToken,
   rolAdmin,
   createProduct
@@ -29,6 +31,7 @@ router.delete(`/:id`, authToken, rolAdmin, deleteProduct); /*user ,admin*/
 router.patch(
   `/:id`,
   productPatchAuth(productPatchSchema),
+  isValidAmount,
   authToken,
   rolAdmin,
   updateProduct
