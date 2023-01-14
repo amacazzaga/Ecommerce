@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 
 const CardImage = ({ imageProductArray, getProduct }) => {
   const [page, setPage] = useState(0);
-  const [removed, setRemoved] = useState();
+  const [array, setArray] = useState();
   const { id } = useParams();
   const [cookie] = useCookies();
   const token = cookie.token;
@@ -15,9 +15,9 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   const patchImageProduct = async () => {
     const resp = await axios
       .patch(
-        `http://localhost:4000/product/${id}`,
+        `http://localhost:4000/product/image/${id}`,
         {
-          imageNameArray: removed, //removed:new array
+          imageNameArray: array, 
         },
         {
           headers: { Authorization: token },
@@ -54,13 +54,13 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   const deleteImageOnArray = () => {
     const copy = [].concat(imageProductArray);
     copy.splice([page], 1);
-    setRemoved(copy); //new array without the imageName removed
+    setArray(copy); //new array without the imageName removed
     deleteImageOnS3(); //this funct delete image from s3
   };
   useEffect(() => {
     patchImageProduct();
     getProduct();
-  }, [removed]);
+  }, [array]);
   //
   return (
     <div class="card align-items-center border border-5 m-1  ">

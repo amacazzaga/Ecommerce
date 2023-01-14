@@ -13,7 +13,7 @@ const FormSubmitImage = ({ imageProductArray, getProduct }) => {
   const patchImageProduct = async () => {
     const resp = await axios
       .patch(
-        `http://localhost:4000/product/${id}`,
+        `http://localhost:4000/product/image/${id}`,
         {
           imageNameArray: imageProductArray,
         },

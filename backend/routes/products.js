@@ -6,6 +6,7 @@ const {
   getProduct,
   deleteProduct,
   updateProduct,
+  updateImageProduct,
 } = require(`../controllers/productController`);
 const {
   productPostAuth,
@@ -15,7 +16,7 @@ const productPostSchema = require(`../validations/productPostValidation`);
 const productPatchSchema = require(`../validations/productPatchValidation`);
 const { authToken } = require(`../middlewares/tokenMiddleware`);
 const { rolAdmin } = require(`../middlewares/rolAdminMiddleware`);
-const {isValidAmount}=require(`../middlewares/amountMiddleware`)
+const { isValidAmount } = require(`../middlewares/amountMiddleware`);
 //ROUTES//
 router.get("/", getProducts); /*free*/
 router.post(
@@ -36,5 +37,6 @@ router.patch(
   rolAdmin,
   updateProduct
 ); /*user,admin*/
+router.patch(`/image/:id`, authToken, rolAdmin, updateImageProduct);
 
 module.exports = router;
