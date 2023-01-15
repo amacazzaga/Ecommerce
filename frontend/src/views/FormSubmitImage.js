@@ -10,12 +10,12 @@ const FormSubmitImage = ({ imageProductArray, getProduct }) => {
   const { id } = useParams();
   const token = cookie.token;
   ////////////// patch to mongodb
-  const patchImageProduct = async () => {
+  const loadImageProduct = async () => {
     const resp = await axios
       .patch(
         `http://localhost:4000/product/image/${id}`,
         {
-          imageNameArray: imageProductArray,
+          imageNameArray: imageProductArray, //new array with the loaded image
         },
         {
           headers: { Authorization: token },
@@ -43,8 +43,8 @@ const FormSubmitImage = ({ imageProductArray, getProduct }) => {
       })
       .then((resp) => {
         console.log(resp.data.input.Key);
-        imageProductArray.push(resp.data.input.Key);
-        patchImageProduct();
+        imageProductArray.push(resp.data.input.Key); //push selected image on the array
+        loadImageProduct();
       })
       .catch((err) => {
         console.log(err);

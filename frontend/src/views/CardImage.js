@@ -12,12 +12,12 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   const token = cookie.token;
   const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
   /// patch to mongo db the new array//
-  const patchImageProduct = async () => {
+  const deleteImageProduct = async () => {
     const resp = await axios
       .patch(
         `http://localhost:4000/product/image/${id}`,
         {
-          imageNameArray: array, 
+          imageNameArray: array,
         },
         {
           headers: { Authorization: token },
@@ -52,13 +52,13 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   ///////////
   //// delete from the new array//
   const deleteImageOnArray = () => {
-    const copy = [].concat(imageProductArray);
-    copy.splice([page], 1);
-    setArray(copy); //new array without the imageName removed
+    const arrayCopy = [].concat(imageProductArray);
+    arrayCopy.splice([page], 1);
+    setArray(arrayCopy); //new array without the imageName removed
     deleteImageOnS3(); //this funct delete image from s3
   };
   useEffect(() => {
-    patchImageProduct();
+    deleteImageProduct();
     getProduct();
   }, [array]);
   //
