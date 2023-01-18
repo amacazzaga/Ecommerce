@@ -17,32 +17,30 @@ const getSales = async (req, res) => {
 const createSales = async (req, res) => {
   const { idUser, details } = req.body; //destructuring
   try {
-    const productsDetailsMap = details.map(async (d) => {
+    const detailsMap = details.map((d) => {
       return Product.findById(d.idProduct).then((p) => {
         return Stock.find({ idProduct: p._id }).then((s) => {
-          return { product: p, amount: d.amount, stock: s };
+          return { product: p, amount: d.amount, stock: s[0].stock };
         });
       });
     });
-    const productsDetailsMapResult = await Promise.all(productsDetailsMap);
+    const productsResult = await Promise.all(detailsMap);
     const user = await User.findById(idUser);
-    if (
-      productsDetailsMapResult.some((p) => p == null || p.stock < p.amount) ||
-      !user
-    ) {
-      return res.status(400).json(`invalid product or user not found, not enough stock`);
+    if (productsResult.some((p) => p == null) || !user) {
+      return res.status(404).json(`invalid product or user not found`);
     }
-   
     const sales = await Sales.create({ idUser, details });
-    productsDetailsMapResult.forEach((s) => {
+    const mapById = productsResult.map((s) => {
       return Stock.findOneAndUpdate(
         { idProduct: s.product._id },
         { $inc: { stock: -s.amount } }
       );
     });
-    res.status(201).send();
+    const updateStock = await Promise.all(mapById);
+    console.log(updateStock);
+    res.status(201).json(sales);
   } catch (err) {
-    console.log(err);
+    res.status(400).json({ msg: "product or user not found: missing data" });
   }
 };
 //get a single sale//
