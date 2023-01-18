@@ -1,14 +1,15 @@
-import React from 'react'
+import React from "react";
 import Home from "../views/Home";
-import LayoutLogged from '../components/LayoutLogged'
+import LayoutLogged from "../components/LayoutLogged";
 
- const HomeLoggedIn = () => {
+const HomeLoggedIn = () => {
   return (
     <LayoutLogged>
-    <Home/>
+      <div className="container d-flex flex-wrap">
+        <Home />
+      </div>
     </LayoutLogged>
-  )
-}
- 
+  );
+};
 
-export default HomeLoggedIn
+export default HomeLoggedIn;
