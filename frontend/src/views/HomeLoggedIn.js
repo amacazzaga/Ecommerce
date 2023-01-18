@@ -1,10 +1,11 @@
 import React from 'react'
+import Home from "../views/Home";
 import LayoutLogged from '../components/LayoutLogged'
 
  const HomeLoggedIn = () => {
   return (
     <LayoutLogged>
-    <div>logeado</div>
+    <Home/>
     </LayoutLogged>
   )
 }

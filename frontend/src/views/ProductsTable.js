@@ -6,7 +6,6 @@ const ProductsTable = ({
   name,
   price,
   description,
-  image,
   category,
   id,
   reloadProducts,
