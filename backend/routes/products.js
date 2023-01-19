@@ -16,7 +16,9 @@ const productPostSchema = require(`../validations/productPostValidation`);
 const productPatchSchema = require(`../validations/productPatchValidation`);
 const { authToken } = require(`../middlewares/tokenMiddleware`);
 const { rolAdmin } = require(`../middlewares/rolAdminMiddleware`);
-const { isValidAmount } = require(`../middlewares/amountMiddleware`);
+const {
+  isValidAmount,
+} = require(`../middlewares/amountMiddleware`);
 //ROUTES//
 router.get("/", getProducts); /*free*/
 router.post(
@@ -32,7 +34,6 @@ router.delete(`/:id`, authToken, rolAdmin, deleteProduct); /*user ,admin*/
 router.patch(
   `/:id`,
   productPatchAuth(productPatchSchema),
-  isValidAmount,
   authToken,
   rolAdmin,
   updateProduct

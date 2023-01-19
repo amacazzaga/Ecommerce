@@ -77,10 +77,13 @@ const updateProduct = async (req, res) => {
     category,
     imageNameArray,
   });
- const stock = await Stock.findOneAndUpdate(
-    { idProduct: id },
-    { $inc: { stock: amount } }
-  );
+  if (amount) {
+    const stock = await Stock.findOneAndUpdate(
+      { idProduct: id },
+      { $inc: { stock: amount } }
+    );
+  }
+
   if (!product) {
     return res.status(404).json(`no such product`);
   }
@@ -90,8 +93,7 @@ const updateProduct = async (req, res) => {
 //update imageArrayName
 const updateImageProduct = async (req, res) => {
   const { id } = req.params;
-  const { imageNameArray } =
-    req.body;
+  const { imageNameArray } = req.body;
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json(`not a valid id`);
   }
@@ -110,5 +112,5 @@ module.exports = {
   getProduct,
   deleteProduct,
   updateProduct,
-  updateImageProduct
+  updateImageProduct,
 };

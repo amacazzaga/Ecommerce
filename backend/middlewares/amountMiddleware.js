@@ -1,4 +1,4 @@
-//for create and edit a product//
+//for create a product//
 const isValidAmount = (req, res, next) => {
   const amount = req.body.amount;
   if (!amount)
@@ -13,6 +13,7 @@ const isValidAmount = (req, res, next) => {
     return res.status(401).json({ message: "error" });
   }
 };
+
 //cheque amount on the purchase on the client side
 const isValidAmountForSale = (req, res, next) => {
   const details = req.body.details;

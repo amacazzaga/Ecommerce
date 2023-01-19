@@ -4,7 +4,7 @@ const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
 const CardProduct = ({ name, imageNameArray }) => {
   return (
     <div>
-      <div class="card" >
+      <div class="card m-2" >
         <img
           src={cloudFrontBaseUrl + imageNameArray[0]}
           class="card-img-top"
@@ -16,6 +16,9 @@ const CardProduct = ({ name, imageNameArray }) => {
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
+        </div>
+        <div>
+        <button type="button" class="btn btn-primary">Primary</button>
         </div>
       </div>
     </div>
