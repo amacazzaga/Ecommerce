@@ -4,7 +4,7 @@ const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
 const CardProduct = ({ name, imageNameArray }) => {
   return (
     <div>
-      <div class="card">
+      <div class="card" >
         <img
           src={cloudFrontBaseUrl + imageNameArray[0]}
           class="card-img-top"

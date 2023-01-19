@@ -5,7 +5,7 @@ import Home from "../views/Home";
 const HomeLoggedOut = () => {
   return (
     <Layout>
-      <div className="container d-flex flex-wrap">
+      <div className="container d-flex flex-wrap ">
       <Home />
       </div>
     </Layout>

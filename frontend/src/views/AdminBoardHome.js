@@ -12,6 +12,7 @@ const AdminBoardHome = () => {
     axios
       .get(`http://localhost:4000/product?page=${pagination}`)
       .then((response) => {
+        if (response.data.length == 0) return;
         setProducts(response.data);
       });
   };
@@ -76,7 +77,11 @@ const AdminBoardHome = () => {
               </button>
             </li>
             <li class="page-item">
-              <button class="page-link" value="">
+              <button
+                class="page-link"
+                value=""
+                onClick={() => setPagination((pagination) => pagination + 1)}
+              >
                 Next
               </button>
             </li>

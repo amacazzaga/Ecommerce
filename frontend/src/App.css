@@ -1,50 +1,46 @@
-.navbarupcolor{
-    background-color: #ffecd1
+.navbarupcolor {
+  background-color: #ffecd1;
 }
-.navbardowncolor{
-    background-color: #ff7d00
+.navbardowncolor {
+  background-color: #ff7d00;
 }
-.navbarupcoloradmboard{
-    background-color: #023047;
+.navbarupcoloradmboard {
+  background-color: #023047;
 }
-.navbardowncoloradmboard{
-    background-color: #a8dadc  
+.navbardowncoloradmboard {
+  background-color: #a8dadc;
 }
 a:-webkit-any-link {
-    text-decoration: none;
-    color: inherit;
-  } 
-.account-btn{
-    border: solid;
-    border-radius: 10px;
-    background-color: #15616d;
-    color:white 
+  text-decoration: none;
+  color: inherit;
 }
-.account-btn:hover{
-    border: solid;
-    border-radius: 15px;
-    background-color: #15616d;
-    color:white 
+.account-btn {
+  border: solid;
+  border-radius: 10px;
+  background-color: #15616d;
+  color: white;
+}
+.account-btn:hover {
+  border: solid;
+  border-radius: 15px;
+  background-color: #15616d;
+  color: white;
 }
 .btn-search {
-    border: solid;
-    border-radius: 9px;
-    background-color: #15616d;
-    color:white
+  border: solid;
+  border-radius: 9px;
+  background-color: #15616d;
+  color: white;
 }
 .btn-search:hover {
-   border-radius: 14px;
+  border-radius: 14px;
 }
 li {
-    font-weight: bolder;
-    text-decoration: none;
+  font-weight: bolder;
+  text-decoration: none;
 }
 
-.footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #15616d
+.footer {
+  width: 100%;
+  background-color: #15616d;
 }
-

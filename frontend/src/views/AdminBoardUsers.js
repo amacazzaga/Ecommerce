@@ -18,6 +18,7 @@ const AdminBoardUsers = () => {
         headers: { Authorization: token },
       }
     );
+    if (resp.data.length == 0) return;
     setUsers(resp.data);
     console.log(resp.data);
   };
