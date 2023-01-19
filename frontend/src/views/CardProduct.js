@@ -18,7 +18,7 @@ const CardProduct = ({ name, imageNameArray }) => {
           </p>
         </div>
         <div>
-        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-primary m-1">Buy It!</button>
         </div>
       </div>
     </div>

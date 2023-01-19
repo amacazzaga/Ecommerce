@@ -83,7 +83,6 @@ const updateProduct = async (req, res) => {
       { $inc: { stock: amount } }
     );
   }
-
   if (!product) {
     return res.status(404).json(`no such product`);
   }
