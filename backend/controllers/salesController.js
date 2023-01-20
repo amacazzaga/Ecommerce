@@ -28,7 +28,7 @@ const createSales = async (req, res) => {
     const user = await User.findById(idUser);
     const isStockEnough = productsResult.some((p) => p.stock < p.amount);
     if (isStockEnough === true) {
-      return 
+      return res.status(400).json("no stock")
     }
 
     const sales = await Sales.create({ idUser, details });
@@ -38,6 +38,8 @@ const createSales = async (req, res) => {
         { $inc: { stock: -s.amount } }
       );
     });
+    const updateStock = await Promise.all(mapById);
+    //console.log(updateStock);
     res.status(201).json(sales);
   } catch (err) {
     res.status(400).json({ msg: "product or user not found: missing data" });
