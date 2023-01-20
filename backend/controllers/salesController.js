@@ -26,9 +26,11 @@ const createSales = async (req, res) => {
     });
     const productsResult = await Promise.all(detailsMap);
     const user = await User.findById(idUser);
-    if (productsResult.some((p) => p == null) || !user) {
-      return res.status(404).json(`invalid product or user not found`);
+    const isStockEnough = productsResult.some((p) => p.stock < p.amount);
+    if (isStockEnough === true) {
+      return 
     }
+
     const sales = await Sales.create({ idUser, details });
     const mapById = productsResult.map((s) => {
       return Stock.findOneAndUpdate(
@@ -36,8 +38,6 @@ const createSales = async (req, res) => {
         { $inc: { stock: -s.amount } }
       );
     });
-    const updateStock = await Promise.all(mapById);
-    console.log(updateStock);
     res.status(201).json(sales);
   } catch (err) {
     res.status(400).json({ msg: "product or user not found: missing data" });
