@@ -17,9 +17,9 @@ const getSales = async (req, res) => {
 const createSales = async (req, res) => {
   const { idUser, details } = req.body; //destructuring
   try {
-    const detailsMap = details.map((d) => {
-      return Product.findById(d.idProduct).then((p) => {
-        return Stock.find({ idProduct: p._id }).then((s) => {
+    const detailsMap = details.map(async(d) => {
+      return await Product.findById(d.idProduct).then(async(p) => {
+        return await Stock.find({ idProduct: p._id }).then((s) => {
           return { product: p, amount: d.amount, stock: s[0].stock };
         });
       });
@@ -28,9 +28,8 @@ const createSales = async (req, res) => {
     const user = await User.findById(idUser);
     const isStockEnough = productsResult.some((p) => p.stock < p.amount);
     if (isStockEnough === true) {
-      return res.status(400).json("no stock")
+      return res.status(400).json("no stock");
     }
-
     const sales = await Sales.create({ idUser, details });
     const mapById = productsResult.map((s) => {
       return Stock.findOneAndUpdate(
@@ -39,7 +38,6 @@ const createSales = async (req, res) => {
       );
     });
     const updateStock = await Promise.all(mapById);
-    //console.log(updateStock);
     res.status(201).json(sales);
   } catch (err) {
     res.status(400).json({ msg: "product or user not found: missing data" });

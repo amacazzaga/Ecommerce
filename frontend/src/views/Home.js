@@ -15,7 +15,7 @@ const Home = () => {
     getProducts();
   }, []);
   return products.map((m) => (
-    <div className="col-3">
+    <div className="col-xl-3 col-lg-4 col-md-6">
       <CardProduct name={m.name} imageNameArray={m.imageNameArray} id={m._id} />
     </div>
   ));
