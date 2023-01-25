@@ -10,6 +10,7 @@ import LoginForm from "./views/LoginForm";
 import SingUpForm from "./views/SingUpForm";
 import UserBoard from "./views/UserBoard";
 import UserPurchase from "./views/UserPurchase";
+import ShoppingCartLogOut from "./views/ShoppingCartLogOut";
 
 function AppRoutes({ userIsAdmin, userId }) {
   return (
@@ -44,6 +45,10 @@ function AppRoutes({ userIsAdmin, userId }) {
         <Route
           path={`/myaccount/users/sales/:id`}
           element={userIsAdmin ? <UserPurchase /> : <h1>not admin</h1>}
+        />
+         <Route
+          path={`/shoppingcart`}
+          element={<ShoppingCartLogOut/>}
         />
       </Routes>
     </BrowserRouter>
