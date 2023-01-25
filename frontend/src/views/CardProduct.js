@@ -1,6 +1,6 @@
 import React from "react";
 const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
-const productArrayToStorage = [localStorage.getItem("product")];
+const productArrayToStorage = [];
 
 const CardProduct = ({ name, imageNameArray, id }) => {
   return (
@@ -28,10 +28,12 @@ const CardProduct = ({ name, imageNameArray, id }) => {
             data-bs-placement="top"
             title="Add To Shopping Cart"
             onClick={() => {
-              if(productArrayToStorage.includes(id)
-              )return
+              if (productArrayToStorage.includes(id)) return;
               productArrayToStorage.push(id);
-              localStorage.setItem("product", productArrayToStorage);
+              localStorage.setItem(
+                "product",
+                JSON.stringify(productArrayToStorage)
+              );
             }}
           >
             <svg
