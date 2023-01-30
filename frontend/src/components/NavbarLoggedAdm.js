@@ -77,6 +77,7 @@ const NavbarLoggedAdm = () => {
                   <li
                     onClick={() => {
                       setCookie("token", "");
+                      localStorage.clear()
                     }}
                   >
                     <a class="dropdown-item" href="/">
