@@ -1,7 +1,7 @@
 const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
 const productArrayToStorage = JSON.parse(localStorage.getItem("product")) || [];
 
-const CardProduct = ({ name, imageNameArray, id }) => {
+const CardProduct = ({ name, imageNameArray, id ,price}) => {
   return (
     <div>
       <div class="card m-2">
@@ -17,7 +17,8 @@ const CardProduct = ({ name, imageNameArray, id }) => {
             bulk of the card's content.
           </p>
         </div>
-        <div className="container d-flex justify-content-between">
+        <div className="d-flex justify-content-start ps-3 fw-bolder">{"$"+price}</div>
+        <div className="container d-flex justify-content-between">          
           <button type="button" class="btn btn-primary  m-1">
             Buy It!
           </button>
