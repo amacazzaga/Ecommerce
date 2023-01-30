@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   createProduct,
   getProducts,
+  getManyProductsById,
   getProduct,
   deleteProduct,
   updateProduct,
@@ -21,6 +22,7 @@ const {
 } = require(`../middlewares/amountMiddleware`);
 //ROUTES//
 router.get("/", getProducts); /*free*/
+router.get("/many", getManyProductsById); /*free*/
 router.post(
   "/",
   productPostAuth(productPostSchema),

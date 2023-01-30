@@ -1,22 +1,26 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect } from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
-const fromLocaleStorage = localStorage.getItem("product");
-const parsed = JSON.parse(fromLocaleStorage);
 
 const ShoppingCartLogOut = () => {
-  const [arrayProduct, setArrayProducts] = useState(parsed);
+  const fromLocaleStorage = localStorage.getItem("product");
+  const parsed = JSON.parse(fromLocaleStorage);
+
+  const getProductsOnCart = async () => {
+    await axios
+      .get(`http://localhost:4000/product/many?ids=${parsed.join(",")}`)
+      .then((response) => {
+        console.log(response);
+      });
+  };
+  useEffect(() => {
+    getProductsOnCart();
+  }, []);
 
   return (
     <Layout>
-      <div>
-        {arrayProduct.forEach((id) =>
-          axios.get(`http://localhost:4000/product/${id}`).then((response) => {
-            console.log(response);
-          })
-        )}
-      </div>
+      <div>{}</div>
     </Layout>
   );
 };

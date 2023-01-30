@@ -1,6 +1,5 @@
-import React from "react";
 const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
-const productArrayToStorage = [];
+const productArrayToStorage = JSON.parse(localStorage.getItem("product")) || [];
 
 const CardProduct = ({ name, imageNameArray, id }) => {
   return (
