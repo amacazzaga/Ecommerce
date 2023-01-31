@@ -16,7 +16,12 @@ const Home = () => {
   }, []);
   return products.map((m) => (
     <div className="col-xl-3 col-lg-4 col-md-6">
-      <CardProduct name={m.name} imageNameArray={m.imageNameArray} id={m._id} price={m.price}/>
+      <CardProduct
+        name={m.name}
+        imageNameArray={m.imageNameArray}
+        id={m._id}
+        price={m.price}
+      />
     </div>
   ));
 };
