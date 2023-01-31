@@ -24,14 +24,14 @@ const ShoppingCartLogOut = () => {
   return (
     <Layout>
       {cartProducts.map((m) => (
-        <div className="col-xl-4 col-lg-5 col-md-6">
-        <CartProduct
-          name={m.name}
-          imageNameArray={m.imageNameArray}
-          id={m._id}
-          price={m.price}
-          description ={m.description}
-        />
+        <div className="col-xl-6 col-lg-4 col-md-6">
+          <CartProduct
+            name={m.name}
+            imageNameArray={m.imageNameArray}
+            id={m._id}
+            price={m.price}
+            description={m.description}
+          />
         </div>
       ))}
     </Layout>
