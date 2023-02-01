@@ -3,18 +3,33 @@ import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
 import CartProduct from "./CartProduct";
+import ButtonPurchase from "./ButtonPurchase";
 
 const ShoppingCartLogOut = () => {
   const [cartProducts, setCartProducts] = useState([]);
+  const [totalPrice, setTotalPrice] = useState();
   const fromLocaleStorage = localStorage.getItem("product");
   const parsed = JSON.parse(fromLocaleStorage);
   /////
+  const arrayOfProductPrices = cartProducts.map((m) => {
+    const prices = m.price;
+    //console.log(prices)
+    return prices;
+  });
+  const totalOfPrices = arrayOfProductPrices.reduce(
+    (acc, value) => acc + value,
+    0
+  );
+  console.log(totalOfPrices);
+  console.log(arrayOfProductPrices);
+
   const getProductsOnCart = async () => {
     await axios
       .get(`http://localhost:4000/product/many?ids=${parsed.join(",")}`)
       .then((response) => {
         console.log(response);
         setCartProducts(response.data);
+        setTotalPrice(response.data);
       });
   };
   useEffect(() => {
@@ -24,24 +39,24 @@ const ShoppingCartLogOut = () => {
   return (
     <Layout>
       <div className="container d-flex flex-column ">
-      <div className="container d-flex flex-wrap">
-      {cartProducts.map((m) => (
-        <div className="col-xl-6 col-lg-4 col-md-6">
-          <CartProduct
-            key={m._id}
-            name={m.name}
-            imageNameArray={m.imageNameArray}
-            id={m._id}
-            price={m.price}
-            description={m.description}
-            reloadProducts={getProductsOnCart}
-          />
+        <div className="container d-flex flex-wrap">
+          {cartProducts.map((m) => (
+            <div className="col-xl-6 col-lg-4 col-md-6">
+              <CartProduct
+                key={m._id}
+                name={m.name}
+                imageNameArray={m.imageNameArray}
+                id={m._id}
+                price={m.price}
+                description={m.description}
+                reloadProducts={getProductsOnCart}
+              />
+            </div>
+          ))}
         </div>
-      ))}
-      </div>
-      <div className="d-flex justify-content-center">
-      <button className="btn btn-success m-2 ">Make Purchase!</button>
-      </div>
+        <div className="d-flex justify-content-center">
+          <ButtonPurchase />
+        </div>
       </div>
     </Layout>
   );

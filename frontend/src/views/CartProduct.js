@@ -20,8 +20,6 @@ const CartProduct = ({
     reloadProducts();
   };
 
-  useEffect(() => {}, []);
-
   return (
     <div className="container">
       <div class="card  border border-2 m-3">
