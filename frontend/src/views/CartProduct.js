@@ -2,10 +2,25 @@ import React from "react";
 import { useEffect } from "react";
 const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
 
-const CartProduct = ({ name, imageNameArray, price, description, id }) => {
+const CartProduct = ({
+  name,
+  imageNameArray,
+  price,
+  description,
+  id,
+  reloadProducts,
+}) => {
   const fromLocaleStorage = localStorage.getItem("product");
   const parsed = JSON.parse(fromLocaleStorage);
-  //console.log(parsed)
+  //
+  const deleteItem = () => {
+    const index = parsed.indexOf(id);
+    parsed.splice(index, 1);
+    localStorage.setItem("product", JSON.stringify(parsed));
+    reloadProducts();
+  };
+
+  useEffect(() => {}, []);
 
   return (
     <div className="container">
@@ -23,14 +38,7 @@ const CartProduct = ({ name, imageNameArray, price, description, id }) => {
           {"$" + price}
         </div>
         <div>
-          <button
-            className="btn btn-danger ms-3 m-1 "
-            onClick={() => {
-              const index = parsed.indexOf(id);
-              parsed.splice(index, 1);
-              localStorage.setItem("product", JSON.stringify(parsed));
-            }}
-          >
+          <button className="btn btn-danger ms-3 m-1 " onClick={deleteItem}>
             Delete
           </button>
         </div>

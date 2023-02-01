@@ -23,17 +23,26 @@ const ShoppingCartLogOut = () => {
 
   return (
     <Layout>
+      <div className="container d-flex flex-column ">
+      <div className="container d-flex flex-wrap">
       {cartProducts.map((m) => (
         <div className="col-xl-6 col-lg-4 col-md-6">
           <CartProduct
+            key={m._id}
             name={m.name}
             imageNameArray={m.imageNameArray}
             id={m._id}
             price={m.price}
             description={m.description}
+            reloadProducts={getProductsOnCart}
           />
         </div>
       ))}
+      </div>
+      <div className="d-flex justify-content-center">
+      <button className="btn btn-success m-2 ">Make Purchase!</button>
+      </div>
+      </div>
     </Layout>
   );
 };

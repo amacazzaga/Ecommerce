@@ -25,7 +25,7 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
             Buy It!
           </button>
           <button
-            class="nav-link border border-white"
+            class="nav-link border border-white m-1 bg-white"
             data-bs-toggle="tooltip"
             data-bs-placement="top"
             title="Add To Shopping Cart"
