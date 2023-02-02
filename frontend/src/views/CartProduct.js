@@ -35,11 +35,14 @@ const CartProduct = ({
           <h5 class="card-title">{name}</h5>
           <p class="card-text">{description}</p>
         </div>
-        <div className="d-flex justify-content-between ps-3 fw-bolder">
+        <div className="container d-flex justify-content-between ">
+        <div className="d-flex  ps-3 fw-bolder">
           {"$" + price}
         </div>
+        <div>Amount Here</div>
+        </div>
         <div>
-          <button className="btn btn-danger ms-3 m-1 " onClick={deleteItem}>
+          <button className="btn btn-danger ms-3 m-1 fw-bolder " onClick={deleteItem}>
             Delete
           </button>
         </div>

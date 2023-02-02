@@ -19,7 +19,7 @@ const ShoppingCartLogOut = () => {
     const total = arrayOfProductPrices.reduce((acc, value) => acc + value, 0);
     setTotalPrice(total);
   };
-
+///
   const getProductsOnCart = async () => {
     await axios
       .get(`http://localhost:4000/product/many?ids=${parsed.join(",")}`)
@@ -36,7 +36,7 @@ const ShoppingCartLogOut = () => {
   return (
     <Layout>
       <div className="container d-flex flex-column ">
-        <div className="container d-flex flex-wrap">
+        <div className="container">
           {cartProducts.map((m) => (
             <div className="col-xl-6 col-lg-4 col-md-6">
               <CartProduct

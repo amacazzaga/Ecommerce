@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
 const productArrayToStorage = JSON.parse(localStorage.getItem("product")) || [];
 //productArraytostorage, get the item selected previous or init itself on empty array
@@ -11,7 +12,9 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
           alt="..."
         />
         <div class="card-body">
-          <h5 class="card-title">{name}</h5>
+          <Link to={`/${id}`}>
+            <h5 class="card-title">{name}</h5>
+          </Link>
           <p class="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
@@ -21,7 +24,7 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
           {"$" + price}
         </div>
         <div className="container d-flex justify-content-between">
-          <button type="button" class="btn btn-primary  m-1">
+          <button type="button" class="btn btn-primary  m-1 fw-bolder">
             Buy It!
           </button>
           <button

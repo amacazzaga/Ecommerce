@@ -10,7 +10,6 @@ const Navbar = () => {
     setNotification(localStorage.getItem("product"));
   });
   useEffect(() => {}, []);
-
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light navbardowncolor">
