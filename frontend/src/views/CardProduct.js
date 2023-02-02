@@ -6,11 +6,13 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
   return (
     <div>
       <div class="card m-2">
-        <img
-          src={cloudFrontBaseUrl + imageNameArray[0]}
-          class="card-img-top"
-          alt="..."
-        />
+        <Link to={`/${id}`}>
+          <img
+            src={cloudFrontBaseUrl + imageNameArray[0]}
+            class="card-img-top"
+            alt="..."
+          />
+        </Link>
         <div class="card-body">
           <Link to={`/${id}`}>
             <h5 class="card-title">{name}</h5>
