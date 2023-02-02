@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const ButtonPurchase = () => {
+const ButtonPurchase = ({ totalPrice }) => {
   return (
-    <button className="btn btn-success m-2 ">Make Purchase!</button>
-  )
-}
+    <button className="btn btn-success m-2 ">
+      Make Purchase for {totalPrice}
+    </button>
+  );
+};
 
-export default ButtonPurchase
+export default ButtonPurchase;

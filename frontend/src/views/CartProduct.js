@@ -19,6 +19,9 @@ const CartProduct = ({
     localStorage.setItem("product", JSON.stringify(parsed));
     reloadProducts();
   };
+  useEffect(() => {
+    reloadProducts();
+  }, [fromLocaleStorage]);
 
   return (
     <div className="container">

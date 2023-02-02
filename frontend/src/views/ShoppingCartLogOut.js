@@ -10,18 +10,15 @@ const ShoppingCartLogOut = () => {
   const [totalPrice, setTotalPrice] = useState();
   const fromLocaleStorage = localStorage.getItem("product");
   const parsed = JSON.parse(fromLocaleStorage);
-  /////
-  const arrayOfProductPrices = cartProducts.map((m) => {
-    const prices = m.price;
-    //console.log(prices)
-    return prices;
-  });
-  const totalOfPrices = arrayOfProductPrices.reduce(
-    (acc, value) => acc + value,
-    0
-  );
-  console.log(totalOfPrices);
-  console.log(arrayOfProductPrices);
+  ///////
+  const getTotalPrices = () => {
+    const arrayOfProductPrices = cartProducts.map((m) => {
+      const prices = m.price;
+      return prices;
+    });
+    const total = arrayOfProductPrices.reduce((acc, value) => acc + value, 0);
+    setTotalPrice(total);
+  };
 
   const getProductsOnCart = async () => {
     await axios
@@ -29,7 +26,7 @@ const ShoppingCartLogOut = () => {
       .then((response) => {
         console.log(response);
         setCartProducts(response.data);
-        setTotalPrice(response.data);
+        getTotalPrices();
       });
   };
   useEffect(() => {
@@ -55,7 +52,7 @@ const ShoppingCartLogOut = () => {
           ))}
         </div>
         <div className="d-flex justify-content-center">
-          <ButtonPurchase />
+          <ButtonPurchase totalPrice={totalPrice} />
         </div>
       </div>
     </Layout>
