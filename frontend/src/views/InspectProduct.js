@@ -28,6 +28,9 @@ const InspectProduct = () => {
   return (
     <Layout>
       <div>
+        <div className="container d-flex justify-content-center">
+        <h3>{product.name}</h3>
+        </div>
         <div
           id="carouselExampleControls"
           class="carousel slide bg-grey"
