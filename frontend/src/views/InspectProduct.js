@@ -29,7 +29,7 @@ const InspectProduct = () => {
     <Layout>
       <div>
         <div className="container d-flex justify-content-center">
-        <h3>{product.name}</h3>
+        <h3>{product?product.name:""}</h3>
         </div>
         <div
           id="carouselExampleControls"
