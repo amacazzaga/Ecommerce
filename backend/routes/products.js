@@ -2,6 +2,7 @@ const express = require(`express`);
 const router = express.Router();
 const {
   createProduct,
+  getProductsByName,
   getProducts,
   getManyProductsById,
   getProduct,
@@ -23,6 +24,7 @@ const {
 //ROUTES//
 router.get("/", getProducts); /*free*/
 router.get("/many", getManyProductsById); /*free*/
+router.get("/products",getProductsByName)
 router.post(
   "/",
   productPostAuth(productPostSchema),

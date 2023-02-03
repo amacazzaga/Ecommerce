@@ -1,6 +1,5 @@
 const Product = require(`../models/productModels`);
 const Stock = require("../models/stockModels");
-const ObjectId = require("mongoose").Types.ObjectId;
 const mongoose = require(`mongoose`);
 
 //get all products//
@@ -50,14 +49,27 @@ const getProduct = async (req, res) => {
   }
   res.status(200).json(product);
 };
-//get may products by id product//
+//get many products by id product//
 const getManyProductsById = async (req, res) => {
-  const  parsed  = req.query.ids; 
+  const parsed = req.query.ids;
   try {
     const product = await Product.find({
       _id: {
         $in: parsed.split(","),
       },
+    });
+    res.status(200).json(product);
+  } catch (err) {
+    console.log(err);
+  }
+};
+//
+const getProductsByName = async (req, res) => {
+  const name = req.query.name;
+  console.log("name", name);
+  try {
+    const product = await Product.find({
+       name 
     });
     res.status(200).json(product);
   } catch (err) {
@@ -122,6 +134,7 @@ const updateImageProduct = async (req, res) => {
 module.exports = {
   getProducts,
   getManyProductsById,
+  getProductsByName,
   createProduct,
   getProduct,
   deleteProduct,
