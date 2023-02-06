@@ -12,6 +12,7 @@ import UserBoard from "./views/UserBoard";
 import UserPurchase from "./views/UserPurchase";
 import ShoppingCartLogOut from "./views/ShoppingCartLogOut";
 import InspectProduct from "./views/InspectProduct";
+import InspectProductLog from "./InspectProductLog";
 
 function AppRoutes({ userIsAdmin, userId }) {
   return (
@@ -53,7 +54,7 @@ function AppRoutes({ userIsAdmin, userId }) {
         />
          <Route
           path={`/:id`}
-          element={<InspectProduct/>}
+          element={userId?<InspectProductLog/>:<InspectProduct/>}
         />
       </Routes>
     </BrowserRouter>

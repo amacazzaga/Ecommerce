@@ -68,9 +68,7 @@ const getProductsByName = async (req, res) => {
   const name = req.query.name;
   console.log("name", name);
   try {
-    const product = await Product.find({
-       name 
-    });
+    const product = await Product.find({ name });
     res.status(200).json(product);
   } catch (err) {
     console.log(err);
