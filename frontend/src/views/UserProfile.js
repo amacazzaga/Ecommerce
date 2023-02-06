@@ -1,10 +1,10 @@
 import React from 'react'
 import LayoutLogged from '../components/LayoutLogged'
 
-const UserProfile = () => {
+const UserProfile = ({userId}) => {
   return (
     <LayoutLogged>
-    <div>UserProfile</div>
+    <div>{userId}</div>
     </LayoutLogged>
   )
 }

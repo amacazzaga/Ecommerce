@@ -89,13 +89,6 @@ const NavbarLogged = () => {
                   class="dropdown-menu "
                   aria-labelledby="dropdownMenuButton1"
                 >
-                  <Link to="/myaccount">
-                    <li>
-                      <a class="dropdown-item" href="/">
-                        MyAccount
-                      </a>
-                    </li>
-                  </Link>
                   <li
                     onClick={() => {
                       setCookie("token", "");

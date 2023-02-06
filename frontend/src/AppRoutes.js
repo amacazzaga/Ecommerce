@@ -54,7 +54,7 @@ function AppRoutes({ userIsAdmin, userId }) {
           path={`/:id`}
           element={userId ? <InspectProductLogged /> : <InspectProduct />}
         />
-        <Route path={`/myprofile`} element={<UserProfile />} />
+        <Route path={`/myprofile`} element={<UserProfile userId={userId}/>} />
       </Routes>
     </BrowserRouter>
   );
