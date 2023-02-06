@@ -54,6 +54,20 @@ const getUser = async (req, res) => {
   }
   res.status(200).json(user);
 };
+// user gets profile
+/*
+const getMyProfileUser = async (req, res) => {
+  const useris = req.query.useris
+  console.log(useris)
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json(`not a valid id`);
+  }
+  const user = await User.findById(id);
+  if (!user) {
+    return res.status(404).json(`no such user`);
+  }
+  res.status(200).json(user);
+};*/
 //login user//
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -124,6 +138,7 @@ const updateUser = async (req, res) => {
 
 module.exports = {
   getUsers,
+ // getMyProfileUser,
   createUser,
   getUser,
   deleteUser,

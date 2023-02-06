@@ -52,12 +52,12 @@ const NavbarLogged = () => {
                   </a>
                 </li>
               </Link>
-              <Link to={"/myprofile"}>
-              <li class="nav-item">
-                <a class="nav-link" href="/">
-                  My Profile
-                </a>
-              </li>
+              <Link to={"/myaccount"}>
+                <li class="nav-item">
+                  <a class="nav-link" href="/">
+                    My Profile
+                  </a>
+                </li>
               </Link>
               <li class="nav-item">
                 <a class="nav-link" href="/">
@@ -92,7 +92,7 @@ const NavbarLogged = () => {
                   <li
                     onClick={() => {
                       setCookie("token", "");
-                     localStorage.clear()
+                      localStorage.clear();
                     }}
                   >
                     <a class="dropdown-item" href="/">

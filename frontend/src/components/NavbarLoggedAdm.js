@@ -41,18 +41,18 @@ const NavbarLoggedAdm = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <Link to="/myaccount">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">
-                  Products
-                </a>
-              </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">
+                    Products
+                  </a>
+                </li>
               </Link>
               <Link to="/myaccount/users">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">
-                  Users
-                </a>
-              </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">
+                    Users
+                  </a>
+                </li>
               </Link>
             </ul>
             <div class="d-flex">
@@ -67,17 +67,10 @@ const NavbarLoggedAdm = () => {
                   Account
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <Link to="/myaccount">
-                    <li>
-                      <a class="dropdown-item" href="/">
-                        MyAccount
-                      </a>
-                    </li>
-                  </Link>
                   <li
                     onClick={() => {
                       setCookie("token", "");
-                      localStorage.clear()
+                      localStorage.clear();
                     }}
                   >
                     <a class="dropdown-item" href="/">

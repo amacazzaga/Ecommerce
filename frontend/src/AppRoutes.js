@@ -27,7 +27,7 @@ function AppRoutes({ userIsAdmin, userId }) {
         <Route path="/signup" element={<SingUpForm />} />
         <Route
           path="/myaccount"
-          element={userIsAdmin ? <AdminBoardHome /> : <UserBoard />}
+          element={userIsAdmin ? <AdminBoardHome /> : <UserProfile />}
         />
         <Route
           path={`/myaccount/editproduct/:id`}
@@ -54,7 +54,6 @@ function AppRoutes({ userIsAdmin, userId }) {
           path={`/:id`}
           element={userId ? <InspectProductLogged /> : <InspectProduct />}
         />
-        <Route path={`/myprofile`} element={<UserProfile userId={userId}/>} />
       </Routes>
     </BrowserRouter>
   );
