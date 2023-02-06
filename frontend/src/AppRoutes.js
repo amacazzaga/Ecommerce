@@ -49,7 +49,7 @@ function AppRoutes({ userIsAdmin, userId }) {
           path={`/myaccount/users/sales/:id`}
           element={userIsAdmin ? <UserPurchase /> : <h1>not admin</h1>}
         />
-        <Route path={`/shoppingcart`} element={<ShoppingCartLogOut />} />
+        <Route path={`/shoppingcart`} element={userId?<h1>shoppingcartloginhere</h1>:<ShoppingCartLogOut />} />
         <Route
           path={`/:id`}
           element={userId ? <InspectProductLogged /> : <InspectProduct />}
