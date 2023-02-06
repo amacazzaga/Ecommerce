@@ -12,7 +12,7 @@ import UserBoard from "./views/UserBoard";
 import UserPurchase from "./views/UserPurchase";
 import ShoppingCartLogOut from "./views/ShoppingCartLogOut";
 import InspectProduct from "./views/InspectProduct";
-import InspectProductLog from "./views/InspectProductLog";
+import InspectProductLogged from "./views/InspectProductLogged";
 
 function AppRoutes({ userIsAdmin, userId }) {
   return (
@@ -48,13 +48,10 @@ function AppRoutes({ userIsAdmin, userId }) {
           path={`/myaccount/users/sales/:id`}
           element={userIsAdmin ? <UserPurchase /> : <h1>not admin</h1>}
         />
-         <Route
-          path={`/shoppingcart`}
-          element={<ShoppingCartLogOut/>}
-        />
-         <Route
+        <Route path={`/shoppingcart`} element={<ShoppingCartLogOut />} />
+        <Route
           path={`/:id`}
-          element={userId?<InspectProductLog/>:<InspectProduct/>}
+          element={userId ? <InspectProductLogged /> : <InspectProduct />}
         />
       </Routes>
     </BrowserRouter>

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
 
-const InspectProductLog = () => {
+const InspectProductLogged = () => {
   const { id } = useParams();
   const [product, setProduct] = useState();
   //
@@ -84,4 +84,4 @@ const InspectProductLog = () => {
   );
 };
 
-export default InspectProductLog;
+export default InspectProductLogged;
