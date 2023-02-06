@@ -12,7 +12,7 @@ import UserBoard from "./views/UserBoard";
 import UserPurchase from "./views/UserPurchase";
 import ShoppingCartLogOut from "./views/ShoppingCartLogOut";
 import InspectProduct from "./views/InspectProduct";
-import InspectProductLog from "./InspectProductLog";
+import InspectProductLog from "./views/InspectProductLog";
 
 function AppRoutes({ userIsAdmin, userId }) {
   return (

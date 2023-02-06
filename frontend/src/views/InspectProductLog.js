@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutLogged from "./components/LayoutLogged";
+import LayoutLogged from "../components/LayoutLogged";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
