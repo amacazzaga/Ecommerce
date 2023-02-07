@@ -55,19 +55,19 @@ const getUser = async (req, res) => {
   res.status(200).json(user);
 };
 // user gets profile
-/*
+
 const getMyProfileUser = async (req, res) => {
-  const useris = req.query.useris
-  console.log(useris)
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  const userid = req.query.userid;
+  console.log(userid);
+  if (!mongoose.Types.ObjectId.isValid(userid)) {
     return res.status(400).json(`not a valid id`);
   }
-  const user = await User.findById(id);
+  const user = await User.findById(userid);
   if (!user) {
     return res.status(404).json(`no such user`);
   }
   res.status(200).json(user);
-};*/
+};
 //login user//
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -138,7 +138,7 @@ const updateUser = async (req, res) => {
 
 module.exports = {
   getUsers,
- // getMyProfileUser,
+  getMyProfileUser,
   createUser,
   getUser,
   deleteUser,

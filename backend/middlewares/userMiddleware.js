@@ -23,6 +23,8 @@ const userPatchAuth = (schema) => async (req, res, next) => {
   }
 };
 //user update itself auth//
+//this funtion works on get only yourself as client//
+
 const userUpdateItself = async (req, res, next) => {
   const token = req.header(`Authorization`);
   if (!token) return res.status(400).json(`no token found`);
