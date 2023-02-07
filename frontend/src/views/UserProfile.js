@@ -11,6 +11,7 @@ const UserProfile = () => {
   const [lastName, setEditLastName] = useState();
   const [email, setEditEmail] = useState();
   const [password, setEditPassword] = useState();
+  const [successMessage, setSuccessMessage] = useState("");
   const [cookie] = useCookies();
   const token = cookie.token;
   const decoded = jwt_decode(token);
@@ -40,9 +41,10 @@ const UserProfile = () => {
         },
         { headers: { Authorization: token } }
       );
-      console.log(resp);
+      setSuccessMessage("You have updated your information");
     } catch (error) {
       console.log(error);
+      setSuccessMessage("Your info hasnt been updated");
     }
   };
   //
@@ -52,10 +54,14 @@ const UserProfile = () => {
 
   return (
     <LayoutLogged>
+      <div className="container-xl">
+        <div className="d-flex justify-content-center">
+        <h5 className="m-3">{successMessage}</h5>
+        </div>
       <form>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">
-            Your Name
+             Name
           </label>
           <input
             type="email"
@@ -67,7 +73,7 @@ const UserProfile = () => {
         <div class="mb-3"></div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">
-            Your Last Name
+             Last Name
           </label>
           <input
             type="email"
@@ -79,7 +85,7 @@ const UserProfile = () => {
         <div class="mb-3"></div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">
-            Your Email Address
+             Email Address
           </label>
           <input
             type="email"
@@ -109,6 +115,7 @@ const UserProfile = () => {
           Save my new information!
         </button>
       </form>
+      </div>
     </LayoutLogged>
   );
 };
