@@ -60,7 +60,7 @@ const UserProfile = () => {
         </div>
       <form>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">
+          <label for="exampleFormControlInput1" class="form-label fw-bold">
              Name
           </label>
           <input
@@ -72,7 +72,7 @@ const UserProfile = () => {
         </div>
         <div class="mb-3"></div>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">
+          <label for="exampleFormControlInput1" class="form-label fw-bold">
              Last Name
           </label>
           <input
@@ -84,7 +84,7 @@ const UserProfile = () => {
         </div>
         <div class="mb-3"></div>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">
+          <label for="exampleFormControlInput1" class="form-label fw-bold">
              Email Address
           </label>
           <input
@@ -96,8 +96,8 @@ const UserProfile = () => {
         </div>
         <div class="mb-3"></div>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">
-            Your New Password
+          <label for="exampleFormControlInput1" class="form-label fw-bold">
+            Your New Password Here 
           </label>
           <input
             type="password"
