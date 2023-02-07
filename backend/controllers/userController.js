@@ -58,7 +58,6 @@ const getUser = async (req, res) => {
 
 const getMyProfileUser = async (req, res) => {
   const userid = req.query.userid;
-  console.log(userid);
   if (!mongoose.Types.ObjectId.isValid(userid)) {
     return res.status(400).json(`not a valid id`);
   }
