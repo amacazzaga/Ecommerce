@@ -1,15 +1,15 @@
 import React from "react";
 import Layout from "../components/Layout";
-import Home from "../views/Home";
+import CategoryProducts from "./CategoryProducts";
 
-const HomeLoggedOut = () => {
+const HomeCategoryLoggedOut = () => {
   return (
     <Layout>
       <div className="container d-flex flex-wrap ">
-        <Home />
+        <CategoryProducts />
       </div>
     </Layout>
   );
 };
 
-export default HomeLoggedOut;
+export default HomeCategoryLoggedOut;

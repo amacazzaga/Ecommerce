@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
-  const [notification, setNotification] = useState(
+ /* const [notification, setNotification] = useState(
     localStorage.getItem("product")
   );
   window.addEventListener("storage", () => {
     setNotification(localStorage.getItem("product"));
-  });
+  });*/
   useEffect(() => {}, []);
   return (
     <div>
@@ -73,21 +73,27 @@ const Navbar = () => {
                       Categories
                     </button>
                     <ul class="dropdown-menu">
+                      <Link to={"/category/3"}>
                       <li>
                         <a class="dropdown-item" href="#">
                           AC/DC
                         </a>
                       </li>
+                      </Link>
+                      <Link to={"/category/2"}>
                       <li>
                         <a class="dropdown-item" href="#">
                           Pink Floyd
                         </a>
                       </li>
+                      </Link>
+                      <Link to={"/category/1"}>
                       <li>
                         <a class="dropdown-item" href="#">
                           Queen
                         </a>
                       </li>
+                      </Link>
                     </ul>
                   </div>
                 </a>

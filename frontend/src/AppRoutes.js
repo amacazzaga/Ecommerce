@@ -14,6 +14,7 @@ import ShoppingCartLogOut from "./views/ShoppingCartLogOut";
 import InspectProduct from "./views/InspectProduct";
 import InspectProductLogged from "./views/InspectProductLogged";
 import UserProfile from "./views/UserProfile";
+import HomeCategoryLoggedOut from "./views/HomeCategoryLoggedOut";
 
 function AppRoutes({ userIsAdmin, userId }) {
   return (
@@ -53,6 +54,10 @@ function AppRoutes({ userIsAdmin, userId }) {
         <Route
           path={`/:id`}
           element={userId ? <InspectProductLogged /> : <InspectProduct />}
+        />
+         <Route
+          path={`/category/:category`}
+          element={<HomeCategoryLoggedOut/>}
         />
       </Routes>
     </BrowserRouter>
