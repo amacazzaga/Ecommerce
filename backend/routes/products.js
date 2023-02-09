@@ -2,9 +2,10 @@ const express = require(`express`);
 const router = express.Router();
 const {
   createProduct,
-  getProductsByName,
   getProducts,
+  getProductsByName,
   getManyProductsById,
+  getProductsByCategory,
   getProduct,
   deleteProduct,
   updateProduct,
@@ -23,6 +24,7 @@ const {
 } = require(`../middlewares/amountMiddleware`);
 //ROUTES//
 router.get("/", getProducts); /*free*/
+router.get("/categories", getProductsByCategory); /*free*/
 router.get("/many", getManyProductsById); /*free*/
 router.get("/search",getProductsByName)
 router.post(

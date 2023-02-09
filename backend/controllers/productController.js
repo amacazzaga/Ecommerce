@@ -18,6 +18,17 @@ const getProducts = async (req, res) => {
     res.status(400).json({ mss: "error" });
   }
 };
+//
+const getProductsByCategory = async (req, res) => {
+  try {
+    const category = req.query.category;
+    console.log(category);
+    const product = await Product.find({ category });
+    res.status(200).json(product);
+  } catch (err) {
+    res.status(400).json({ mss: "error" });
+  }
+};
 //create new product//
 const createProduct = async (req, res) => {
   const { name, price, description, amount, category } = req.body; //destructuring
@@ -133,6 +144,7 @@ module.exports = {
   getProducts,
   getManyProductsById,
   getProductsByName,
+  getProductsByCategory,
   createProduct,
   getProduct,
   deleteProduct,
