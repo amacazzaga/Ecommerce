@@ -15,6 +15,7 @@ import InspectProduct from "./views/InspectProduct";
 import InspectProductLogged from "./views/InspectProductLogged";
 import UserProfile from "./views/UserProfile";
 import HomeCategoryLoggedOut from "./views/HomeCategoryLoggedOut";
+import HomeCategoryLoggedIn from "./views/HomeCategoryLoggedIn";
 
 function AppRoutes({ userIsAdmin, userId }) {
   return (
@@ -57,7 +58,7 @@ function AppRoutes({ userIsAdmin, userId }) {
         />
          <Route
           path={`/category/:category`}
-          element={<HomeCategoryLoggedOut/>}
+          element={userId?<HomeCategoryLoggedIn/>:<HomeCategoryLoggedOut/>}
         />
       </Routes>
     </BrowserRouter>
