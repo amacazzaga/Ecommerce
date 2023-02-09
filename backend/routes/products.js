@@ -24,7 +24,7 @@ const {
 //ROUTES//
 router.get("/", getProducts); /*free*/
 router.get("/many", getManyProductsById); /*free*/
-router.get("/products",getProductsByName)
+router.get("/search",getProductsByName)
 router.post(
   "/",
   productPostAuth(productPostSchema),

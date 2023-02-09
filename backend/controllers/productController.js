@@ -63,7 +63,7 @@ const getManyProductsById = async (req, res) => {
     console.log(err);
   }
 };
-//
+//// get a product by name
 const getProductsByName = async (req, res) => {
   const name = req.query.name;
   console.log("name", name);
