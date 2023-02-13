@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import axios from "axios";
 import jwt_decode from "jwt-decode";
 import ModalLogOrSing from "./ModalLogOrSing";
 const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
@@ -9,9 +10,22 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
   const [cookie] = useCookies();
   const token = cookie.token;
   //
-  const buyProduct = () => {
-    if (!token) {
-    }
+  const buyProduct = async () => {
+    try {
+      const decoded= jwt_decode(token);
+      const idUser = decoded.id
+      const resp = await axios.post(
+        `http://localhost:4000/sales`,
+        {
+          idUser: idUser,
+          details: [{ idProduct: id, amount: 1, unitPrice: price }],
+        },
+        {
+          headers: { Authorization: token },
+        }
+      );
+      console.log(resp);
+    } catch (err) {console.log(err)}
   };
   //
   return (
