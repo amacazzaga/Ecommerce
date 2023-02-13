@@ -57,7 +57,7 @@ function AppRoutes({ userIsAdmin, userId }) {
           element={userId ? <InspectProductLogged /> : <InspectProduct />}
         />
          <Route
-          path={`/category/:category`}
+          path={`/:band/:category`}
           element={userId?<HomeCategoryLoggedIn/>:<HomeCategoryLoggedOut/>}
         />
       </Routes>

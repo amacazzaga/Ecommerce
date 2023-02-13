@@ -73,21 +73,21 @@ const Navbar = () => {
                       Categories
                     </button>
                     <ul class="dropdown-menu">
-                      <Link to={"/category/3"}>
+                      <Link to={"/ACDC/3"}>
                       <li>
                         <a class="dropdown-item" href="#">
                           AC/DC
                         </a>
                       </li>
                       </Link>
-                      <Link to={"/category/2"}>
+                      <Link to={"/PinkFloyd/2"}>
                       <li>
                         <a class="dropdown-item" href="#">
                           Pink Floyd
                         </a>
                       </li>
                       </Link>
-                      <Link to={"/category/1"}>
+                      <Link to={"/Queen/1"}>
                       <li>
                         <a class="dropdown-item" href="#">
                           Queen
