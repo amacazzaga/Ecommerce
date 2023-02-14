@@ -8,26 +8,32 @@ import ButtonPurchase from "./ButtonPurchase";
 const ShoppingCartLogOut = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState();
-  const fromLocaleStorage = localStorage.getItem("product");
-  const parsed = JSON.parse(fromLocaleStorage);
   ///////
-  const getTotalPrices = () => {
-    const arrayOfProductPrices = cartProducts.map((m) => {
+  const getTotalPrices = (products) => {
+    const arrayOfProductPrices = products.map((m) => {
       const prices = m.price;
       return prices;
     });
-    const total = arrayOfProductPrices.reduce((acc, value) => acc + value, 0);
+    const total = arrayOfProductPrices.reduce((acc, value) => acc + value/**amount*/ , 0);
     setTotalPrice(total);
   };
-///
+  ///
   const getProductsOnCart = async () => {
-    await axios
-      .get(`http://localhost:4000/product/many?ids=${parsed.join(",")}`)
-      .then((response) => {
-        console.log(response);
-        setCartProducts(response.data);
-        getTotalPrices();
-      });
+    const fromLocaleStorage = localStorage.getItem("product");
+    const parsed = JSON.parse(fromLocaleStorage);
+    console.log("parsed", parsed);
+    if (parsed.length === 0) {
+      setCartProducts([]);
+      getTotalPrices([]);
+    } else {
+      await axios
+        .get(`http://localhost:4000/product/many?ids=${parsed.join(",")}`)
+        .then((response) => {
+          console.log(response);
+          setCartProducts(response.data);
+          getTotalPrices(response.data);
+        });
+    }
   };
   useEffect(() => {
     getProductsOnCart();

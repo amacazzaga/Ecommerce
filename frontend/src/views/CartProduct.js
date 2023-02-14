@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
-
+//
 const CartProduct = ({
   name,
   imageNameArray,
@@ -10,18 +10,17 @@ const CartProduct = ({
   id,
   reloadProducts,
 }) => {
-  const fromLocaleStorage = localStorage.getItem("product");
-  const parsed = JSON.parse(fromLocaleStorage);
   //
   const deleteItem = () => {
-    const index = parsed.indexOf(id);
-    parsed.splice(index, 1);
-    localStorage.setItem("product", JSON.stringify(parsed));
+    const fromLocaleStorage = localStorage.getItem("product");
+    const parsed = JSON.parse(fromLocaleStorage);
+    const newItems = parsed.filter((item) => {
+      return item !== id;
+    });
+    localStorage.setItem("product", JSON.stringify(newItems));
     reloadProducts();
   };
-  useEffect(() => {
-    reloadProducts();
-  }, [fromLocaleStorage]);
+  useEffect(() => {}, []);
 
   return (
     <div className="container">
@@ -36,13 +35,14 @@ const CartProduct = ({
           <p class="card-text">{description}</p>
         </div>
         <div className="container d-flex justify-content-between ">
-        <div className="d-flex  ps-3 fw-bolder">
-          {"$" + price}
-        </div>
-        <div>Amount Here</div>
+          <div className="d-flex  ps-3 fw-bolder">{"$" + price}</div>
+          <div>Amount Here</div>
         </div>
         <div>
-          <button className="btn btn-danger ms-3 m-1 fw-bolder " onClick={deleteItem}>
+          <button
+            className="btn btn-danger ms-3 m-1 fw-bolder "
+            onClick={deleteItem}
+          >
             Delete
           </button>
         </div>

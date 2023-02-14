@@ -12,8 +12,8 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
   //
   const buyProduct = async () => {
     try {
-      const decoded= jwt_decode(token);
-      const idUser = decoded.id
+      const decoded = jwt_decode(token);
+      const idUser = decoded.id;
       const resp = await axios.post(
         `http://localhost:4000/sales`,
         {
@@ -25,7 +25,10 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
         }
       );
       console.log(resp);
-    } catch (err) {console.log(err)}
+      window.alert("compra exitosa!!!")
+    } catch (err) {
+      console.log(err);
+    }
   };
   //
   return (
