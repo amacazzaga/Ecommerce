@@ -81,7 +81,7 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
               title="Add To Shopping Cart"
               onClick={() => {
                 if (productArrayToStorage.includes(id)) return;
-                productArrayToStorage.push(id);
+                productArrayToStorage.push({id,amount:1});
                 localStorage.setItem(
                   "product",
                   JSON.stringify(productArrayToStorage)

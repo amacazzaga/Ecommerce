@@ -62,11 +62,11 @@ const getProduct = async (req, res) => {
 };
 //get many products by id product//
 const getManyProductsById = async (req, res) => {
-  const parsed = req.query.ids;
+  const arrayOfIds = req.query.ids;
   try {
     const product = await Product.find({
       _id: {
-        $in: parsed.split(","),
+        $in: arrayOfIds.split(","),
       },
     });
     res.status(200).json(product);

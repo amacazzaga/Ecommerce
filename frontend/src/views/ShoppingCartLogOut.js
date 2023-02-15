@@ -14,20 +14,26 @@ const ShoppingCartLogOut = () => {
       const prices = m.price;
       return prices;
     });
-    const total = arrayOfProductPrices.reduce((acc, value) => acc + value/**amount*/ , 0);
+    const total = arrayOfProductPrices.reduce(
+      (acc, value) => acc + value /**amount*/,
+      0
+    );
     setTotalPrice(total);
   };
   ///
   const getProductsOnCart = async () => {
     const fromLocaleStorage = localStorage.getItem("product");
     const parsed = JSON.parse(fromLocaleStorage);
-    console.log("parsed", parsed);
+    const arrayOfIds = parsed.map((m) => {
+      //map here to send as params an only string of ids
+      return m.id;
+    });
     if (parsed.length === 0) {
       setCartProducts([]);
       getTotalPrices([]);
     } else {
       await axios
-        .get(`http://localhost:4000/product/many?ids=${parsed.join(",")}`)
+        .get(`http://localhost:4000/product/many?ids=${arrayOfIds.join(",")}`)
         .then((response) => {
           console.log(response);
           setCartProducts(response.data);

@@ -15,7 +15,7 @@ const CartProduct = ({
     const fromLocaleStorage = localStorage.getItem("product");
     const parsed = JSON.parse(fromLocaleStorage);
     const newItems = parsed.filter((item) => {
-      return item !== id;
+      return item.id !== id;
     });
     localStorage.setItem("product", JSON.stringify(newItems));
     reloadProducts();
