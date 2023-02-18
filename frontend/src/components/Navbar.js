@@ -10,6 +10,7 @@ const Navbar = () => {
     setNotification(localStorage.getItem("product"));
   });*/
   useEffect(() => {}, []);
+  const [inputValue,setInputValue]=useState()
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light navbardowncolor">
@@ -65,7 +66,7 @@ const Navbar = () => {
                 <a className="nav-link">
                   <div class="container btn-group d-flex justify-content-center">
                     <button
-                      class="btn btn-secondary btn-sm dropdown-toggle"
+                      class="btn btn-secondary btn-sm dropdown-toggle fw-bold"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
@@ -107,10 +108,13 @@ const Navbar = () => {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
+                    onChange={(e)=>setInputValue(e.target.value)}
                   />
+                  <Link to={`/search/${inputValue}`}>
                   <button class="btn-search" type="submit">
                     Search
                   </button>
+                  </Link>
                 </form>
               </div>
             </div>

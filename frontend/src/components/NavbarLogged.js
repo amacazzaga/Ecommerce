@@ -16,9 +16,11 @@ const NavbarLogged = () => {
               placeholder="Search"
               aria-label="Search"
             ></input>
+            <Link to={"/search"}>
             <button class="btn-search" type="submit">
               Search
             </button>
+            </Link>
           </form>
         </div>
       </nav>

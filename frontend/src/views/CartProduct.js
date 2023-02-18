@@ -36,7 +36,21 @@ const CartProduct = ({
         </div>
         <div className="container d-flex justify-content-between ">
           <div className="d-flex  ps-3 fw-bolder">{"$" + price}</div>
-          <div>Amount Here</div>
+          <input
+            type="number"
+            min="1"
+            class="w-25"
+            placeholder="1"
+            onChange={(e) => {
+              const fromLocaleStorage = localStorage.getItem("product");
+              const parsed = JSON.parse(fromLocaleStorage);
+              const foundItem = parsed.find((item) => {
+                return item.id === id;
+              });
+              const newItems = (foundItem.amount = Number(e.target.value));
+              console.log(foundItem);
+            }}
+          />
         </div>
         <div>
           <button

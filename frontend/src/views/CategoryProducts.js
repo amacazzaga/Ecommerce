@@ -1,5 +1,4 @@
 import React from 'react'
-import Layout from '../components/Layout'
 import axios from "axios";
 import CardProduct from "./CardProduct";
 import { useParams } from "react-router-dom";
