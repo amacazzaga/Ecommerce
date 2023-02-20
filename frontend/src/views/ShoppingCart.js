@@ -11,7 +11,7 @@ const ShoppingCart = () => {
   const [cookie] = useCookies();
   const token = cookie.token;
   const [cartProducts, setCartProducts] = useState([]);
-  const [totalPrice, setTotalPrice] = useState();
+  const [totalPrice, setTotalPrice] = useState(0);
   ///////
   const getTotalPrices = (products) => {
     const arrayOfProductPrices = products.map((m) => {
@@ -50,11 +50,11 @@ const ShoppingCart = () => {
   }, []);
 
   return (
-   <div>
+   <div className="min-vh-100">
       <ModalLogOrSing />
       <div className="container d-flex flex-column ">
         <div className="container">
-          {cartProducts.map((m) => (
+          {cartProducts.length>0?cartProducts.map((m) => (
             <div className="col-xl-6 col-lg-4 col-md-6">
               <CartProduct
                 key={m._id}
@@ -66,7 +66,9 @@ const ShoppingCart = () => {
                 reloadProducts={getProductsOnCart}
               />
             </div>
-          ))}
+          )):
+         <h1 className="min-vh-100">Shopping Cart Is Empty</h1>
+          }
         </div>
         <div className="d-flex justify-content-center">
          {token?<ButtonPurchaseLogIn totalPrice={totalPrice}/>: <ButtonPurchase totalPrice={totalPrice} />}
