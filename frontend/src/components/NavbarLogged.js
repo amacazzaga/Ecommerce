@@ -15,12 +15,12 @@ const NavbarLogged = () => {
             <input
               class="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Product Name"
               aria-label="Search"
               onChange={(e)=>setInputValue(e.target.value)}
             ></input>
             <Link to={`/search/${inputValue}`}>
-            <button class="btn-search" type="submit">
+            <button class="btn btn-primary bgcolor fw-bold" type="submit">
               Search
             </button>
             </Link>
