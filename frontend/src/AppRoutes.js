@@ -8,17 +8,17 @@ import HomeLoggedIn from "./views/HomeLoggedIn";
 import HomeLoggedOut from "./views/HomeLoggedOut";
 import LoginForm from "./views/LoginForm";
 import SingUpForm from "./views/SingUpForm";
-import UserBoard from "./views/UserBoard";
 import UserPurchase from "./views/UserPurchase";
-import ShoppingCartLogOut from "./views/ShoppingCartLogOut";
+
 import InspectProduct from "./views/InspectProduct";
 import InspectProductLogged from "./views/InspectProductLogged";
 import UserProfile from "./views/UserProfile";
 import HomeCategoryLoggedOut from "./views/HomeCategoryLoggedOut";
 import HomeCategoryLoggedIn from "./views/HomeCategoryLoggedIn";
 import HomeSearchProductLogOut from "./views/HomeSearchProductLogOut";
-import SearchProductLoggedOut from "./views/SearchProduct";
 import HomeSearchProductLogIn from "./views/HomeSearchProductLogIn";
+import ShoppingCartLayoutLogOut from "./views/ShoppingCartLayoutLogOut";
+import ShoppingCartLayOutLogged from "./views/ShoppingCartLayOutLogged";
 
 function AppRoutes({ userIsAdmin, userId }) {
   return (
@@ -54,7 +54,7 @@ function AppRoutes({ userIsAdmin, userId }) {
           path={`/myaccount/users/sales/:id`}
           element={userIsAdmin ? <UserPurchase /> : <h1>not admin</h1>}
         />
-        <Route path={`/shoppingcart`} element={userId?<h1>shoppingcartloginhere</h1>:<ShoppingCartLogOut />} />
+        <Route path={`/shoppingcart`} element={userId?<ShoppingCartLayOutLogged/>:<ShoppingCartLayoutLogOut/>} />
         <Route
           path={`/:id`}
           element={userId ? <InspectProductLogged /> : <InspectProduct />}

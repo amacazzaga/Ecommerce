@@ -28,7 +28,7 @@ const SearchProduct= () => {
       />
     </div>)
   ):<div className="container xl min-vh-100">
-    <h1>no products</h1>
+    <h1>Sorry, We Havent Found Products</h1>
   </div>);
 };
 

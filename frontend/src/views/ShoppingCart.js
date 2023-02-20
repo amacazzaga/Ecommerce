@@ -1,11 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Layout from "../components/Layout";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 import CartProduct from "./CartProduct";
 import ButtonPurchase from "./ButtonPurchase";
+import ModalLogOrSing from "./ModalLogOrSing";
+import ButtonPurchaseLogIn from "./ButtonPurchaseLogIn";
 
-const ShoppingCartLogOut = () => {
+const ShoppingCart = () => {
+  const [cookie] = useCookies();
+  const token = cookie.token;
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState();
   ///////
@@ -46,7 +50,8 @@ const ShoppingCartLogOut = () => {
   }, []);
 
   return (
-    <Layout>
+   <div>
+      <ModalLogOrSing />
       <div className="container d-flex flex-column ">
         <div className="container">
           {cartProducts.map((m) => (
@@ -64,11 +69,11 @@ const ShoppingCartLogOut = () => {
           ))}
         </div>
         <div className="d-flex justify-content-center">
-          <ButtonPurchase totalPrice={totalPrice} />
+         {token?<ButtonPurchaseLogIn totalPrice={totalPrice}/>: <ButtonPurchase totalPrice={totalPrice} />}
         </div>
       </div>
-    </Layout>
+      </div>
   );
 };
 
-export default ShoppingCartLogOut;
+export default ShoppingCart;
