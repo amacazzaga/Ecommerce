@@ -1,7 +1,7 @@
 import React from 'react'
 import LayoutLogged from '../components/LayoutLogged'
 
-import SearchProduct from './SearchProductLoggedOut'
+import SearchProduct from './SearchProduct'
 
 const HomeSearchProductLogIn = () => {
   return (

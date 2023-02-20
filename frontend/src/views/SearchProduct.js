@@ -18,7 +18,7 @@ const SearchProduct= () => {
   useEffect(() => {
     getProducts();
   }, [name]);
-  return products.map((m) => (
+  return (products.length>0? products.map((m) => (
     <div className="col-xl-3 col-lg-4 col-md-6">
       <CardProduct
         name={m.name}
@@ -26,8 +26,10 @@ const SearchProduct= () => {
         id={m._id}
         price={m.price}
       />
-    </div>
-  ));
+    </div>)
+  ):<div className="container xl min-vh-100">
+    <h1>no products</h1>
+  </div>);
 };
 
 export default SearchProduct;

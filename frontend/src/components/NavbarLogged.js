@@ -20,7 +20,7 @@ const NavbarLogged = () => {
               onChange={(e)=>setInputValue(e.target.value)}
             ></input>
             <Link to={`/search/${inputValue}`}>
-            <button class="btn btn-primary bgcolor fw-bold" type="submit">
+            <button class="btn btn-primary border-dark bgcolor fw-bold" type="submit">
               Search
             </button>
             </Link>

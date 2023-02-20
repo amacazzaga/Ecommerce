@@ -17,7 +17,7 @@ import UserProfile from "./views/UserProfile";
 import HomeCategoryLoggedOut from "./views/HomeCategoryLoggedOut";
 import HomeCategoryLoggedIn from "./views/HomeCategoryLoggedIn";
 import HomeSearchProductLogOut from "./views/HomeSearchProductLogOut";
-import SearchProductLoggedOut from "./views/SearchProductLoggedOut";
+import SearchProductLoggedOut from "./views/SearchProduct";
 import HomeSearchProductLogIn from "./views/HomeSearchProductLogIn";
 
 function AppRoutes({ userIsAdmin, userId }) {
