@@ -9,7 +9,6 @@ const Navbar = () => {
   window.addEventListener("storage", () => {
     setNotification(localStorage.getItem("product"));
   });*/
-  useEffect(() => {}, []);
   const [inputValue,setInputValue]=useState()
   return (
     <div>

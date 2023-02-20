@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { useState } from "react";
 
 const NavbarLogged = () => {
   const [cookie, setCookie] = useCookies();
+  const [inputValue,setInputValue]=useState()
   return (
     <div>
       <nav class="navbar navbarupcolor">
@@ -15,8 +17,9 @@ const NavbarLogged = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              onChange={(e)=>setInputValue(e.target.value)}
             ></input>
-            <Link to={"/search"}>
+            <Link to={`/search/${inputValue}`}>
             <button class="btn-search" type="submit">
               Search
             </button>

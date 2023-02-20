@@ -4,7 +4,7 @@ import CardProduct from "./CardProduct";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const SearchProductLoggedOut = () => {
+const SearchProduct= () => {
   const [products, setProducts] = useState([]);
   const { name } = useParams();
   const getProducts = () => {
@@ -30,4 +30,4 @@ const SearchProductLoggedOut = () => {
   ));
 };
 
-export default SearchProductLoggedOut;
+export default SearchProduct;
