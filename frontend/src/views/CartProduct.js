@@ -59,6 +59,7 @@ const CartProduct = ({
               });
               const newItems = (foundItem.amount = Number(e.target.value));
               localStorage.setItem("product", JSON.stringify(newAmounts));
+              reloadProducts()
             }}
           />
         </div>

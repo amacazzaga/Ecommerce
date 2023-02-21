@@ -18,10 +18,7 @@ const ShoppingCart = () => {
       const prices = m.price;
       return prices;
     });
-    const total = arrayOfProductPrices.reduce(
-      (acc, value) => acc + value /**amount*/,
-      0
-    );
+    const total = arrayOfProductPrices.reduce((acc, value) => acc + value, 0);
     setTotalPrice(total);
   };
   ///
@@ -50,31 +47,37 @@ const ShoppingCart = () => {
   }, []);
 
   return (
-   <div className="min-vh-100">
+    <div className="min-vh-100">
       <ModalLogOrSing />
       <div className="container d-flex flex-column ">
         <div className="container">
-          {cartProducts.length>0?cartProducts.map((m) => (
-            <div className="col-xl-6 col-lg-4 col-md-6">
-              <CartProduct
-                key={m._id}
-                name={m.name}
-                imageNameArray={m.imageNameArray}
-                id={m._id}
-                price={m.price}
-                description={m.description}
-                reloadProducts={getProductsOnCart}
-              />
-            </div>
-          )):
-         <h1 className="min-vh-100">Shopping Cart Is Empty</h1>
-          }
+          {cartProducts.length > 0 ? (
+            cartProducts.map((m) => (
+              <div className="col-xl-6 col-lg-4 col-md-6">
+                <CartProduct
+                  key={m._id}
+                  name={m.name}
+                  imageNameArray={m.imageNameArray}
+                  id={m._id}
+                  price={m.price}
+                  description={m.description}
+                  reloadProducts={getProductsOnCart}
+                />
+              </div>
+            ))
+          ) : (
+            <h1 className="min-vh-100">Shopping Cart Is Empty</h1>
+          )}
         </div>
         <div className="d-flex justify-content-center">
-         {token?<ButtonPurchaseLogIn totalPrice={totalPrice}/>: <ButtonPurchase totalPrice={totalPrice} />}
+          {token ? (
+            <ButtonPurchaseLogIn totalPrice={totalPrice} />
+          ) : (
+            <ButtonPurchase totalPrice={totalPrice} />
+          )}
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
