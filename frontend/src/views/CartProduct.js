@@ -20,7 +20,17 @@ const CartProduct = ({
     localStorage.setItem("product", JSON.stringify(newItems));
     reloadProducts();
   };
-  useEffect(() => {}, []);
+  const resetAmounts = () => {
+    const fromLocaleStorage = localStorage.getItem("product");
+    const newAmounts = JSON.parse(fromLocaleStorage);
+    const amountsInOne = newAmounts.map((m) => {
+      m.amount = 1;
+    });
+    localStorage.setItem("product", JSON.stringify(newAmounts));
+  };
+  useEffect(() => {
+    resetAmounts();
+  }, []);
 
   return (
     <div className="container">
@@ -43,12 +53,12 @@ const CartProduct = ({
             placeholder="1"
             onChange={(e) => {
               const fromLocaleStorage = localStorage.getItem("product");
-              const parsed = JSON.parse(fromLocaleStorage);
-              const foundItem = parsed.find((item) => {
+              const newAmounts = JSON.parse(fromLocaleStorage);
+              const foundItem = newAmounts.find((item) => {
                 return item.id === id;
               });
               const newItems = (foundItem.amount = Number(e.target.value));
-              console.log(foundItem);
+              localStorage.setItem("product", JSON.stringify(newAmounts));
             }}
           />
         </div>
