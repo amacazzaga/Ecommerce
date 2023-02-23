@@ -19,10 +19,8 @@ const ShoppingCart = () => {
     const arrayOfProductPrices = parsed.map((m) => {
       const prices = m.price;
       const amount = m.amount;
-     // console.log(amount);
-      return prices;
+      return prices*amount;
     });
-
     const total = arrayOfProductPrices.reduce((acc, value) => acc + value, 0);
     setTotalPrice(total);
   };

@@ -47,7 +47,9 @@ const CartProduct = ({
           <p class="card-text">{description}</p>
         </div>
         <div className="container d-flex justify-content-between align-items-center ">
-          <div className=" ps-3 fw-bolder"><div>{"$" + price}</div></div>
+          <div className=" ps-3 fw-bolder">
+            <div>{"$" + price}</div>
+          </div>
           <input
             className="fw-bold form-control w-50"
             type="number"
