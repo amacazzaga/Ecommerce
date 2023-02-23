@@ -13,11 +13,16 @@ const ShoppingCart = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   ///////
-  const getTotalPrices = (products) => {
-    const arrayOfProductPrices = products.map((m) => {
+  const getTotalPrices = () => {
+    const fromLocaleStorage = localStorage.getItem("product");
+    const parsed = JSON.parse(fromLocaleStorage);
+    const arrayOfProductPrices = parsed.map((m) => {
       const prices = m.price;
+      const amount = m.amount;
+     // console.log(amount);
       return prices;
     });
+
     const total = arrayOfProductPrices.reduce((acc, value) => acc + value, 0);
     setTotalPrice(total);
   };
@@ -36,7 +41,7 @@ const ShoppingCart = () => {
       await axios
         .get(`http://localhost:4000/product/many?ids=${arrayOfIds.join(",")}`)
         .then((response) => {
-          console.log(response);
+        //  console.log(response);
           setCartProducts(response.data);
           getTotalPrices(response.data);
         });

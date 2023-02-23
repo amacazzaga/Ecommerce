@@ -20,6 +20,7 @@ const CartProduct = ({
     localStorage.setItem("product", JSON.stringify(newItems));
     reloadProducts();
   };
+  //
   const resetAmounts = () => {
     const fromLocaleStorage = localStorage.getItem("product");
     const newAmounts = JSON.parse(fromLocaleStorage);
@@ -28,8 +29,19 @@ const CartProduct = ({
     });
     localStorage.setItem("product", JSON.stringify(newAmounts));
   };
+  //
+  const placeholder = () => {
+    const fromLocaleStorage = localStorage.getItem("product");
+    const newAmounts = JSON.parse(fromLocaleStorage);
+    const foundItem = newAmounts.find((item) => {
+      return item.id === id;
+    });
+    return foundItem.amount;
+  };
+//
+  //
   useEffect(() => {
-    resetAmounts();
+    reloadProducts();
   }, []);
 
   return (
@@ -50,7 +62,6 @@ const CartProduct = ({
             type="number"
             min="1"
             class="w-25"
-            placeholder="1"
             onChange={(e) => {
               const fromLocaleStorage = localStorage.getItem("product");
               const newAmounts = JSON.parse(fromLocaleStorage);
@@ -59,8 +70,9 @@ const CartProduct = ({
               });
               const newItems = (foundItem.amount = Number(e.target.value));
               localStorage.setItem("product", JSON.stringify(newAmounts));
-              reloadProducts()
+              reloadProducts();
             }}
+            placeholder={placeholder()}
           />
         </div>
         <div>
