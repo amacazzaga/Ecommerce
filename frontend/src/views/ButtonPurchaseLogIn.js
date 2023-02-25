@@ -1,8 +1,8 @@
 import React from "react";
 
-const ButtonPurchaseLogIn = ({ totalPrice }) => {
+const ButtonPurchaseLogIn = ({ totalPrice ,buyProducts}) => {
   return (
-    <button className="btn btn-success m-2 fw-bolder  ">
+    <button onClick={buyProducts} className="btn btn-success m-2 fw-bolder  ">
       Make Purchase for {`$${totalPrice}`}
     </button>
   );
