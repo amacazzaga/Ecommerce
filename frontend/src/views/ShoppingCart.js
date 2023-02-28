@@ -79,8 +79,10 @@ const ShoppingCart = () => {
         top: 0,
       });
       getProductsOnCart();
+      //error
     } catch (err) {
       setErrorMessage("error");
+      //scroll to top
       window.scroll({
         top: 0,
       });

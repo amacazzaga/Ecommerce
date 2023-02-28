@@ -16,6 +16,7 @@ const getSales = async (req, res) => {
 //create new sales//
 const createSales = async (req, res) => {
   const { idUser, details } = req.body; //destructuring
+  if(details.length<1)return
   try {
     const detailsMap = details.map(async(d) => {
       return await Product.findById(d.idProduct).then(async(p) => {

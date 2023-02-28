@@ -25,7 +25,9 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
         }
       );
       console.log(resp);
-      window.alert("compra exitosa!!!")
+      window.alert(
+        "Succesfull Purchase, you can see your history shopping on My Shopping "
+      );
     } catch (err) {
       console.log(err);
     }
@@ -81,7 +83,7 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
               title="Add To Shopping Cart"
               onClick={() => {
                 if (productArrayToStorage.includes(id)) return;
-                productArrayToStorage.push({id,amount:1,price});
+                productArrayToStorage.push({ id, amount: 1, price });
                 localStorage.setItem(
                   "product",
                   JSON.stringify(productArrayToStorage)
