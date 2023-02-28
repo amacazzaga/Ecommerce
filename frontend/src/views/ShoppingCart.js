@@ -11,6 +11,7 @@ import ButtonPurchaseLogIn from "./ButtonPurchaseLogIn";
 const ShoppingCart = () => {
   const [cookie] = useCookies();
   const token = cookie.token;
+  const [successMessage, setSuccessMessage] = useState();
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   ////
@@ -60,14 +61,23 @@ const ShoppingCart = () => {
         `http://localhost:4000/sales`,
         {
           idUser: idUser,
-          details: itemsToBuy
+          details: itemsToBuy,
         },
         {
           headers: { Authorization: token },
         }
       );
       console.log(resp);
-      window.alert("compra exitosa!!!");
+      // show notification//
+      setSuccessMessage("success");
+      // empty localstorage//
+      const emptyCart = [];
+      localStorage.setItem("product", JSON.stringify(emptyCart));
+      //scroll to top
+      window.scroll({
+        top: 0,
+      });
+      getProductsOnCart()
     } catch (err) {
       console.log(err);
     }
@@ -80,6 +90,16 @@ const ShoppingCart = () => {
   return (
     <div className="min-vh-100">
       <ModalLogOrSing />
+      {successMessage ? (
+        <div class="alert alert-success" role="alert">
+          Purchase has been succesfull, you can see your shopping history :
+          <a href="/myshopping" class="alert-link">
+            My Shopping
+          </a>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="container d-flex flex-column ">
         <div className="container">
           {cartProducts.length > 0 ? (
@@ -97,12 +117,15 @@ const ShoppingCart = () => {
               </div>
             ))
           ) : (
-            <h1 className="min-vh-100">Shopping Cart Is Empty</h1>
+            <h3 className="min-vh-100 border border-2">Shopping Cart Is Empty</h3>
           )}
         </div>
         <div className="d-flex justify-content-center">
           {token ? (
-            <ButtonPurchaseLogIn buyProducts={buyProducts} totalPrice={totalPrice} />
+            <ButtonPurchaseLogIn
+              buyProducts={buyProducts}
+              totalPrice={totalPrice}
+            />
           ) : (
             <ButtonPurchase totalPrice={totalPrice} />
           )}

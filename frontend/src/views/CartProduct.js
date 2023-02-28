@@ -27,7 +27,9 @@ const CartProduct = ({
     const foundItem = newAmounts.find((item) => {
       return item.id === id;
     });
-    return foundItem.amount;
+    if (foundItem) {
+      return foundItem.amount;
+    } else return;
   };
   //
   useEffect(() => {
