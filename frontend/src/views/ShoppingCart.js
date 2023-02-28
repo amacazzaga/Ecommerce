@@ -12,6 +12,7 @@ const ShoppingCart = () => {
   const [cookie] = useCookies();
   const token = cookie.token;
   const [successMessage, setSuccessMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState();
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   ////
@@ -77,8 +78,12 @@ const ShoppingCart = () => {
       window.scroll({
         top: 0,
       });
-      getProductsOnCart()
+      getProductsOnCart();
     } catch (err) {
+      setErrorMessage("error");
+      window.scroll({
+        top: 0,
+      });
       console.log(err);
     }
   };
@@ -86,7 +91,7 @@ const ShoppingCart = () => {
   useEffect(() => {
     getProductsOnCart();
   }, []);
-
+  ///////
   return (
     <div className="min-vh-100">
       <ModalLogOrSing />
@@ -100,6 +105,12 @@ const ShoppingCart = () => {
       ) : (
         ""
       )}
+      {errorMessage ? ( <div class="alert alert-danger" role="alert">
+          Purchase has been fail, you can see your shopping history :
+          <a href="/myshopping" class="alert-link">
+            My Shopping
+          </a>
+        </div>) :( "")}
       <div className="container d-flex flex-column ">
         <div className="container">
           {cartProducts.length > 0 ? (
@@ -117,7 +128,9 @@ const ShoppingCart = () => {
               </div>
             ))
           ) : (
-            <h3 className="min-vh-100 border border-2">Shopping Cart Is Empty</h3>
+            <h3 className="min-vh-100 border border-4">
+              Shopping Cart Is Empty
+            </h3>
           )}
         </div>
         <div className="d-flex justify-content-center">
