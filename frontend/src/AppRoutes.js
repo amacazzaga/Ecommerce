@@ -9,7 +9,6 @@ import HomeLoggedOut from "./views/HomeLoggedOut";
 import LoginForm from "./views/LoginForm";
 import SingUpForm from "./views/SingUpForm";
 import UserPurchase from "./views/UserPurchase";
-
 import InspectProduct from "./views/InspectProduct";
 import InspectProductLogged from "./views/InspectProductLogged";
 import UserProfile from "./views/UserProfile";
@@ -19,6 +18,7 @@ import HomeSearchProductLogOut from "./views/HomeSearchProductLogOut";
 import HomeSearchProductLogIn from "./views/HomeSearchProductLogIn";
 import ShoppingCartLayoutLogOut from "./views/ShoppingCartLayoutLogOut";
 import ShoppingCartLayOutLogged from "./views/ShoppingCartLayOutLogged";
+import UserShopping from "./views/UserShopping";
 
 function AppRoutes({ userIsAdmin, userId }) {
   return (
@@ -34,6 +34,7 @@ function AppRoutes({ userIsAdmin, userId }) {
           path="/myaccount"
           element={userIsAdmin ? <AdminBoardHome /> : <UserProfile />}
         />
+        <Route path="/myshopping" element={userId ? <UserShopping /> : ""} />
         <Route
           path={`/myaccount/editproduct/:id`}
           element={userIsAdmin ? <EditProduct /> : <h1>not admin</h1>}
@@ -54,18 +55,27 @@ function AppRoutes({ userIsAdmin, userId }) {
           path={`/myaccount/users/sales/:id`}
           element={userIsAdmin ? <UserPurchase /> : <h1>not admin</h1>}
         />
-        <Route path={`/shoppingcart`} element={userId?<ShoppingCartLayOutLogged/>:<ShoppingCartLayoutLogOut/>} />
+        <Route
+          path={`/shoppingcart`}
+          element={
+            userId ? <ShoppingCartLayOutLogged /> : <ShoppingCartLayoutLogOut />
+          }
+        />
         <Route
           path={`/:id`}
           element={userId ? <InspectProductLogged /> : <InspectProduct />}
         />
-         <Route
+        <Route
           path={`/:band/:category`}
-          element={userId?<HomeCategoryLoggedIn/>:<HomeCategoryLoggedOut/>}
+          element={
+            userId ? <HomeCategoryLoggedIn /> : <HomeCategoryLoggedOut />
+          }
         />
-         <Route
+        <Route
           path={`/search/:name`}
-          element={userId?<HomeSearchProductLogIn/>:<HomeSearchProductLogOut/>}
+          element={
+            userId ? <HomeSearchProductLogIn /> : <HomeSearchProductLogOut />
+          }
         />
       </Routes>
     </BrowserRouter>

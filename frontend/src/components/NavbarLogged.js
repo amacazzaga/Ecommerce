@@ -50,7 +50,7 @@ const NavbarLogged = () => {
                   Home
                 </a>
               </li>
-              <Link to="/myaccount">
+              <Link to={"/myshopping"}>
                 <li class="nav-item">
                   <a class="nav-link" href="/">
                     My Shopping

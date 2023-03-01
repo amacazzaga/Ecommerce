@@ -29,7 +29,7 @@ const LoginForm = () => {
 
   return (
     <Layout>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="min-vh-100">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">
           Email address
