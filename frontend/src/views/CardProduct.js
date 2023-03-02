@@ -82,7 +82,13 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
               data-bs-placement="top"
               title="Add To Shopping Cart"
               onClick={() => {
-                if (productArrayToStorage.includes(id)) return;
+                const productArrayToStorage = JSON.parse(localStorage.getItem("product"))
+                const isProductOnLocalStorage = productArrayToStorage.map(
+                  (m) => {
+                    return m.id;
+                  }
+                );
+                if (isProductOnLocalStorage.includes(id)) return;
                 productArrayToStorage.push({ id, amount: 1, price });
                 localStorage.setItem(
                   "product",
