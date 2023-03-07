@@ -7,13 +7,13 @@ const Layout = ({ children }) => {
   return (
     <div className="container-xxl ">
       <header>
-        <navbar className="container-xl">
+        <nav className="container-xl">
           <Navbar />
-        </navbar>
+        </nav>
       </header>
       <main className="container-xl ">{children}</main>
-      <footer className="container-xxl" >
-        <Footer/>
+      <footer className="container-xxl">
+        <Footer />
       </footer>
     </div>
   );

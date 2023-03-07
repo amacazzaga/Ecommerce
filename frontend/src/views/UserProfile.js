@@ -42,9 +42,15 @@ const UserProfile = () => {
         { headers: { Authorization: token } }
       );
       setSuccessMessage("You have updated your information");
+      window.scroll({
+        top: 0,
+      });
     } catch (error) {
       console.log(error);
-      setSuccessMessage("Your info hasnt been updated");
+      setSuccessMessage("Your info hasnt been updated, check your fields");
+      window.scroll({
+        top: 0,
+      });
     }
   };
   //

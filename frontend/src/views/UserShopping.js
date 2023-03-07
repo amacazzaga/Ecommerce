@@ -11,34 +11,29 @@ const UserShopping = () => {
   const token = cookie.token;
   const decoded = jwt_decode(token);
   const userId = decoded.id;
-  //
+  ////
   const getUserPurchase = async () => {
     const resp = await axios
       .get(`http://localhost:4000/sales/myshopping/${userId}`, {
         headers: { Authorization: token },
       })
-      .then((resp) => {
+      .then(async (resp) => {
         const items = resp.data;
-        const itemsDetails = items.map(async (m) => {
-          const details = m.details;
-          const amountsAndPrices = details.map((a) => {
-            const amount = a.amount;
-            const price = a.unitPrice;
-            return { amount, price };
+        const arrayOfIds = items.reduce((acc, el) => {
+          return acc.concat(
+            ...el.details.map((m) => {
+              return m.idProduct;
+            })
+          );
+        }, []);
+        console.log("arrayofids", arrayOfIds);
+        console.log(arrayOfIds);
+        await axios
+          .get(`http://localhost:4000/product/many?ids=${arrayOfIds.join(",")}`)
+          .then((response) => {
+            console.log("response", response.data);
+            setPurchase(response.data);
           });
-          console.log(amountsAndPrices)
-          const arrayOfIds = m.details.map((p) => {
-            return p.idProduct;
-          });
-
-          await axios
-            .get(
-              `http://localhost:4000/product/many?ids=${arrayOfIds.join(",")}`
-            )
-            .then((response) => {
-            //  console.log(response.data);
-            });
-        });
       });
   };
   useEffect(() => {
