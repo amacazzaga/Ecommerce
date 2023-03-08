@@ -13,12 +13,14 @@ const UserShopping = () => {
   const userId = decoded.id;
   ////
   const getUserPurchase = async () => {
-    const resp = await axios
+    const sales = await axios
       .get(`http://localhost:4000/sales/myshopping/${userId}`, {
         headers: { Authorization: token },
       })
       .then(async (resp) => {
         const items = resp.data;
+        const details = items.map((m) => m.details);
+        console.log("details",details)
         const arrayOfIds = items.reduce((acc, el) => {
           return acc.concat(
             ...el.details.map((m) => {
@@ -26,13 +28,10 @@ const UserShopping = () => {
             })
           );
         }, []);
-        console.log("arrayofids", arrayOfIds);
-        console.log(arrayOfIds);
-        await axios
+        const products = await axios
           .get(`http://localhost:4000/product/many?ids=${arrayOfIds.join(",")}`)
           .then((response) => {
-            console.log("response", response.data);
-            setPurchase(response.data);
+            console.log("products",response.data);
           });
       });
   };
