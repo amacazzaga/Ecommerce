@@ -16,7 +16,7 @@ const UserPurchase = () => {
 
   const getUser = async () => {
     const resp = await axios
-      .get(`http://localhost:4000/user/${id}`, {
+      .get(`http://54.207.134.161:4000/user/${id}`, {
         headers: { Authorization: token },
       })
       .then((resp) => {
@@ -30,7 +30,7 @@ const UserPurchase = () => {
   //
   const getSales = async () => {
     const resp = await axios
-      .get(`http://localhost:4000/sales/${id}`, {
+      .get(`http://54.207.134.161:4000/sales/${id}`, {
         headers: { Authorization: token },
       })
       .then((resp) => {

@@ -12,7 +12,7 @@ const EditImage = () => {
   const [imageProductArray, setImageProductArray] = useState([]);
   //////
   const getProduct = async () => {
-    const resp = await axios.get(`http://localhost:4000/product/${id}`);
+    const resp = await axios.get(`http://54.207.134.161:4000/product/${id}`);
     console.log(resp);
     setProductName(resp.data.name);
     setImageProductArray(resp.data.imageNameArray);

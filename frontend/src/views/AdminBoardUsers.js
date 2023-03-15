@@ -13,7 +13,7 @@ const AdminBoardUsers = () => {
   const token = cookie.token;
   const getUsers = async () => {
     const resp = await axios.get(
-      `http://localhost:4000/user/?page=${pagination}`,
+      `http://54.207.134.161:4000/user/?page=${pagination}`,
       {
         headers: { Authorization: token },
       }

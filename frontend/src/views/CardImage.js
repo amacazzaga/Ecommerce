@@ -15,7 +15,7 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   const deleteImageProduct = async () => {
     const resp = await axios
       .patch(
-        `http://localhost:4000/product/image/${id}`,
+        `http://54.207.134.161:4000/product/image/${id}`,
         {
           imageNameArray: array,
         },
@@ -34,7 +34,7 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   ////delete image from s3
   const deleteImageOnS3 = async () => {
     const resp = await axios
-      .delete("http://localhost:4000/images", {
+      .delete("http://54.207.134.161:4000/images", {
         headers: {
           Authorization: token,
         },

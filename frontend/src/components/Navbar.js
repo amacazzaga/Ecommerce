@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 const Navbar = () => {
  /* const [notification, setNotification] = useState(

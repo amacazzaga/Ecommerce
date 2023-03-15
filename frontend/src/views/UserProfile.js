@@ -19,7 +19,7 @@ const UserProfile = () => {
   //
   const getUser = async () => {
     const resp = await axios
-      .get(`http://localhost:4000/user/myprofile?userid=${userId}`, {
+      .get(`http://54.207.134.161:4000/user/myprofile?userid=${userId}`, {
         headers: { Authorization: token },
       })
       .then((response) => {
@@ -32,7 +32,7 @@ const UserProfile = () => {
     e.preventDefault();
     try {
       const resp = await axios.patch(
-        `http://localhost:4000/user/edit/${userId}`,
+        `http://54.207.134.161:4000/user/edit/${userId}`,
         {
           name: name,
           lastName: lastName,

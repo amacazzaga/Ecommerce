@@ -16,7 +16,7 @@ const FormPostProduct = ({ reloadProducts }) => {
     e.preventDefault();
     try {
       const resp = await axios.post(
-        "http://localhost:4000/product",
+        "http://54.207.134.161:4000/product",
         {
           name: name,
           price: price,

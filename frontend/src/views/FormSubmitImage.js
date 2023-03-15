@@ -13,7 +13,7 @@ const FormSubmitImage = ({ imageProductArray, getProduct }) => {
   const loadImageProduct = async () => {
     const resp = await axios
       .patch(
-        `http://localhost:4000/product/image/${id}`,
+        `http://54.207.134.161:4000/product/image/${id}`,
         {
           imageNameArray: imageProductArray, //new array with the loaded image
         },
@@ -35,7 +35,7 @@ const FormSubmitImage = ({ imageProductArray, getProduct }) => {
     const formData = new FormData();
     formData.append("image", file);
     const resp = await axios
-      .post("http://localhost:4000/images", formData, {
+      .post("http://54.207.134.161:4000/images", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: token,

@@ -11,7 +11,7 @@ const InspectProduct = () => {
   //
   const getProduct = async () => {
     const resp = await axios
-      .get(`http://localhost:4000/product/${id}`)
+      .get(`http://54.207.134.161:4000/product/${id}`)
       .then((resp) => {
         setProduct(resp.data);
         console.log(resp.data);

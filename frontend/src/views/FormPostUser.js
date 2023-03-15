@@ -18,7 +18,7 @@ const FormPostUser = ({reloadUsers}) => {
     e.preventDefault();
     try {
       const resp = await axios.post(
-        "http://localhost:4000/user",
+        "http://54.207.134.161:4000/user",
         {
           name: name,
           lastName: lastName,

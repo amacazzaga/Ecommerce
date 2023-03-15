@@ -17,7 +17,7 @@ const EditProduct = () => {
   const token = cookie.token;
   const { id } = useParams();
   const getProduct = async () => {
-    const resp = await axios.get(`http://localhost:4000/product/${id}`).then((resp)=>{
+    const resp = await axios.get(`http://54.207.134.161:4000/product/${id}`).then((resp)=>{
       console.log(resp.data)
       setProduct(resp.data);
       console.log(product)      
@@ -27,7 +27,7 @@ const EditProduct = () => {
     e.preventDefault();
     try {
       const resp = await axios.patch(
-        `http://localhost:4000/product/${id}`,
+        `http://54.207.134.161:4000/product/${id}`,
         {
           name: editName,
           price: editPrice,
