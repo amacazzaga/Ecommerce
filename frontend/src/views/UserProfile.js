@@ -57,7 +57,7 @@ const UserProfile = () => {
   useEffect(() => {
     getUser();
   }, []);
-
+//
   return (
     <LayoutLogged>
       <div className="container-xl">

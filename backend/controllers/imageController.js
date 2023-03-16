@@ -5,7 +5,6 @@ const {
   DeleteObjectCommand,
 } = require("@aws-sdk/client-s3");
 const sharp = require(`sharp`);
-
 // FROM .ENV
 const bucketName = process.env.BUCKET_NAME;
 const bucketRegion = process.env.BUCKET_REGION;

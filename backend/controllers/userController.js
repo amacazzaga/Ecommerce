@@ -55,7 +55,6 @@ const getUser = async (req, res) => {
   res.status(200).json(user);
 };
 // user gets profile
-
 const getMyProfileUser = async (req, res) => {
   const userid = req.query.userid;
   if (!mongoose.Types.ObjectId.isValid(userid)) {
@@ -109,25 +108,22 @@ const updateUser = async (req, res) => {
     return res.status(400).json(`not a valid id`);
   }
   const { name, lastName, password, rol } = req.body;
-
   const props = [
     { value: name, key: "name" },
     { value: lastName, key: "lastName" },
     { value: password, key: "password" },
     { value: rol, key: "rol" },
   ];
-
+  console.log(props)
   const result = props.reduce((res, current) => {
     if (current.value) {
       const transformed =
         current.key == "password"
           ? bcrypt.hashSync(current.value, 8)
           : current.value;
-
       return { ...res, [current.key]: transformed };
     } else return res;
   }, {});
-
   const user = await User.findByIdAndUpdate(id, result);
   if (!user) {
     return res.status(404).json(`no such user`);
