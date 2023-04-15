@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
   return (
     <div className="container-xxl ">
       <header>
-        <nav className="container-xl">
+        <nav className="container-xxl">
           <Navbar />
         </nav>
       </header>

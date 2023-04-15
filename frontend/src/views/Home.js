@@ -6,7 +6,7 @@ import CardProduct from "./CardProduct";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const getProducts = () => {
-    axios.get(`http://54.207.134.161:4000/product/categories?category=3`).then((response) => {
+    axios.get(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/categories?category=3`).then((response) => {
       console.log(response.data);
       setProducts(response.data);
     });

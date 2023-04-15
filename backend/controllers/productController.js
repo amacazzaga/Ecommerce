@@ -75,6 +75,7 @@ const getManyProductsById = async (req, res) => {
   }
 };
 //// get a product by name
+//regex
 const getProductsByName = async (req, res) => {
   const name = req.query.name;
   console.log("name", name);
