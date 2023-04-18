@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import ModalLogOrSing from "./ModalLogOrSing";
-const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
+const cloudFrontBaseUrl = "https://d3boujzzfjmyck.cloudfront.net/";
 const productArrayToStorage = JSON.parse(localStorage.getItem("product")) || [];
 //productArraytostorage, get the item selected previous or init itself on empty array
 const CardProduct = ({ name, imageNameArray, id, price }) => {
@@ -15,7 +15,7 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
       const decoded = jwt_decode(token);
       const idUser = decoded.id;
       const resp = await axios.post(
-        `http://54.207.134.161:4000/sales`,
+        `http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/sales`,
         {
           idUser: idUser,
           details: [{ idProduct: id, amount: 1, unitPrice: price }],

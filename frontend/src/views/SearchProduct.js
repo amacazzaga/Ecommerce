@@ -9,7 +9,7 @@ const SearchProduct= () => {
   const { name } = useParams();
   const getProducts = () => {
     axios
-      .get(`http://54.207.134.161:4000/product/search?name=${name}`)
+      .get(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/search?name=${name}`)
       .then((response) => {
         console.log(response.data);
         setProducts(response.data);

@@ -10,12 +10,12 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   const { id } = useParams();
   const [cookie] = useCookies();
   const token = cookie.token;
-  const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
+  const cloudFrontBaseUrl = "https://d3boujzzfjmyck.cloudfront.net/";
   /// patch to mongo db the new array//
   const deleteImageProduct = async () => {
     const resp = await axios
       .patch(
-        `http://54.207.134.161:4000/product/image/${id}`,
+        `http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/image/${id}`,
         {
           imageNameArray: array,
         },
@@ -34,7 +34,7 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   ////delete image from s3
   const deleteImageOnS3 = async () => {
     const resp = await axios
-      .delete("http://54.207.134.161:4000/images", {
+      .delete("http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/images", {
         headers: {
           Authorization: token,
         },

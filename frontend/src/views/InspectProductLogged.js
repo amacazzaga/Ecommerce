@@ -3,7 +3,7 @@ import LayoutLogged from "../components/LayoutLogged";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
+const cloudFrontBaseUrl = "https://d3boujzzfjmyck.cloudfront.net/";
 
 const InspectProductLogged = () => {
   const { id } = useParams();
@@ -11,7 +11,7 @@ const InspectProductLogged = () => {
   //
   const getProduct = async () => {
     const resp = await axios
-      .get(`http://54.207.134.161:4000/product/${id}`)
+      .get(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/${id}`)
       .then((resp) => {
         setProduct(resp.data);
         console.log(resp.data);

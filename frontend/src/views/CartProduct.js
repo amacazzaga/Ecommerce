@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-const cloudFrontBaseUrl = "https://d3tlwzcpumxs2b.cloudfront.net/";
+const cloudFrontBaseUrl = "https://d3boujzzfjmyck.cloudfront.net/";
 //
 const CartProduct = ({
   name,

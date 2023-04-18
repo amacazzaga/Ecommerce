@@ -15,7 +15,7 @@ const ProductsTable = ({
   const deleteProduct = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.delete(`http://54.207.134.161:4000/product/${id}`, {
+      const resp = await axios.delete(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/${id}`, {
         headers: { Authorization: token },
       });
       console.log(resp);
