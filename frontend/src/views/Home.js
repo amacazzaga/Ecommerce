@@ -8,7 +8,7 @@ const Home = () => {
   const getProducts = () => {
     axios
       .get(
-        `https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/categories?category=3`
+        `https://www.amacazzaga-ecommerce.store/product/categories?category=3`
       )
       .then((response) => {
         console.log(response.data);
