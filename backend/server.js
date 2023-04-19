@@ -8,15 +8,13 @@ const userRoutes = require(`./routes/users`);
 const productRoutes = require(`./routes/products`);
 const salesRoutes = require(`./routes/sales`);
 const imagesRoutes = require(`./routes/images`);
-
 // express app//
-
 const app = express(); //setting the app to express
 const privateKey = fs.readFileSync("./sslcert/server.key");
 const certificate = fs.readFileSync("./sslcert/server.crt");
 const credentials = { key: privateKey, cert: certificate };
 const httpsServer = https.createServer(credentials, app);
-
+//
 app.use(cors());
 //middleware//
 /*Las funciones de middleware son funciones que tienen acceso al objeto
@@ -24,7 +22,6 @@ de solicitud (req), y al objeto de respuesta (res)*/
 app.use(express.json());
 app.use(`/`, (req, res, next) => {
   console.log(req.method);
-
   next();
 });
 //user routes//

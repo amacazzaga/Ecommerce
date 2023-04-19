@@ -17,7 +17,7 @@ const EditUser = () => {
 
   const getUser = async () => {
     const resp = await axios
-      .get(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/${id}`, {
+      .get(`https://www.amacazzaga-ecommerce.store/user/${id}`, {
         headers: { Authorization: token },
       })
       .then((resp) => {
@@ -32,7 +32,7 @@ const EditUser = () => {
     e.preventDefault();
     try {
       const resp = await axios.patch(
-        `http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/${id}`,
+        `https://www.amacazzaga-ecommerce.store/user/${id}`,
         {
           name: name,
           lastName: lastName,
@@ -50,7 +50,7 @@ const EditUser = () => {
   const deleteUser = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.delete(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/${id}`, {
+      const resp = await axios.delete(`https://www.amacazzaga-ecommerce.store/user/${id}`, {
         headers: { Authorization: token },
       });
       console.log(resp);

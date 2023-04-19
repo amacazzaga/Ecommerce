@@ -12,7 +12,7 @@ const EditImage = () => {
   const [imageProductArray, setImageProductArray] = useState([]);
   //////
   const getProduct = async () => {
-    const resp = await axios.get(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/${id}`);
+    const resp = await axios.get(`https://www.amacazzaga-ecommerce.store/product/${id}`);
     console.log(resp);
     setProductName(resp.data.name);
     setImageProductArray(resp.data.imageNameArray);

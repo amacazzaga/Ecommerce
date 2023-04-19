@@ -15,7 +15,7 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   const deleteImageProduct = async () => {
     const resp = await axios
       .patch(
-        `http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/image/${id}`,
+        `https://www.amacazzaga-ecommerce.store/product/image/${id}`,
         {
           imageNameArray: array,
         },

@@ -10,7 +10,7 @@ const AdminBoardHome = () => {
   const [pagination, setPagination] = useState(0);
   const fetchProducts = () => {
     axios
-      .get(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product?page=${pagination}`)
+      .get(`https://www.amacazzaga-ecommerce.store/product?page=${pagination}`)
       .then((response) => {
         if (response.data.length == 0) return;
         setProducts(response.data);
