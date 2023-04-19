@@ -2,7 +2,7 @@ require(`dotenv`).config();
 const express = require(`express`);
 const cors = require(`cors`);
 const mongoose = require(`mongoose`);
-const fs = require('fs');
+const fs = require("fs");
 const https = require("https");
 const userRoutes = require(`./routes/users`);
 const productRoutes = require(`./routes/products`);
@@ -12,10 +12,10 @@ const imagesRoutes = require(`./routes/images`);
 // express app//
 
 const app = express(); //setting the app to express
-const privateKey  = fs.readFileSync('./sslcert/server.key');
-const certificate = fs.readFileSync('./sslcert/server.crt');
-const credentials = {key: privateKey, cert: certificate};
-const httpsServer = https.createServer(credentials,app);
+const privateKey = fs.readFileSync("./sslcert/server.key");
+const certificate = fs.readFileSync("./sslcert/server.crt");
+const credentials = { key: privateKey, cert: certificate };
+const httpsServer = https.createServer(credentials, app);
 
 app.use(cors());
 //middleware//
@@ -25,7 +25,6 @@ app.use(express.json());
 app.use(`/`, (req, res, next) => {
   console.log(req.method);
 
-  console.log("key",privateKey)
   next();
 });
 //user routes//
