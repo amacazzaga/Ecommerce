@@ -13,7 +13,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.post("http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/login", {
+      const resp = await axios.post("https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/login", {
         email: email,
         password: password,
       });
