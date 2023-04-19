@@ -24,7 +24,8 @@ de solicitud (req), y al objeto de respuesta (res)*/
 app.use(express.json());
 app.use(`/`, (req, res, next) => {
   console.log(req.method);
-  console.log(certificate)
+
+  console.log("key",privateKey)
   next();
 });
 //user routes//
