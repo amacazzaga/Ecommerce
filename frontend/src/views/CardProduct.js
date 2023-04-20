@@ -15,7 +15,7 @@ const CardProduct = ({ name, imageNameArray, id, price }) => {
       const decoded = jwt_decode(token);
       const idUser = decoded.id;
       const resp = await axios.post(
-        `https://www.amacazzaga-ecommerce.store/sales`,
+        `https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/sales`,
         {
           idUser: idUser,
           details: [{ idProduct: id, amount: 1, unitPrice: price }],

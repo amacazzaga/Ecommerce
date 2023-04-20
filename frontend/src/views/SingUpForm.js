@@ -15,7 +15,7 @@ const SingUpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.post("http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user", {
+      const resp = await axios.post("https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user", {
         name: name,
         lastName: lastName,
         age: age,

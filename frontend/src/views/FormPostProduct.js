@@ -16,7 +16,7 @@ const FormPostProduct = ({ reloadProducts }) => {
     e.preventDefault();
     try {
       const resp = await axios.post(
-        "http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product",
+        "https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product",
         {
           name: name,
           price: price,

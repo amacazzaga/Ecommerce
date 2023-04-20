@@ -16,7 +16,7 @@ const UserPurchase = () => {
 
   const getUser = async () => {
     const resp = await axios
-      .get(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/${id}`, {
+      .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/${id}`, {
         headers: { Authorization: token },
       })
       .then((resp) => {
@@ -30,7 +30,7 @@ const UserPurchase = () => {
   //
   const getSales = async () => {
     const resp = await axios
-      .get(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/sales/${id}`, {
+      .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/sales/${id}`, {
         headers: { Authorization: token },
       })
       .then((resp) => {

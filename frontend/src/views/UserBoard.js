@@ -1,6 +1,5 @@
 import React from "react";
 import LayoutLogged from "../components/LayoutLogged";
-import axios from "axios";
 
 const UserBoard = ({ userId }) => {
   return (

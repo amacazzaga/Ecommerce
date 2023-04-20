@@ -19,7 +19,7 @@ const UserProfile = () => {
   //
   const getUser = async () => {
     const resp = await axios
-      .get(`http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/myprofile?userid=${userId}`, {
+      .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/myprofile?userid=${userId}`, {
         headers: { Authorization: token },
       })
       .then((response) => {
@@ -32,7 +32,7 @@ const UserProfile = () => {
     e.preventDefault();
     try {
       const resp = await axios.patch(
-        `http://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/edit/${userId}`,
+        `https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/edit/${userId}`,
         {
           name: name,
           lastName: lastName,
