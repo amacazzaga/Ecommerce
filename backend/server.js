@@ -12,12 +12,15 @@ const imagesRoutes = require(`./routes/images`);
 const app = express(); //setting the app to express
 const privateKey = fs.readFileSync("./sslcert/server.key");
 const certificate = fs.readFileSync("./sslcert/server.crt");
-const credentials = { key: privateKey, cert: certificate };
+const caBundle = fs.readFileSync("./sslcert/server.cert");
+const credentials = { key: privateKey, cert: certificate, ca: caBundle };
 const httpsServer = https.createServer(credentials, app);
 //
-app.use(cors({
-  origin: 'https://www.amacazzaga-ecommerce.store'
-}));
+app.use(
+  cors({
+    origin: "https://www.amacazzaga-ecommerce.store",
+  })
+);
 //middleware//
 /*Las funciones de middleware son funciones que tienen acceso al objeto
 de solicitud (req), y al objeto de respuesta (res)*/
