@@ -12,8 +12,7 @@ const imagesRoutes = require(`./routes/images`);
 const app = express(); //setting the app to express
 const privateKey = fs.readFileSync("./sslcert/server.key", "utf-8");
 const certificate = fs.readFileSync("./sslcert/server.crt", "utf-8");
-const caBundle = fs.readFileSync("./sslcert/server.cert", "utf-8");
-const credentials = { key: privateKey, cert: certificate, ca: caBundle };
+const credentials = { key: privateKey, cert: certificate };
 const httpsServer = https.createServer(credentials, app);
 //
 app.use(cors());
