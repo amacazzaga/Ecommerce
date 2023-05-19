@@ -14,7 +14,7 @@ const UserShopping = () => {
   ////
   const getUserPurchase = async () => {
     const sales = await axios
-      .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000sales/myshopping/${userId}`, {
+      .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/sales/myshopping/${userId}`, {
         headers: { Authorization: token },
       })
       .then(async (resp) => {

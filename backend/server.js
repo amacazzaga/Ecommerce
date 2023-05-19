@@ -12,10 +12,14 @@ const imagesRoutes = require(`./routes/images`);
 const app = express(); //setting the app to express
 const privateKey = fs.readFileSync("./sslcert/server.key", "utf-8");
 const certificate = fs.readFileSync("./sslcert/server.crt", "utf-8");
-const credentials = { key: privateKey, cert: certificate };
+const caBundle = [
+  fs.readFileSync("./sslcert/server1.cert"),
+  fs.readFileSync("./sslcert/server2.cert"),
+];
+const credentials = { key: privateKey, cert: certificate, ca: caBundle };
 const httpsServer = https.createServer(credentials, app);
 //
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 //middleware//
 /*Las funciones de middleware son funciones que tienen acceso al objeto
 de solicitud (req), y al objeto de respuesta (res)*/

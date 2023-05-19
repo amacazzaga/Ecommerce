@@ -13,7 +13,6 @@ const isValidAmount = (req, res, next) => {
     return res.status(401).json({ message: "error" });
   }
 };
-
 //cheque amount on the purchase on the client side
 const isValidAmountForSale = (req, res, next) => {
   const details = req.body.details;
