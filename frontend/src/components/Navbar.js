@@ -3,20 +3,11 @@ import { Link } from "react-router-dom";
 import { useState} from "react";
 
 const Navbar = () => {
- /* const [notification, setNotification] = useState(
-    localStorage.getItem("product")
-  );
-  window.addEventListener("storage", () => {
-    setNotification(localStorage.getItem("product"));
-  });*/
   const [inputValue,setInputValue]=useState()
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light navbardowncolor">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">
-            E-Commerce
-          </a>
           <button
             class="navbar-toggler"
             type="button"

@@ -14,7 +14,7 @@ const UserShopping = () => {
   ////
   const getUserPurchase = async () => {
     const sales = await axios
-      .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/sales/myshopping/${userId}`, {
+      .get(`http://localhost:4000/sales/myshopping/${userId}`, {
         headers: { Authorization: token },
       })
       .then(async (resp) => {
@@ -29,7 +29,7 @@ const UserShopping = () => {
           );
         }, []);
         const products = await axios
-          .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/many?ids=${arrayOfIds.join(",")}`)
+          .get(`http://localhost:4000/product/many?ids=${arrayOfIds.join(",")}`)
           .then((response) => {
             console.log("products",response.data);
           });

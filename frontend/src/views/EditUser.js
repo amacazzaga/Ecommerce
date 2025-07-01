@@ -17,7 +17,7 @@ const EditUser = () => {
 
   const getUser = async () => {
     const resp = await axios
-      .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/${id}`, {
+      .get(`http://localhost:4000/user/${id}`, {
         headers: { Authorization: token },
       })
       .then((resp) => {
@@ -32,7 +32,7 @@ const EditUser = () => {
     e.preventDefault();
     try {
       const resp = await axios.patch(
-        `https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/${id}`,
+        `http://localhost:4000/user/${id}`,
         {
           name: name,
           lastName: lastName,
@@ -50,7 +50,7 @@ const EditUser = () => {
   const deleteUser = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.delete(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/${id}`, {
+      const resp = await axios.delete(`http://localhost:4000/user/${id}`, {
         headers: { Authorization: token },
       });
       console.log(resp);

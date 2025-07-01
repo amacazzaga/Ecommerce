@@ -13,7 +13,7 @@ const AdminBoardUsers = () => {
   const token = cookie.token;
   const getUsers = async () => {
     const resp = await axios.get(
-      `https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/user/?page=${pagination}`,
+      `:4000/user/?page=${pagination}`,
       {
         headers: { Authorization: token },
       }

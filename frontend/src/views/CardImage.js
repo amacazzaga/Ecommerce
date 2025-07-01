@@ -15,7 +15,7 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   const deleteImageProduct = async () => {
     const resp = await axios
       .patch(
-        `https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/image/${id}`,
+        `http://localhost:4000/product/image/${id}`,
         {
           imageNameArray: array,
         },
@@ -34,7 +34,7 @@ const CardImage = ({ imageProductArray, getProduct }) => {
   ////delete image from s3
   const deleteImageOnS3 = async () => {
     const resp = await axios
-      .delete("https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/images", {
+      .delete("http://localhost:4000/images", {
         headers: {
           Authorization: token,
         },

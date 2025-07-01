@@ -1,51 +1,39 @@
-require(`dotenv`).config();
-const express = require(`express`);
-const cors = require(`cors`);
-const mongoose = require(`mongoose`);
-const fs = require("fs");
-const https = require("https");
-const userRoutes = require(`./routes/users`);
-const productRoutes = require(`./routes/products`);
-const salesRoutes = require(`./routes/sales`);
-const imagesRoutes = require(`./routes/images`);
-// express app//
-const app = express(); //setting the app to express
-const privateKey = fs.readFileSync("./sslcert/server.key", "utf-8");
-const certificate = fs.readFileSync("./sslcert/server.crt", "utf-8");
-const caBundle = [
-  fs.readFileSync("./sslcert/server1.cert"),
-  fs.readFileSync("./sslcert/server2.cert"),
-];
-const credentials = { key: privateKey, cert: certificate, ca: caBundle };
-const httpsServer = https.createServer(credentials, app);
-//
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const userRoutes = require('./routes/users');
+const productRoutes = require('./routes/products');
+const salesRoutes = require('./routes/sales');
+const imagesRoutes = require('./routes/images');
+const password = process.env.password
+const user = process.env.user
+// express app
+const app = express();
+
+
+// middleware
 app.use(cors({ origin: true, credentials: true }));
-//middleware//
-/*Las funciones de middleware son funciones que tienen acceso al objeto
-de solicitud (req), y al objeto de respuesta (res)*/
 app.use(express.json());
-app.use(`/`, (req, res, next) => {
-  console.log(req.method);
+app.use('/', (req, res, next) => {
+  console.log(req.method, req.url);
   next();
 });
-//user routes//
-app.use(`/user`, userRoutes);
-//product routes//
-app.use(`/product`, productRoutes);
-//sales routes//
-app.use(`/sales`, salesRoutes);
-//images routes//
-app.use(`/images`, imagesRoutes);
-//mongoose connect//
+
+// routes
+app.use('/user', userRoutes);
+app.use('/product', productRoutes);
+app.use('/sales', salesRoutes);
+app.use('/images', imagesRoutes);
+
+// mongoose connect and HTTP server
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect( `mongodb+srv://${user}:${password}@cluster0.aipeqgp.mongodb.net/?retryWrites=true&w=majority`)
   .then(() => {
-    //once in mongoose//
-    httpsServer.listen(process.env.PORT, () => {
-      //port 4000
-      console.log("connected to db & listening on", process.env.PORT);
+    app.listen(4000, () => {
+      console.log('Connected to DB & listening on port 4000 (HTTP)');
     });
   })
   .catch((err) => {
-    console.log(err);
+    console.error('DB connection error:', err);
   });

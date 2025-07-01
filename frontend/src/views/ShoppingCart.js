@@ -28,7 +28,7 @@ const ShoppingCart = () => {
       getTotalPrices([]);
     } else {
       await axios
-        .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/many?ids=${arrayOfIds.join(",")}`)
+        .get(`http://localhost:4000/product/many?ids=${arrayOfIds.join(",")}`)
         .then((response) => {
           //  console.log(response);
           setCartProducts(response.data);
@@ -59,7 +59,7 @@ const ShoppingCart = () => {
         return { idProduct: m.id, amount: m.amount, unitPrice: m.price };
       });
       const resp = await axios.post(
-        `https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/sales`,
+        `http://localhost:4000/sales`,
         {
           idUser: idUser,
           details: itemsToBuy,

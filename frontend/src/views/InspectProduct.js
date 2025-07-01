@@ -11,7 +11,7 @@ const InspectProduct = () => {
   //
   const getProduct = async () => {
     const resp = await axios
-      .get(`https://ec2-54-157-162-101.compute-1.amazonaws.com:4000/product/${id}`)
+      .get(`http://localhost:4000/product/${id}`)
       .then((resp) => {
         setProduct(resp.data);
         console.log(resp.data);
