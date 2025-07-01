@@ -12,7 +12,7 @@ const Layout = ({ children }) => (
     </header>
 
     {/* MAIN se expande y empuja el footer al final */}
-    <main className="container-xl flex-fill">{children}</main>
+    <main className="d-flex flex-fill">{children}</main>
 
     {/* FOOTER a todo el ancho del viewport */}
     <footer className="w-100 mt-auto">

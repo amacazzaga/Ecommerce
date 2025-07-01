@@ -10,7 +10,7 @@ const LayoutLogged = ({children}) => {
         <NavbarLogged />
       </navbar>
     </header>
-    <main className="container-xl flex-fill">{children}</main>
+    <main className="d-flex flex-fill">{children}</main>
     <footer className="w-100 mt-auto">
       <div className="">
         <Footer />
