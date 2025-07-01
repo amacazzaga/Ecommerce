@@ -6,7 +6,7 @@ const LayoutLogged = ({children}) => {
   return (
     <div className=" d-flex flex-column min-vh-100">
     <header>
-      <navbar className="container-xl">
+      <navbar >
         <NavbarLogged />
       </navbar>
     </header>

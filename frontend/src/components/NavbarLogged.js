@@ -1,37 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
+
 import { useState } from "react";
 
 const NavbarLogged = () => {
-  const [cookie, setCookie] = useCookies();
+
   const [inputValue,setInputValue]=useState()
   return (
     <div>
-      <nav class="navbar navbarupcolor">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/"></a>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Product Name"
-              aria-label="Search"
-              onChange={(e)=>setInputValue(e.target.value)}
-            ></input>
-            <Link to={`/search/${inputValue}`}>
-            <button class="btn btn-primary border-dark bgcolor fw-bold" type="submit">
-              Search
-            </button>
-            </Link>
-          </form>
-        </div>
-      </nav>
       <nav class="navbar navbar-expand-lg navbar-light navbardowncolor">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">
-            E-Commerce
-          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -119,32 +97,20 @@ const NavbarLogged = () => {
               </li>
             </ul>
             <div class="d-flex">
-              <div class="dropdown">
-                <button
-                  class="btn account-btn dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Account
-                </button>
-                <ul
-                  class="dropdown-menu "
-                  aria-labelledby="dropdownMenuButton1"
-                >
-                  <li
-                    onClick={() => {
-                      setCookie("token", "");
-                      localStorage.clear();
-                    }}
-                  >
-                    <a class="dropdown-item" href="/">
-                      LogOut
-                    </a>
-                  </li>
-                </ul>
-              </div>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Product Name"
+              aria-label="Search"
+              onChange={(e)=>setInputValue(e.target.value)}
+            ></input>
+            <Link to={`/search/${inputValue}`}>
+            <button class="btn btn-primary border-dark bgcolor fw-bold" type="submit">
+              Search
+            </button>
+            </Link>
+          </form>
             </div>
           </div>
         </div>
