@@ -4,15 +4,17 @@ import NavbarLogged from './NavbarLogged'
 
 const LayoutLogged = ({children}) => {
   return (
-    <div className="container-xxl ">
+    <div className=" d-flex flex-column min-vh-100">
     <header>
       <navbar className="container-xl">
         <NavbarLogged />
       </navbar>
     </header>
-    <main className="container-xl">{children}</main>
-    <footer className="container-xxl" >
-      <Footer/>
+    <main className="container-xl flex-fill">{children}</main>
+    <footer className="w-100 mt-auto">
+      <div className="">
+        <Footer />
+      </div>
     </footer>
   </div>
   )
