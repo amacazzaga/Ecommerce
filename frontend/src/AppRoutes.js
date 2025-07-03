@@ -16,8 +16,6 @@ import HomeCategoryLoggedOut from "./views/HomeCategoryLoggedOut";
 import HomeCategoryLoggedIn from "./views/HomeCategoryLoggedIn";
 import HomeSearchProductLogOut from "./views/HomeSearchProductLogOut";
 import HomeSearchProductLogIn from "./views/HomeSearchProductLogIn";
-import ShoppingCartLayoutLogOut from "./views/ShoppingCartLayoutLogOut";
-import ShoppingCartLayOutLogged from "./views/ShoppingCartLayOutLogged";
 import UserShopping from "./views/UserShopping";
 
 function AppRoutes({ userIsAdmin, userId }) {
@@ -54,12 +52,6 @@ function AppRoutes({ userIsAdmin, userId }) {
         <Route
           path={`/myaccount/users/sales/:id`}
           element={userIsAdmin ? <UserPurchase /> : <h1>not admin</h1>}
-        />
-        <Route
-          path={`/shoppingcart`}
-          element={
-            userId ? <ShoppingCartLayOutLogged /> : <ShoppingCartLayoutLogOut />
-          }
         />
         <Route
           path={`/:id`}
