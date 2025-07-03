@@ -13,7 +13,7 @@ const AdminBoardUsers = () => {
   const token = cookie.token;
   const getUsers = async () => {
     const resp = await axios.get(
-      `:4000/user/?page=${pagination}`,
+      `http://localhost:4000/user?page=${pagination}`,
       {
         headers: { Authorization: token },
       }
@@ -26,7 +26,7 @@ const AdminBoardUsers = () => {
     getUsers();
   }, [pagination]);
   return (
-    <LayoutLoggedAdm>
+    <LayoutLoggedAdm noFlex>
       <FormPostUser reloadUsers={getUsers} />
       <UsersTableHead />
       {users.map((u) => (

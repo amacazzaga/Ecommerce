@@ -24,9 +24,7 @@ const NavbarLoggedAdm = () => {
       </nav>
       <nav class="navbar navbar-expand-lg navbar-light navbardowncoloradmboard">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">
-            E-Commerce
-          </a>
+ 
           <button
             class="navbar-toggler"
             type="button"

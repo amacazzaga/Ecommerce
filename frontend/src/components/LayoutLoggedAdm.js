@@ -3,20 +3,24 @@ import Footer from "./Footer";
 
 import NavbarLoggedAdm from "./NavbarLoggedAdm";
 
-const LayoutLoggedAdm = ({ children }) => {
+const LayoutLoggedAdm = ({children, noFlex = false}) => {
   return (
-    <div className="container-xxl ">
-      <header>
-        <navbar className="container-xl">
-          <NavbarLoggedAdm />
-        </navbar>
-      </header>
-      <main className="container-xl">{children}</main>
-      <footer className="container-xxl">
+    <div className=" d-flex flex-column min-vh-100">
+    <header>
+      <navbar >
+        <NavbarLoggedAdm />
+      </navbar>
+    </header>
+     <main className={`flex-fill ${noFlex ? '' : 'd-flex'}`}>
+    {children}
+  </main>
+    <footer className="w-100 mt-auto">
+      <div className="">
         <Footer />
-      </footer>
-    </div>
-  );
-};
+      </div>
+    </footer>
+  </div>
+  )
+}
 
 export default LayoutLoggedAdm;

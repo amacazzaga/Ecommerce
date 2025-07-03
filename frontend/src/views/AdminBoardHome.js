@@ -21,7 +21,7 @@ const AdminBoardHome = () => {
   }, [pagination]);
 
   return (
-    <LayoutLoggedAdm>
+    <LayoutLoggedAdm noFlex>
       <FormPostProduct reloadProducts={fetchProducts} />
       <ProductsTableHead />
       {products.map((m) => (
