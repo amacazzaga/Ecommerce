@@ -3,25 +3,10 @@ import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 const NavbarLoggedAdm = () => {
-  const [cookie, setCookie] = useCookies();
+ 
   return (
     <div>
-      <nav class="navbar navbarupcoloradmboard">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/"></a>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            ></input>
-            <button class="btn-search" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </nav>
+
       <nav class="navbar navbar-expand-lg navbar-light navbardowncoloradmboard">
         <div class="container-fluid">
  
@@ -53,31 +38,6 @@ const NavbarLoggedAdm = () => {
                 </li>
               </Link>
             </ul>
-            <div class="d-flex">
-              <div class="dropdown">
-                <button
-                  class="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Account
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li
-                    onClick={() => {
-                      setCookie("token", "");
-                      localStorage.clear();
-                    }}
-                  >
-                    <a class="dropdown-item" href="/">
-                      LogOut
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </nav>
