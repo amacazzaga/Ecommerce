@@ -52,43 +52,7 @@ const Navbar = () => {
                   </Link>
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link">
-                  <div class="container btn-group d-flex justify-content-center">
-                    <button
-                      class="btn btn-secondary btn-sm dropdown-toggle fw-bold"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Categories
-                    </button>
-                    <ul class="dropdown-menu">
-                      <Link to={"/ACDC/3"}>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          AC/DC
-                        </a>
-                      </li>
-                      </Link>
-                      <Link to={"/PinkFloyd/2"}>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          Pink Floyd
-                        </a>
-                      </li>
-                      </Link>
-                      <Link to={"/Queen/1"}>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          Queen
-                        </a>
-                      </li>
-                      </Link>
-                    </ul>
-                  </div>
-                </a>
-              </li>
+
             </ul>
             <div class="d-flex">
               <div class="container-fluid">

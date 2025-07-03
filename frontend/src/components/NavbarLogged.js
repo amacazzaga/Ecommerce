@@ -58,43 +58,7 @@ const NavbarLogged = () => {
                   </Link>
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link">
-                  <div class="container btn-group d-flex justify-content-center">
-                    <button
-                      class="btn btn-secondary btn-sm dropdown-toggle"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Categories
-                    </button>
-                    <ul class="dropdown-menu">
-                      <Link to={"/category/3"}>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          AC/DC
-                        </a>
-                      </li>
-                      </Link>
-                      <Link to={"/category/2"}>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          Pink Floyd
-                        </a>
-                      </li>
-                      </Link>
-                      <Link to={"/category/1"}>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          Queen
-                        </a>
-                      </li>
-                      </Link>
-                    </ul>
-                  </div>
-                </a>
-              </li>
+ 
             </ul>
             <div class="d-flex">
           <form class="d-flex">
