@@ -87,7 +87,7 @@ const loginUser = async (req, res) => {
   return res
     .status(200)
     .header(`Authorization`, token)
-    .send({ token: token, isUserAdmin: isUserAdmin });
+    .send({ token: token, isUserAdmin: isUserAdmin, userName:user.name });
 };
 //delete user///
 const deleteUser = async (req, res) => {
