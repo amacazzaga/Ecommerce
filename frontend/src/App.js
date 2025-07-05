@@ -2,6 +2,7 @@ import { CookiesProvider, useCookies } from "react-cookie";
 import AppRoutes from "./AppRoutes";
 import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
+import { AppProvider } from "./AppContext";
 
 function App() {
   const [cookie] = useCookies();
@@ -17,9 +18,11 @@ function App() {
     } else setUserIsAdmin(null);
   }, [token]);
   return (
+
     <CookiesProvider>
       <AppRoutes userIsAdmin={userIsAdmin} userId={userId} />
     </CookiesProvider>
+ 
   );
 }
 

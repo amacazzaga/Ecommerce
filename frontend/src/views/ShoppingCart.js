@@ -14,7 +14,7 @@ const ShoppingCart = () => {
   const [successMessage, setSuccessMessage] = useState();
   const [errorMessage, setErrorMessage] = useState();
   const [cartProducts, setCartProducts] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  
   ////
   const getProductsOnCart = async () => {
     const fromLocaleStorage = localStorage.getItem("product");
@@ -25,29 +25,19 @@ const ShoppingCart = () => {
     });
     if (parsed.length === 0) {
       setCartProducts([]);
-      getTotalPrices([]);
+    //  getTotalPrices([]);
     } else {
       await axios
         .get(`http://localhost:4000/product/many?ids=${arrayOfIds.join(",")}`)
         .then((response) => {
           //  console.log(response);
           setCartProducts(response.data);
-          getTotalPrices(response.data);
+         // getTotalPrices(response.data);
         });
     }
   };
   ///////
-  const getTotalPrices = () => {
-    const fromLocaleStorage = localStorage.getItem("product");
-    const parsed = JSON.parse(fromLocaleStorage);
-    const arrayOfProductPrices = parsed.map((m) => {
-      const prices = m.price;
-      const amount = m.amount;
-      return prices * amount;
-    });
-    const total = arrayOfProductPrices.reduce((acc, value) => acc + value, 0);
-    setTotalPrice(total);
-  };
+
   ///
   const buyProducts = async () => {
     const decoded = jwt_decode(token);
@@ -82,11 +72,7 @@ const ShoppingCart = () => {
       //error
     } catch (err) {
       setErrorMessage("error");
-      //scroll to top
-      window.scroll({
-        top: 0,
-      });
-      console.log(err);
+
     }
   };
   //
@@ -95,7 +81,7 @@ const ShoppingCart = () => {
   }, []);
   ///////
   return (
-    <div className="min-vh-100">
+    <div >
       <ModalLogOrSing />
       {successMessage ? (
         <div class="alert alert-success" role="alert">
@@ -130,19 +116,19 @@ const ShoppingCart = () => {
               </div>
             ))
           ) : (
-            <h3 className="min-vh-100 border border-4">
-              Shopping Cart Is Empty
-            </h3>
+            <div>
+              
+            </div>
           )}
         </div>
         <div className="d-flex justify-content-center">
           {token ? (
             <ButtonPurchaseLogIn
               buyProducts={buyProducts}
-              totalPrice={totalPrice}
+      
             />
           ) : (
-            <ButtonPurchase totalPrice={totalPrice} />
+            <div></div>
           )}
         </div>
       </div>
